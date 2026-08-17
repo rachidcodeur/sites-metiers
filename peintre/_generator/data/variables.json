@@ -1,0 +1,537 @@
+{
+  "_note": "Variabilité du texte pour peintre-en-batiment3. Chaque paragraphe du template est composé de DEUX parties indépendantes (_a et _b), 5 variantes chacune, soit 25 combinaisons par paragraphe. Les variantes de _a et _b doivent rester combinables entre elles dans n'importe quel ordre : chaque fragment est autonome, sans mot de liaison qui dépendrait de l'autre moitié. Placeholders disponibles : {{VILLE}}, {{VILLE_A}} (à Bordeaux), {{VILLE_DE}} (de Bordeaux), {{CODE_POSTAL}}, {{DEP_NOM}}, {{DEP_NOM_A}} (en Gironde), {{MARQUE}}, {{TEL}}. Les deux micro-libellés (var_hero_stat, var_about_stat) sont trop courts pour être coupés en deux : ils ont 5 variantes entières.",
+
+  "var_title_arg": [
+    "Devis gratuit sous 48 h",
+    "Artisan peintre certifié",
+    "Peinture intérieure & façades",
+    "Devis ferme, chantier propre",
+    "Entreprise de peinture"
+  ],
+
+  "var_meta_desc_a": [
+    "Peintre en bâtiment {{VILLE_A}} ({{CODE_POSTAL}}) : peinture intérieure et extérieure, ravalement de façade, papier peint.",
+    "Votre peintre en bâtiment {{VILLE_A}} ({{CODE_POSTAL}}) pour vos murs, plafonds, boiseries et façades.",
+    "Artisan peintre {{VILLE_A}} ({{CODE_POSTAL}}) : rafraîchissement d'une pièce, rénovation complète, ravalement.",
+    "Peintre en bâtiment {{VILLE_A}} ({{CODE_POSTAL}}) : enduits, finitions mates ou satinées, revêtements muraux.",
+    "Entreprise de peinture {{VILLE_A}} ({{CODE_POSTAL}}) : intérieur, extérieur et reprise de supports abîmés."
+  ],
+  "var_meta_desc_b": [
+    "Devis gratuit sous 48 h, prix ferme, assurance décennale.",
+    "Visite sur site, estimation détaillée poste par poste, sans engagement.",
+    "Prix annoncé avant le premier coup de rouleau. Chantier rendu propre.",
+    "Devis sous 48 h, TVA 10 % sur les logements de plus de deux ans.",
+    "Un interlocuteur unique, des finitions soignées, un délai tenu."
+  ],
+
+  "var_hero_a": [
+    "Peinture intérieure et extérieure, ravalement de façade, enduits et revêtements muraux.",
+    "Murs, plafonds, boiseries, façades et papier peint : tous vos travaux de peinture {{VILLE_A}}.",
+    "Du rafraîchissement d'une chambre au ravalement complet d'une façade {{VILLE_A}}.",
+    "Peinture intérieure, extérieure, reprise de supports dégradés et pose de revêtements muraux.",
+    "Travaux de peinture {{VILLE_A}} : intérieur, façades, enduits de lissage et papier peint."
+  ],
+  "var_hero_b": [
+    "{{MARQUE}} : un artisan qualifié, des finitions soignées, un prix ferme avant le premier coup de rouleau.",
+    "Chez {{MARQUE}}, le peintre qui prend votre appel est celui qui vient chez vous. Devis gratuit sous 48 h.",
+    "{{MARQUE}} prépare le support dans les règles : finitions nettes et chantier rendu propre.",
+    "{{MARQUE}} établit un devis détaillé poste par poste, à montant ferme, sans supplément en fin de chantier.",
+    "Deux couches minimum et des produits professionnels : {{MARQUE}} couvre chaque chantier par une assurance décennale."
+  ],
+
+  "_note_hero_stat": "Bloc de statistique en deux parties : le chiffre en gros et blanc (.hero__stat-num), le libellé en petit (.hero__stat-label). Ces deux span PORTENT la couleur — .hero__stat n'en déclare aucune. Les supprimer ferait hériter la couleur sombre du body sur le fond sombre du hero, avec un contraste inutilisable.",
+
+  "var_hero_stat_num": [
+    "Depuis 2009",
+    "Plus de 15 ans",
+    "15 ans",
+    "Depuis 15 ans",
+    "Depuis plus de 15 ans"
+  ],
+  "var_hero_stat_label": [
+    "artisans peintres {{DEP_NOM_A}}",
+    "peintres en bâtiment {{VILLE_A}}",
+    "sur les chantiers {{DEP_NOM_A}}",
+    "au service des particuliers et des syndics",
+    "de peinture intérieure et de façades"
+  ],
+
+  "var_about1_a": [
+    "Une équipe d'artisans peintres installés {{VILLE_A}} depuis 2009.",
+    "Des peintres en bâtiment établis {{VILLE_A}} et dans les communes voisines depuis 2009.",
+    "Notre atelier est {{VILLE_A}} depuis 2009, et nous n'intervenons que dans un rayon proche.",
+    "Artisans peintres {{VILLE_A}} depuis 2009, sur les chantiers de particuliers comme de syndics.",
+    "Installés {{VILLE_A}} depuis 2009, nous connaissons le bâti local et ses contraintes."
+  ],
+  "var_about1_b": [
+    "Chez {{MARQUE}}, le peintre qui prend votre appel est celui qui vient chez vous, et qui signe le chantier.",
+    "Pas d'intermédiaire chez {{MARQUE}} : la personne qui établit le devis est celle qui tient le rouleau.",
+    "{{MARQUE}} vous donne un seul interlocuteur, du premier appel à la réception du chantier.",
+    "Chez {{MARQUE}}, celui qui relève les surfaces chez vous est celui qui exécute les travaux.",
+    "{{MARQUE}}, c'est un seul nom sur le devis et sur le chantier, du début à la fin."
+  ],
+
+  "var_about2_a": [
+    "Murs, plafonds, boiseries, ravalement de façade, reprise de supports abîmés, papier peint : nous couvrons tous les travaux de peinture.",
+    "Peinture intérieure, façades, enduits, revêtements muraux : l'ensemble du métier est traité en interne.",
+    "De la peinture des murs et plafonds au ravalement, en passant par les boiseries et le papier peint.",
+    "Intérieur, extérieur, reprise de fonds dégradés, pose de revêtements : rien n'est sous-traité.",
+    "Nous prenons en charge la peinture des murs, des plafonds, des menuiseries et des façades."
+  ],
+  "var_about2_b": [
+    "Du rafraîchissement d'une pièce à la rénovation complète.",
+    "Aussi bien sur un studio que sur une maison entière.",
+    "En neuf comme en rénovation, sur un logement occupé ou vide.",
+    "Pour une seule pièce comme pour un chantier de plusieurs semaines.",
+    "Sur un simple coup de frais comme sur une remise à niveau lourde."
+  ],
+
+  "var_about3_a": [
+    "Le prix est ferme, annoncé avant le premier coup de rouleau.",
+    "Le montant du devis est ferme : il ne bouge pas en cours de chantier.",
+    "Vous connaissez le prix exact avant que nous ouvrions le premier pot.",
+    "Le devis est détaillé poste par poste, et le total est engageant pour nous.",
+    "Pas de fourchette ni d'estimation vague : un montant ferme, écrit."
+  ],
+  "var_about3_b": [
+    "Le chantier vous est rendu propre et dans les délais convenus.",
+    "Sols et mobilier protégés, pièce remise en ordre chaque soir.",
+    "Nous rendons les lieux nettoyés, à la date annoncée.",
+    "Les délais sont tenus, et le chantier est laissé net.",
+    "Protection du mobilier, nettoyage en fin de poste, délai respecté."
+  ],
+
+  "var_about_stat": [
+    "D'expérience en neuf comme en rénovation, sur toute la {{DEP_NOM}}.",
+    "D'expérience sur les chantiers {{DEP_NOM_A}}, du neuf à la rénovation lourde.",
+    "De pratique du métier {{VILLE_A}} et dans les communes alentour.",
+    "D'expérience en peinture intérieure, façades et revêtements muraux.",
+    "Passés sur les chantiers {{DEP_NOM_A}}, en neuf comme en réhabilitation."
+  ],
+
+  "var_services_intro_a": [
+    "De la chambre à repeindre au ravalement complet de façade, nos artisans interviennent {{VILLE_A}} et aux alentours.",
+    "Une pièce à rafraîchir ou une façade entière à reprendre : le périmètre couvre {{VILLE}} et ses communes voisines.",
+    "Nous traitons aussi bien un plafond taché qu'un ravalement complet, {{VILLE_A}} comme dans le secteur.",
+    "Du simple coup de frais sur un couloir à la réfection totale d'une façade {{VILLE_A}}.",
+    "Quatre métiers de la peinture, exercés {{VILLE_A}} par la même équipe."
+  ],
+  "var_services_intro_b": [
+    "{{MARQUE}} applique toujours la même exigence : un support préparé dans les règles, des finitions nettes et un chantier rendu propre.",
+    "{{MARQUE}} reprend le support avant toute mise en peinture — c'est là que se joue la tenue du résultat.",
+    "Préparation sérieuse du fond, deux couches minimum, nettoyage en fin de chantier : c'est la méthode de {{MARQUE}}.",
+    "{{MARQUE}} n'applique aucune finition sur un fond qui n'a pas été remis à niveau.",
+    "{{MARQUE}} établit un diagnostic du support sur place, puis choisit les produits adaptés à chaque pièce."
+  ],
+
+  "var_service_int_a": [
+    "Murs, plafonds, boiseries et menuiseries.",
+    "Séjours, chambres, couloirs, cuisines et salles d'eau.",
+    "Murs et plafonds, mais aussi portes, plinthes et encadrements.",
+    "Toutes les surfaces intérieures : placo, plâtre, bois, anciennes peintures.",
+    "Pièces à vivre, pièces humides et parties communes."
+  ],
+  "var_service_int_b": [
+    "On prépare le support avant de peindre — c'est là que se joue la tenue du résultat — puis on applique la finition choisie, mate, satinée ou velours, en deux couches minimum.",
+    "Rebouchage, enduit de lissage, ponçage, sous-couche d'accroche, puis deux couches de finition au minimum.",
+    "Le fond est repris à l'enduit et poncé avant la sous-couche ; la finition vient ensuite, mate, satinée ou velours selon la pièce.",
+    "Protection du mobilier et des sols, préparation complète du support, puis application en deux couches de la finition retenue.",
+    "Rien n'est peint sur un mur non préparé : enduit, ponçage, primaire, puis finition adaptée à l'usage de la pièce."
+  ],
+
+  "var_service_ext_a": [
+    "Façades, murs de clôture, volets et ferronneries.",
+    "Ravalement de façade, pignons, murets, volets bois ou métal.",
+    "Façades enduites ou peintes, garde-corps, portails et ferronneries.",
+    "Murs extérieurs, soubassements, clôtures et menuiseries exposées.",
+    "Ravalement complet, reprise de pignon, volets et éléments métalliques."
+  ],
+  "var_service_ext_b": [
+    "On nettoie, on traite et on répare le support avant la mise en peinture, avec des produits adaptés à l'exposition et au climat local.",
+    "Nettoyage haute pression, traitement anti-mousse, réparation des fissures, puis un système de peinture choisi selon l'exposition du mur.",
+    "Le support est lavé, traité contre les mousses et repris avant peinture ; le produit est choisi selon l'orientation de la façade.",
+    "Décapage si nécessaire, traitement fongicide, rebouchage des éclats, puis application d'un revêtement adapté aux intempéries.",
+    "Lavage, traitement, réparation des fissures et enduit de façade avant la mise en peinture définitive."
+  ],
+
+  "var_service_reno_a": [
+    "Supports abîmés, traces d'humidité, anciennes peintures écaillées : on remet le mur à niveau avant de repeindre.",
+    "Murs fissurés, peintures cloquées, auréoles d'humidité : le fond est repris entièrement avant la finition.",
+    "Anciennes couches qui se décollent, enduits dégradés, taches persistantes : tout est traité avant de peindre.",
+    "Un logement ancien demande souvent plus de préparation que de peinture : c'est là que porte l'essentiel du travail.",
+    "Peintures écaillées, plâtre soufflé, traces d'infiltration : nous reprenons le support jusqu'à un fond sain."
+  ],
+  "var_service_reno_b": [
+    "Le diagnostic du support se fait sur place, parce qu'une peinture posée sur un fond dégradé ne tient jamais.",
+    "Nous établissons le diagnostic pendant la visite : une finition appliquée sur un fond instable se dégrade en quelques mois.",
+    "Décapage, traitement de l'humidité, rebouchage puis ratissage complet avant toute mise en peinture.",
+    "Impossible de chiffrer ce travail sans voir les murs : le relevé se fait obligatoirement sur site.",
+    "Traitement de la cause avant la reprise du fond : repeindre sur une infiltration active ne sert à rien."
+  ],
+
+  "var_service_papier_a": [
+    "Papier peint traditionnel, intissé, vinyle ou panoramique sur mesure.",
+    "Intissé, vinyle expansé, papier traditionnel ou panoramique imprimé à la demande.",
+    "Revêtements muraux de toutes natures, du papier classique au panoramique sur mesure.",
+    "Papier peint, intissé, vinyle, toile de verre et panoramiques personnalisés.",
+    "Pose de papier peint et de revêtements muraux, y compris les panoramiques grand format."
+  ],
+  "var_service_papier_b": [
+    "Tout se joue sur la préparation du fond et les raccords : un mur ratissé avant encollage, et le motif tombe juste d'un lé à l'autre.",
+    "Le mur est ratissé avant encollage : c'est la seule façon d'obtenir des raccords invisibles d'un lé à l'autre.",
+    "Dépose de l'ancien revêtement, lessivage de la colle résiduelle, ratissage du fond, puis pose au fil à plomb.",
+    "Un fond mal préparé se voit à travers le papier : nous le reprenons systématiquement avant la pose.",
+    "Le calcul des lés et le type de raccord sont établis avant commande, pour limiter la perte de rouleaux."
+  ],
+
+  "var_check_int": [
+    "<li>Protection du mobilier et des sols</li>\n<li>Rebouchage et enduit de lissage</li>\n<li>Ponçage et sous-couche d'accroche</li>\n<li>Peinture murs et plafonds en deux couches</li>",
+    "<li>Bâchage du mobilier et des sols</li>\n<li>Reprise des fissures à l'enduit</li>\n<li>Ponçage puis primaire d'accrochage</li>\n<li>Finition mate, satinée ou velours</li>",
+    "<li>Mise en protection de la pièce</li>\n<li>Enduit de rebouchage et de lissage</li>\n<li>Égrenage et sous-couche adaptée</li>\n<li>Deux couches de finition minimum</li>",
+    "<li>Sols et meubles protégés</li>\n<li>Rebouchage des trous et fissures</li>\n<li>Ponçage complet avant primaire</li>\n<li>Murs, plafonds et boiseries peints</li>",
+    "<li>Protection intégrale des surfaces</li>\n<li>Ratissage des murs si nécessaire</li>\n<li>Sous-couche d'accroche systématique</li>\n<li>Application en deux couches croisées</li>"
+  ],
+  "var_check_ext": [
+    "<li>Nettoyage haute pression</li>\n<li>Traitement anti-mousse et fongicide</li>\n<li>Réparation des fissures et éclats</li>\n<li>Enduit de façade et mise en peinture</li>",
+    "<li>Lavage du support sous pression</li>\n<li>Traitement fongicide et algicide</li>\n<li>Reprise des fissures et épaufrures</li>\n<li>Revêtement adapté à l'exposition</li>",
+    "<li>Décapage et lavage de la façade</li>\n<li>Traitement préventif des mousses</li>\n<li>Rebouchage des éclats et micro-fissures</li>\n<li>Peinture pliolite ou siloxane</li>",
+    "<li>Nettoyage complet du parement</li>\n<li>Application d'un anti-mousse</li>\n<li>Réparation des zones dégradées</li>\n<li>Enduit puis finition de façade</li>",
+    "<li>Haute pression sur l'ensemble du mur</li>\n<li>Traitement curatif des mousses et lichens</li>\n<li>Reprise des fissures au mastic ou à l'enduit</li>\n<li>Système de peinture microporeux</li>"
+  ],
+  "var_check_reno": [
+    "<li>Décapage des anciennes couches</li>\n<li>Traitement des traces d'humidité</li>\n<li>Rebouchage des fissures et trous</li>\n<li>Ratissage complet avant finition</li>",
+    "<li>Retrait des peintures écaillées</li>\n<li>Traitement des auréoles et moisissures</li>\n<li>Reprise des fissures à l'enduit de rebouchage</li>\n<li>Ratissage puis sous-couche isolante</li>",
+    "<li>Grattage des couches non adhérentes</li>\n<li>Diagnostic et traitement de l'humidité</li>\n<li>Rebouchage des saignées et éclats</li>\n<li>Enduit de lissage sur toute la surface</li>",
+    "<li>Décapage jusqu'au fond sain</li>\n<li>Assainissement des zones humides</li>\n<li>Comblement des trous et fissures</li>\n<li>Ratissage et primaire d'accrochage</li>",
+    "<li>Élimination des anciennes finitions</li>\n<li>Traitement anti-taches et anti-auréoles</li>\n<li>Réparation du plâtre ou du placo</li>\n<li>Lissage général avant mise en peinture</li>"
+  ],
+  "var_check_papier": [
+    "<li>Dépose de l'ancien revêtement</li>\n<li>Préparation et ratissage du fond</li>\n<li>Papier peint intissé et vinyle</li>\n<li>Panoramique et impression sur mesure</li>",
+    "<li>Retrait du papier existant</li>\n<li>Lessivage de la colle et ratissage</li>\n<li>Pose d'intissé, vinyle ou traditionnel</li>\n<li>Panoramiques grand format</li>",
+    "<li>Décollage du revêtement en place</li>\n<li>Reprise du fond à l'enduit de lissage</li>\n<li>Encollage mur ou dos selon le support</li>\n<li>Raccords droits, sautés ou libres</li>",
+    "<li>Dépose et évacuation de l'ancien papier</li>\n<li>Ratissage du mur avant encollage</li>\n<li>Calcul des lés et de la perte</li>\n<li>Pose au fil à plomb, raccords ajustés</li>",
+    "<li>Retrait complet du revêtement usé</li>\n<li>Préparation du support jusqu'au lisse</li>\n<li>Intissé, vinyle, toile de verre</li>\n<li>Panoramique imprimé à la demande</li>"
+  ],
+
+  "var_callout_a": [
+    "Décrivez-nous votre projet.",
+    "Dites-nous ce que vous voulez faire repeindre.",
+    "Expliquez-nous votre chantier en quelques lignes.",
+    "Parlez-nous des surfaces à traiter.",
+    "Donnez-nous les grandes lignes de votre projet."
+  ],
+  "var_callout_b": [
+    "{{MARQUE}} vous rappelle sous 48 h avec un prix ferme, sans engagement.",
+    "{{MARQUE}} revient vers vous sous 48 h avec un chiffrage détaillé.",
+    "Un peintre de {{MARQUE}} vous rappelle sous 48 h, devis gratuit.",
+    "{{MARQUE}} répond sous 48 h : montant ferme, aucun engagement de votre part.",
+    "{{MARQUE}} vous rappelle rapidement pour convenir d'une visite."
+  ],
+
+  "var_reviews_a": [
+    "Des avis laissés par des particuliers, des syndics et des professionnels après un chantier réel.",
+    "Ces retours viennent de clients {{VILLE_A}} et alentour, après réception du chantier.",
+    "Particuliers, syndics de copropriété et professionnels : tous ont eu un chantier terminé chez eux.",
+    "Chaque avis correspond à un chantier livré, {{VILLE_A}} ou dans une commune voisine.",
+    "Des retours de propriétaires, de locataires et de gestionnaires d'immeubles."
+  ],
+  "var_reviews_b": [
+    "{{MARQUE}} les publie tels quels : pas de sélection, pas de retouche.",
+    "{{MARQUE}} les affiche sans tri ni réécriture.",
+    "{{MARQUE}} les reproduit intégralement, sans les corriger.",
+    "Aucun filtrage chez {{MARQUE}} : les critiques y figurent aussi.",
+    "{{MARQUE}} les reprend mot pour mot, dans l'ordre où ils sont arrivés."
+  ],
+
+  "var_paints_intro_a": [
+    "Le choix du produit compte autant que la préparation du support. Une chambre, une salle d'eau et une façade exposée n'ont pas les mêmes contraintes.",
+    "À préparation égale, le produit fait la différence : une pièce humide et un séjour ne demandent pas la même peinture.",
+    "Une salle de bains, un couloir de passage et un pignon plein ouest imposent trois systèmes différents.",
+    "Le support prépare la tenue, le produit la prolonge. Chaque pièce a ses propres contraintes d'usage.",
+    "Nous ne posons pas la même peinture dans une chambre, une cuisine et sur une façade exposée."
+  ],
+  "var_paints_intro_b": [
+    "Voici les familles que nous travaillons au quotidien, et ce qui nous fait choisir l'une plutôt que l'autre.",
+    "Voici ce que nous utilisons, et les critères qui orientent notre choix sur chaque chantier.",
+    "Les quatre familles ci-dessous couvrent la quasi-totalité de nos chantiers.",
+    "Voici les produits en usage chez nous, et les raisons de les employer.",
+    "Détail des familles de peinture que nous mettons en œuvre, et de leurs usages respectifs."
+  ],
+
+  "var_paint_acryl_a": [
+    "La plus courante en intérieur, pour les murs et les plafonds.",
+    "Le produit de base en intérieur, sur murs et plafonds.",
+    "Notre choix par défaut pour les surfaces intérieures.",
+    "Employée sur la grande majorité des murs et plafonds intérieurs.",
+    "La référence en intérieur, en phase aqueuse."
+  ],
+  "var_paint_acryl_b": [
+    "Faible odeur, séchage rapide, outils nettoyés à l'eau. Elle se décline en finition mate, satinée ou velours selon la pièce.",
+    "Peu odorante, sèche vite, se travaille à l'eau. Disponible en mat, satin ou velours.",
+    "Séchage en quelques heures, odeur très discrète, et trois finitions possibles selon l'usage de la pièce.",
+    "Vous pouvez rester dans le logement pendant les travaux : l'odeur se dissipe en quelques heures.",
+    "Recouvrable rapidement, ce qui permet d'enchaîner les deux couches dans la même journée."
+  ],
+
+  "var_paint_glycero_a": [
+    "Pour les boiseries, portes, plinthes et pièces humides.",
+    "Réservée aux menuiseries, huisseries et pièces d'eau.",
+    "Sur les boiseries, les plinthes, les portes et les salles de bains.",
+    "Pour tout ce qui subit des chocs ou de l'humidité.",
+    "Employée sur les bois, les métaux et les pièces humides."
+  ],
+  "var_paint_glycero_b": [
+    "Le film est plus tendu et plus dur, il résiste au lessivage et aux chocs. Les alkydes en phase aqueuse offrent cette tenue sans l'odeur des glycéros traditionnelles.",
+    "Le feuil obtenu est dur et tendu, lessivable, résistant aux frottements. Les alkydes à l'eau donnent le même résultat sans les solvants.",
+    "Tendu impeccable et bonne résistance mécanique. Nous privilégions les alkydes uréthane en phase aqueuse, moins odorantes.",
+    "Plus dure qu'une acrylique, elle encaisse le nettoyage répété et les heurts du quotidien.",
+    "Le rendu est plus lisse, sans trace de reprise, et la surface se nettoie sans marquer."
+  ],
+
+  "var_paint_facade_a": [
+    "En extérieur, la pliolite pénètre les supports poreux et farinants.",
+    "Sur façade, la pliolite s'accroche aux fonds poreux ou farinants.",
+    "La pliolite est notre choix sur un ancien support qui farine.",
+    "En extérieur, tout dépend de l'état du parement : la pliolite pénètre en profondeur.",
+    "La pliolite s'emploie sur les supports absorbants et les anciens enduits."
+  ],
+  "var_paint_facade_b": [
+    "Le siloxane forme un film microporeux et hydrofuge qui laisse le mur respirer. Le choix dépend de l'état du support et de son exposition.",
+    "Le siloxane, lui, reste microporeux : il repousse l'eau de pluie tout en laissant s'évacuer la vapeur.",
+    "Le siloxane apporte l'hydrofugation sans fermer le mur, ce qui est essentiel sur un bâti ancien.",
+    "Le siloxane est privilégié sur les façades exposées à la pluie battante, pour sa perméabilité à la vapeur.",
+    "Nous arbitrons entre les deux après examen du support et de son orientation."
+  ],
+
+  "var_paint_souscouche_a": [
+    "Primaire d'accrochage sur support lisse, sous-couche isolante contre les taches et les auréoles.",
+    "Primaire sur les fonds fermés, sous-couche opacifiante sur les taches tenaces.",
+    "Impression d'accrochage, sous-couche anti-taches, fixateur sur fond pulvérulent.",
+    "Primaire adapté à chaque fond : lisse, poreux, taché ou farinant.",
+    "Sous-couche d'accrochage, sous-couche isolante, fixateur de fond."
+  ],
+  "var_paint_souscouche_b": [
+    "Traitement anti-humidité ou anti-mousse. C'est cette première couche qui décide de la tenue de tout le système.",
+    "C'est cette première couche, invisible au final, qui détermine la durée de vie de la finition.",
+    "Sans le bon primaire, la plus belle finition se décolle en deux hivers.",
+    "Nous ne faisons jamais l'économie de cette étape : c'est elle qui tient tout le reste.",
+    "Complétée si besoin d'un traitement anti-humidité ou fongicide avant la mise en peinture."
+  ],
+
+  "var_paints_note_a": [
+    "Côté finition, le mat masque les défauts d'un mur ancien mais se nettoie mal ; le satin se lessive et convient aux pièces de passage, cuisines et couloirs ; le velours reste le compromis le plus demandé dans les chambres et les séjours.",
+    "Le mat pardonne les irrégularités d'un vieux mur mais supporte mal l'éponge ; le satin se nettoie et va bien dans les couloirs et les cuisines ; le velours tient le milieu et reste le plus choisi en chambre.",
+    "Un mur ancien sera plus flatteur en mat, au prix d'un entretien délicat. Le satin résiste au lessivage, utile dans les zones de passage. Le velours est le compromis courant en pièce à vivre.",
+    "Trois finitions, trois usages : le mat pour effacer les défauts, le satin pour les pièces qu'on nettoie, le velours pour tout le reste.",
+    "Le choix de la finition compte autant que la teinte : mat pour masquer, satin pour laver, velours pour concilier les deux."
+  ],
+  "var_paints_note_b": [
+    "Nous travaillons avec des marques professionnelles et vous présentons les nuanciers sur place, avec un essai sur le mur concerné : une teinte ne rend jamais tout à fait comme sur la carte, la lumière de la pièce change tout.",
+    "Nous apportons les nuanciers chez vous et posons un essai sur le mur : une couleur ne se juge pas sur une carte, la lumière de la pièce la transforme.",
+    "Le nuancier se regarde sur place, et nous appliquons toujours un échantillon avant validation. L'exposition d'une pièce modifie complètement une teinte.",
+    "Produits de marques professionnelles, et un essai systématique sur le mur avant de commander : c'est le seul moyen de juger une teinte.",
+    "Nous vous laissons voir la teinte en place, à différentes heures, avant de trancher. Une couleur validée sur catalogue déçoit souvent."
+  ],
+
+  "var_faq_prix_a": [
+    "Il n'existe pas de prix unique au mètre carré : tout dépend des surfaces à traiter, de l'état des supports, de la hauteur sous plafond et du nombre de couches nécessaires. Deux pièces de même superficie peuvent demander un travail très différent selon que les murs sont sains ou entièrement à reprendre.",
+    "Aucun tarif au m² ne peut être annoncé sérieusement sans avoir vu les murs. L'état du support, la hauteur sous plafond et le nombre de couches font varier le prix du simple au double pour une surface identique.",
+    "Le prix au mètre carré n'a de sens qu'une fois le support connu. Un mur sain à rafraîchir et un mur à ratisser entièrement représentent deux chantiers très différents, à surface égale.",
+    "Deux pièces de 20 m² peuvent coûter très différemment : ce qui pèse, c'est l'état des fonds, l'accessibilité et le nombre de couches à appliquer, pas la seule surface.",
+    "Nous ne communiquons pas de prix au m² à l'aveugle. Les paramètres réels sont l'état des supports, la hauteur des murs, les surfaces à protéger et la finition retenue."
+  ],
+  "var_faq_prix_b": [
+    "C'est précisément pour cela que nous nous déplaçons gratuitement : nous relevons les surfaces sur place et vous établissons une estimation détaillée, poste par poste, sous 48 h. Le montant annoncé est alors ferme.",
+    "La visite est gratuite : nous mesurons, nous notons l'état de chaque support, et vous recevez sous 48 h un devis détaillé dont le montant est ferme.",
+    "Nous venons relever les surfaces sans frais, puis vous adressons sous 48 h un chiffrage ligne par ligne. Ce montant est engageant pour nous.",
+    "D'où la visite systématique, gratuite et sans engagement, suivie d'un devis détaillé sous 48 h au prix ferme.",
+    "Le relevé sur site ne vous coûte rien et débouche sur un devis poste par poste sous 48 h, sans révision ultérieure."
+  ],
+
+  "var_faq_papier_a": [
+    "Dans la grande majorité des cas, oui. Peindre sur un intissé qui se décolle fait cloquer la finition en quelques semaines, et le relief du papier reste visible par transparence.",
+    "Presque toujours, oui. Une peinture appliquée sur un papier qui se décolle cloque très vite, et le grain du revêtement se devine sous la finition.",
+    "Oui, sauf cas particulier. Le moindre lé qui bâille finit par soulever la peinture, et le motif en relief reste perceptible.",
+    "En règle générale oui : la colle ancienne et les joints de lés compromettent l'accroche, et le relief traverse la finition.",
+    "Oui dans la quasi-totalité des situations, car ni la tenue ni l'aspect final ne sont fiables sur un papier conservé."
+  ],
+  "var_faq_papier_b": [
+    "Nous déposons le revêtement, lessivons la colle résiduelle — c'est elle qui empêche l'accroche — puis rattrapons le support à l'enduit avant la sous-couche. Sur un papier parfaitement collé, lisse et sain, une mise en peinture directe reste possible : nous le vérifions lors de la visite.",
+    "Nous retirons donc le papier, lessivons soigneusement la colle, reprenons le mur à l'enduit et appliquons une sous-couche. Si le revêtement est parfaitement sain, lisse et adhérent, nous pouvons peindre dessus : cela se décide sur place.",
+    "Dépose du revêtement, lessivage complet de la colle, ratissage du fond, puis primaire. Un papier lisse et parfaitement collé peut faire exception, ce que nous vérifions à la visite.",
+    "Le revêtement est déposé, la colle éliminée à l'eau, le support ratissé puis primairisé. L'exception concerne les papiers lisses, sains et parfaitement adhérents.",
+    "Nous procédons à la dépose, au lessivage et à la reprise du fond avant toute peinture. La visite permet de dire si votre papier fait partie des cas où la dépose peut être évitée."
+  ],
+
+  "var_faq_duree_a": [
+    "Comptez 2 à 3 jours pour une pièce de 20 m², murs et plafond, et 5 à 8 jours pour un T3 complet, préparation comprise.",
+    "Une pièce de 20 m², murs et plafond, demande 2 à 3 jours ; un T3 entier se compte en 5 à 8 jours, préparation incluse.",
+    "Sur une chambre de 20 m², prévoyez 2 à 3 jours. Pour un appartement de type T3 dans son ensemble, 5 à 8 jours.",
+    "Les délais courants : 2 à 3 jours pour une pièce, une semaine environ pour un T3, la préparation du support comprise.",
+    "De 2 à 3 jours pour une pièce standard, jusqu'à 8 jours pour un logement complet selon l'état des fonds."
+  ],
+  "var_faq_duree_b": [
+    "Vous pouvez rester sur place : nous travaillons en peinture acrylique en phase aqueuse, dont l'odeur est faible et se dissipe en quelques heures avec une aération. Nous avançons pièce par pièce pour que vous gardiez en permanence une chambre et un point d'eau utilisables.",
+    "Rester dans le logement ne pose pas de problème : nos peintures en phase aqueuse sentent peu et l'odeur part en quelques heures. Nous organisons le chantier pièce par pièce pour vous laisser toujours une chambre et une salle d'eau disponibles.",
+    "Vous n'avez pas à déménager. Les produits en phase aqueuse dégagent peu d'odeur, et nous progressons zone par zone afin qu'une chambre et un point d'eau restent utilisables.",
+    "Vous pouvez continuer à habiter les lieux : l'acrylique à l'eau s'aère vite, et nous ne fermons jamais toutes les pièces en même temps.",
+    "L'occupation du logement est possible pendant les travaux, avec une progression pièce par pièce et une aération en fin de journée."
+  ],
+
+  "var_faq_preparer_a": [
+    "Très peu de choses : videz les petits objets, décrochez les cadres et libérez les étagères.",
+    "Presque rien : les bibelots, les cadres et le contenu des étagères suffisent.",
+    "Trois gestes : vider les petits objets, décrocher ce qui est au mur, dégager les rayonnages.",
+    "L'essentiel est de retirer les objets fragiles, les cadres et ce qui encombre les étagères.",
+    "Juste les petites affaires : décorations, cadres, livres et vaisselle apparente."
+  ],
+  "var_faq_preparer_b": [
+    "Le reste nous revient. Nous déplaçons et bâchons le mobilier, protégeons les sols et les menuiseries, et remettons la pièce en ordre chaque soir. Vous n'avez ni à louer un garde-meuble ni à déplacer quoi que ce soit de lourd.",
+    "Nous prenons le reste en charge : déplacement et bâchage des meubles, protection des sols et des huisseries, remise en ordre en fin de journée. Aucun garde-meuble à prévoir.",
+    "Le mobilier lourd, nous le déplaçons et le protégeons nous-mêmes. Sols et menuiseries sont bâchés, et la pièce est rangée chaque soir.",
+    "Nous nous occupons du gros : déplacer les meubles, les couvrir, protéger les sols, et laisser la pièce praticable le soir.",
+    "Tout le reste fait partie de la prestation, y compris la protection des sols et la remise en état quotidienne."
+  ],
+
+  "var_faq_fourniture_a": [
+    "Oui. Nous calculons avec vous le nombre de rouleaux nécessaires, qui dépend du type de raccord : droit, sauté ou libre — un raccord sauté ajoute couramment 15 à 20 % de perte.",
+    "Oui, sans problème. Nous établissons ensemble le nombre de rouleaux, qui varie selon le raccord : un raccord sauté entraîne souvent 15 à 20 % de chute supplémentaire.",
+    "Oui. Le métrage se calcule avec vous, en tenant compte du raccord — droit, sauté ou libre — le raccord sauté générant 15 à 20 % de perte.",
+    "C'est courant. Reste à calculer les quantités : selon que le raccord est droit, sauté ou libre, la perte varie de quelques pour cent à 20 %.",
+    "Oui, et nous vous aidons à commander la bonne quantité, le type de raccord pouvant ajouter jusqu'à 20 % de chute."
+  ],
+  "var_faq_fourniture_b": [
+    "La pose seule est estimée après relevé des surfaces, comme le reste. Une réserve toutefois : les papiers très fins se déchirent à l'encollage et ne masquent aucun défaut du mur. Nous vous le signalons avant de commencer, pas après.",
+    "Le prix de la pose se chiffre après relevé, comme n'importe quel poste. Une mise en garde : les papiers très fins se déchirent à l'encollage et laissent voir le moindre défaut. Nous le disons avant, pas pendant.",
+    "La pose est estimée sur relevé de surfaces. Attention cependant aux références très fines : elles se déchirent et ne pardonnent aucun défaut de mur — nous vous prévenons en amont.",
+    "Le chiffrage de la pose suit le relevé habituel. Nous signalons en revanche les papiers trop fins, fragiles à l'encollage et sans pouvoir masquant.",
+    "La pose se devise après visite. Nous vous alertons si la référence choisie est délicate à poser ou trop fine pour le support."
+  ],
+
+  "var_faq_devis_a": [
+    "Le devis de {{MARQUE}} est gratuit et sans engagement, remis sous 48 h après la visite.",
+    "{{MARQUE}} transmet un devis gratuit et sans engagement dans les 48 h suivant le rendez-vous.",
+    "Aucun frais et aucun engagement : {{MARQUE}} vous remet le devis sous 48 h après son passage.",
+    "La visite et le devis de {{MARQUE}} sont gratuits, et le document vous parvient sous 48 h.",
+    "Le chiffrage de {{MARQUE}} est offert et ne vous engage à rien, remis sous 48 h."
+  ],
+  "var_faq_devis_b": [
+    "La TVA réduite à 10 % s'applique aux travaux de peinture réalisés dans un logement achevé depuis plus de deux ans : vous signez l'attestation que nous vous fournissons, rien de plus. Tous nos chantiers sont couverts par une assurance décennale et une garantie de parfait achèvement d'un an.",
+    "La TVA à 10 % concerne les logements achevés depuis plus de deux ans ; nous vous remettons l'attestation à signer. Chaque chantier est couvert par notre assurance décennale et une garantie de parfait achèvement d'un an.",
+    "Si votre logement a plus de deux ans, la TVA passe à 10 % — une simple attestation à signer, que nous fournissons. Assurance décennale et garantie de parfait achèvement d'un an sur tous nos travaux.",
+    "Pour un logement de plus de deux ans, le taux de TVA est de 10 % sur simple attestation. Nos chantiers bénéficient d'une assurance décennale et d'un an de parfait achèvement.",
+    "TVA à 10 % dès lors que le logement a plus de deux ans, attestation fournie par nos soins. Décennale et garantie de parfait achèvement incluses."
+  ],
+
+  "var_form_lead_a": [
+    "Remplissez le formulaire : un peintre de {{MARQUE}} vous recontacte rapidement avec un premier chiffrage.",
+    "Renseignez le formulaire, {{MARQUE}} vous rappelle avec une première estimation.",
+    "Décrivez votre projet ci-dessous : {{MARQUE}} revient vers vous avec un premier ordre de prix.",
+    "Quelques champs à compléter, et {{MARQUE}} vous rappelle pour affiner le chiffrage.",
+    "Laissez vos coordonnées et le détail de votre projet, {{MARQUE}} vous rappelle."
+  ],
+  "var_form_lead_b": [
+    "Gratuit, sans engagement.",
+    "C'est gratuit et sans aucun engagement.",
+    "Sans frais ni engagement de votre part.",
+    "Gratuit, et vous restez libre de ne pas donner suite.",
+    "Aucun frais, aucun engagement."
+  ],
+
+  "var_footer_a": [
+    "Artisan peintre {{DEP_NOM_A}} depuis plus de 15 ans.",
+    "Peintre en bâtiment {{VILLE_A}} depuis plus de 15 ans.",
+    "Entreprise de peinture installée {{VILLE_A}} depuis 2009.",
+    "Artisans peintres {{VILLE_A}} et dans le secteur depuis plus de 15 ans.",
+    "Peintre en bâtiment {{VILLE_A}}, en activité depuis 2009."
+  ],
+  "var_footer_b": [
+    "Peinture intérieure et extérieure, ravalement de façade et pose de papier peint. Un travail garanti, un prix annoncé.",
+    "Intérieur, façades, enduits et revêtements muraux. Devis ferme et assurance décennale.",
+    "Murs, plafonds, boiseries, façades et papier peint. Chantier propre, délai tenu.",
+    "Peinture intérieure, ravalement et revêtements muraux. Prix ferme avant travaux.",
+    "Tous travaux de peinture, du rafraîchissement à la rénovation complète. Garantie décennale."
+  ],
+
+  "_note_avis": "Les 10 témoignages gardent chacun leur thème (intérieur, ravalement, syndic, humidité, délai, papier peint, mise en location, boiseries, cage d'escalier, devis) pour rester cohérents avec le rôle de l'auteur et la note affichée. Seule la rédaction change. Les noms sont tirés de _pool_noms_avis par le générateur, de façon déterministe pour chaque ville.",
+
+  "_pool_noms_avis": [
+    "Marie L.", "Thomas R.", "Sophie D.", "Karim B.", "Élodie F.",
+    "Jean-Marc P.", "Nathalie G.", "Vincent M.", "Céline A.", "Pierre H.",
+    "Julien C.", "Sandrine V.", "Laurent T.", "Aurélie N.", "Stéphane R.",
+    "Isabelle M.", "Fabrice D.", "Christelle B.", "Olivier G.", "Valérie S.",
+    "Sébastien L.", "Delphine P.", "Nicolas F.", "Anne-Sophie T.", "Frédéric J.",
+    "Corinne E.", "Guillaume A.", "Patricia W.", "Mathieu O.", "Hélène K."
+  ],
+
+  "var_avis_1": [
+    "Salon et couloir repeints en deux jours. Ils ont pris le temps de reboucher et de poncer avant, ça se voit au rendu final.",
+    "Deux jours pour le séjour et l'entrée. La préparation a été faite sérieusement, les murs sont parfaitement lisses.",
+    "Ils ont repeint le salon et le couloir sans traîner. Le rebouchage en amont fait toute la différence sur le résultat.",
+    "Séjour et dégagement refaits en deux jours. Ponçage soigné, aucune trace de reprise sur les murs.",
+    "Le salon a été repris entièrement. Ils ont insisté sur la préparation, et honnêtement le rendu est impeccable."
+  ],
+  "var_avis_2": [
+    "Ravalement de la façade de notre maison de ville. Devis clair, échafaudage monté proprement et un vrai conseil sur la teinte.",
+    "Façade entièrement reprise. Le devis était détaillé, le chantier bien organisé, et ils nous ont bien guidés sur la couleur.",
+    "Ravalement complet de la maison. Montage de l'échafaudage nickel et des conseils utiles pour choisir la teinte.",
+    "Notre façade avait mal vieilli. Ils l'ont lavée, traitée et repeinte : la maison a changé d'allure.",
+    "Ravalement mené sans accroc. Prix annoncé tenu, chantier propre et une teinte qui rend très bien."
+  ],
+  "var_avis_3": [
+    "Nous leur confions les parties communes de trois résidences. Un interlocuteur unique, un planning tenu et des factures lisibles.",
+    "Trois copropriétés suivies par leurs soins. Toujours le même contact, des délais respectés et une facturation claire.",
+    "Ils interviennent sur nos parties communes depuis plusieurs années. Planning tenu, aucune mauvaise surprise.",
+    "Prestataire régulier sur nos immeubles. Un seul interlocuteur, ce qui simplifie beaucoup la gestion.",
+    "Nous travaillons avec eux sur plusieurs résidences. Sérieux sur les délais et transparents sur les prix."
+  ],
+  "var_avis_4": [
+    "Un mur du séjour marqué par l'humidité. Ils ont traité le support avant de repeindre, plus aucune trace depuis.",
+    "Des auréoles revenaient sans cesse dans le salon. Ils ont traité la cause avant de peindre, le mur est net depuis.",
+    "Traces d'humidité sur un mur de la pièce à vivre. Traitement puis reprise complète : rien n'est réapparu.",
+    "Le mur du séjour était taché. Au lieu de recouvrir, ils ont assaini le support d'abord. Ça a tenu.",
+    "Problème d'humidité pris à la racine et non camouflé. Un an après, le mur est toujours impeccable."
+  ],
+  "var_avis_5": [
+    "Toute la salle repeinte entre un dimanche soir et un mardi matin, comme convenu. Aucun jour de fermeture perdu.",
+    "Ils ont travaillé de nuit et le week-end pour ne pas fermer. Salle prête à rouvrir le mardi comme prévu.",
+    "Intervention calée sur nos jours de fermeture. Tout était terminé et nettoyé à la réouverture.",
+    "La salle a été repeinte en dehors des heures de service. Zéro perte d'exploitation pour nous.",
+    "Chantier organisé autour de nos contraintes horaires, et livré exactement à la date annoncée."
+  ],
+  "var_avis_6": [
+    "Pose de papier peint panoramique dans la chambre. Les raccords sont invisibles, le motif tombe parfaitement.",
+    "Panoramique posé dans la chambre : impossible de repérer les jonctions entre les lés.",
+    "Papier peint panoramique installé au millimètre. Le raccord du motif est parfait d'un lé à l'autre.",
+    "Ils ont posé notre panoramique sur mesure. Le mur avait été ratissé avant, et ça se voit au résultat.",
+    "Pose d'un panoramique délicat. Le fond a été préparé sérieusement, les raccords sont indétectables."
+  ],
+  "var_avis_7": [
+    "Nous faisons appel à eux pour rafraîchir les biens avant mise en location. Délais courts et rendu constant.",
+    "Prestataire régulier pour la remise en état de nos logements avant relocation. Rapides et réguliers.",
+    "Ils interviennent entre deux locataires. Toujours dans les temps, toujours la même qualité.",
+    "Nos biens sont repeints avant chaque mise en location. Le délai est tenu, ce qui est essentiel pour nous.",
+    "Rafraîchissement de logements avant location : réactifs, propres, et le rendu ne varie pas d'un bien à l'autre."
+  ],
+  "var_avis_8": [
+    "Peinture des boiseries et des volets. Ponçage sérieux, deux couches, rien qui coule ni qui accroche.",
+    "Volets et menuiseries repris entièrement. Le ponçage a été fait dans les règles, la finition est tendue.",
+    "Boiseries intérieures et volets refaits. Aucune coulure, un rendu très propre sur toutes les arêtes.",
+    "Ils ont décapé puis repeint nos volets en deux couches. Deux hivers plus tard, rien n'a bougé.",
+    "Travail minutieux sur les boiseries. Le résultat est net, sans surépaisseur ni trace de pinceau."
+  ],
+  "var_avis_9": [
+    "Cage d'escalier entièrement reprise, immeuble occupé. Les habitants ont pu circuler tous les jours.",
+    "Réfection complète de la cage d'escalier sans jamais bloquer l'accès aux résidents.",
+    "Ils ont repris l'escalier d'un immeuble habité, en organisant le chantier pour laisser toujours un passage.",
+    "Parties communes refaites dans un immeuble occupé. Aucune plainte des copropriétaires, c'est assez rare.",
+    "Cage d'escalier rénovée par demi-paliers pour ne jamais couper la circulation. Bien pensé."
+  ],
+  "var_avis_10": [
+    "Devis reçu sous 48 h comme annoncé, prix ferme, aucune rallonge en fin de chantier.",
+    "Le devis est arrivé dans les 48 h et le montant final correspondait exactement. Pas de supplément.",
+    "Estimation détaillée sous deux jours, et la facture est tombée au centime près sur le devis.",
+    "Prix annoncé, prix payé. Le devis était détaillé poste par poste et n'a pas bougé.",
+    "Réponse rapide, chiffrage clair, et zéro dépassement à la fin. C'est suffisamment rare pour le signaler."
+  ]
+}

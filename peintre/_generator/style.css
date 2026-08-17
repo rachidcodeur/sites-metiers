@@ -1,0 +1,2857 @@
+/* ==========================================================================
+   tokens.css — SOURCE UNIQUE DE VÉRITÉ
+   Aucune valeur brute (hex, px de couleur/ombre/espacement, durée) n'existe
+   ailleurs que dans ce fichier. Tout le reste consomme var(--token).
+   Réf. : Manifeste design § 0 (règle d'or).
+   ========================================================================== */
+
+:root {
+  /* ---------------------------------------------------------------------- */
+  /* 3.1 — Accent (marque, généré depuis #0B6EDE / HSL 212° 90% 46%)         */
+  /* ---------------------------------------------------------------------- */
+  --accent-50: #ebf3fe;
+  --accent-100: #d6e7fd;
+  --accent-200: #adcffb;
+  --accent-300: #79b0f6;
+  --accent-400: #3b8aec; /* accent lisible sur fond sombre uniquement */
+  --accent-500: #0b6ede; /* COULEUR DE MARQUE */
+  --accent-600: #0a60c2; /* texte-lien sur fond clair, hover primaire       */
+  --accent-700: #084d9b; /* :active                                         */
+  --accent-800: #073a73;
+  --accent-900: #05264c;
+
+  /* ---------------------------------------------------------------------- */
+  /* 3.1 bis — Chaud (contrepoint ambre)                                    */
+  /* Second registre, volontairement minoritaire : sur-titres, filets        */
+  /* d'accent, mot-clé du titre, numéros d'étapes. Le bleu reste la couleur  */
+  /* de structure et d'action — aucun bouton ne passe en ambre.              */
+  /* Certaines valeurs coïncident avec la rampe --warning-* : c'est la même  */
+  /* teinte de base, mais l'usage sémantique diffère et ne doit pas être     */
+  /* confondu (retour de formulaire vs accent de marque).                    */
+  /* ---------------------------------------------------------------------- */
+  --warm-50: #fffaeb;
+  --warm-100: #fef0c7;
+  --warm-200: #fedf89;
+  --warm-300: #fec84b; /* accent lisible sur fond sombre */
+  --warm-400: #fdb022; /* aplat portant du texte foncé */
+  --warm-500: #f79009; /* filets et éléments décoratifs */
+  --warm-600: #dc6803;
+  --warm-700: #b54708; /* seul pas lisible en texte sur fond clair */
+
+
+  /* ---------------------------------------------------------------------- */
+  /* 3.2 — Neutres (gris froids, teintés bleu)                              */
+  /* ---------------------------------------------------------------------- */
+  --ink-900: #0e1726;
+  --ink-800: #182231;
+  --ink-700: #2b3648;
+  --ink-600: #4a5568; /* texte courant */
+  --ink-500: #6b7688; /* texte secondaire */
+  --ink-400: #94a0b4; /* placeholders, désactivé */
+  --ink-300: #c2cbda;
+  --ink-200: #dde4ef;
+  --ink-100: #edf1f7;
+  --ink-50: #f6f9fd;
+
+  /* Alias sémantiques de texte */
+  --text-strong: var(--ink-900);
+  --text-body: var(--ink-600);
+  --text-muted: var(--ink-500);
+  --text-faint: var(--ink-400);
+
+  /* ---------------------------------------------------------------------- */
+  /* 3.3 — Surfaces                                                         */
+  /* ---------------------------------------------------------------------- */
+  --white: #ffffff; /* texte/aplat sur fonds accent & sombres */
+  --bg-canvas: #ffffff;
+  --bg-subtle: #f6f9fd;
+  --bg-muted: #edf3fb;
+  --bg-dark: #0b1220;
+  --bg-hero: linear-gradient(180deg, #e9f2fe 0%, #f6fafe 55%, #f6f9fd 100%);
+  --bg-overlay: rgba(14, 23, 38, 0.48);
+
+  /* Bannière paysage : voiles de lisibilité posés sur la photo.
+     Horizontal (desktop) : opaque à gauche sous le texte, transparent à
+     droite pour laisser respirer le sujet. Vertical (mobile) : la photo est
+     recadrée serré, le voile doit couvrir toute la hauteur. */
+  --scrim-hero: linear-gradient(
+    90deg,
+    rgba(11, 18, 32, 0.82) 0%,
+    rgba(11, 18, 32, 0.68) 36%,
+    rgba(11, 18, 32, 0.34) 60%,
+    rgba(11, 18, 32, 0.1) 100%
+  );
+  --scrim-hero-md: linear-gradient(
+    90deg,
+    rgba(11, 18, 32, 0.86) 0%,
+    rgba(11, 18, 32, 0.78) 40%,
+    rgba(11, 18, 32, 0.5) 68%,
+    rgba(11, 18, 32, 0.18) 100%
+  );
+  /* Voile de la carte d'appel : dense sous le texte, il s'ouvre nettement à
+     droite pour laisser vivre le turquoise du fond. Le palier de 45 % est celui
+     où finit le texte — il tient le contraste au-delà de 6:1 sur toute la zone
+     de lecture, alors que le mur photographié y est très clair. */
+  --scrim-callout: linear-gradient(
+    90deg,
+    rgba(11, 18, 32, 0.8) 0%,
+    rgba(11, 18, 32, 0.68) 45%,
+    rgba(11, 18, 32, 0.32) 100%
+  );
+  --scrim-hero-sm: linear-gradient(
+    180deg,
+    rgba(11, 18, 32, 0.66) 0%,
+    rgba(11, 18, 32, 0.74) 50%,
+    rgba(11, 18, 32, 0.82) 100%
+  );
+
+  /* Surfaces & textes posés sur fond sombre / photo */
+  --surface-on-dark: rgba(255, 255, 255, 0.14);
+  --text-on-dark: rgba(255, 255, 255, 0.82);
+  /* Texte secondaire sur fond sombre (pied de page). 0.7 sur --bg-dark donne
+     un contraste d'environ 9:1, largement au-delà du seuil AA. */
+  --text-on-dark-muted: rgba(255, 255, 255, 0.7);
+  --accent-on-dark: var(--accent-200);
+
+  /* ---------------------------------------------------------------------- */
+  /* 3.4 — Couleurs sémantiques (retours de formulaire uniquement)          */
+  /* ---------------------------------------------------------------------- */
+  --success-700: #05603a;
+  --success-500: #12b76a;
+  --success-50: #ecfdf3;
+  --danger-700: #912018;
+  --danger-500: #d92d20;
+  --danger-50: #fef3f2;
+  --warning-700: #b54708;
+  --warning-500: #f79009;
+  --warning-50: #fffaeb;
+
+  /* ---------------------------------------------------------------------- */
+  /* 4.1 — Typographie : familles & graisses                                */
+  /* ---------------------------------------------------------------------- */
+  --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* ---------------------------------------------------------------------- */
+  /* 4.2 — Échelle typographique fluide (clamp)                             */
+  /* ---------------------------------------------------------------------- */
+  --fs-display: clamp(2rem, 1.3rem + 3.2vw, 3.5rem);   /* 32 → 56 */
+  --fs-h2: clamp(1.4375rem, 1.0875rem + 1.6vw, 2.1875rem); /* 23 → 35 (−5 px) */
+  --fs-h3: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);   /* 22 → 28 */
+  --fs-h4: clamp(1.125rem, 1.05rem + 0.3vw, 1.25rem);  /* 18 → 20 */
+  --fs-h5: 1rem;                                        /* 16 */
+  --fs-lead: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);  /* 16 → 18 */
+  --fs-body: 1rem;                                      /* 16 */
+  --fs-sm: 0.9375rem;                                   /* 15 */
+  --fs-xs: 0.875rem;                                    /* 14 */
+  --fs-2xs: 0.8125rem;                                  /* 13 */
+  --fs-3xs: 0.75rem;                                    /* 12 */
+
+  /* Interlignes */
+  --lh-display: 1.1;
+  --lh-h2: 1.2;
+  --lh-tight: 1.35;
+  --lh-ui: 1.5;
+  --lh-body: 1.7;
+
+  /* Interlettrages */
+  --ls-display: -0.02em;
+  --ls-h2: -0.015em;
+  --ls-tight: -0.01em;
+  --ls-eyebrow: 0.14em;
+  --ls-label: 0.06em;
+
+  /* ---------------------------------------------------------------------- */
+  /* 5.1 — Espacements (base 4px)                                           */
+  /* ---------------------------------------------------------------------- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  --sp-20: 80px;
+  --sp-24: 96px;
+  --sp-30: 120px;
+
+  /* ---------------------------------------------------------------------- */
+  /* 5.2 — Conteneurs                                                       */
+  /* ---------------------------------------------------------------------- */
+  --container-max: 1200px;
+  --container-narrow: 760px;
+  --container-pad: clamp(20px, 4vw, 24px);
+  --container-pad-sm: 30px;
+  --gutter: clamp(20px, 3vw, 32px);
+
+  /* ---------------------------------------------------------------------- */
+  /* 5.3 — Rythme vertical                                                  */
+  /* ---------------------------------------------------------------------- */
+  /* Hauteur de l'en-tête : consommée par la barre elle-même, la position du
+     tiroir mobile et le décalage d'ancre. Trois valeurs qui doivent bouger
+     ensemble — d'où le token. */
+  --header-h: 84px;
+  --header-h-sm: 68px;
+
+  --section-py: clamp(64px, 2.5rem + 4vw, 96px);
+  --hero-py: clamp(48px, 1.5rem + 5vw, 88px);
+  --hero-min-h: clamp(540px, 68vh, 720px);
+  --hero-content-max: 620px;
+
+  /* Orbite « À propos ». Une seule mesure pilote l'ensemble : les anneaux, la
+     photo et les pastilles en dérivent, la composition reste proportionnée à
+     toutes les tailles. */
+  --orbit-size: clamp(360px, 46vw, 560px);
+  --orbit-ring: calc(var(--orbit-size) * 0.82);
+  --orbit-photo: calc(var(--orbit-size) * 0.64);
+  --orbit-icon: 58px;
+
+  /* Colonne des chiffres clés : figée pour que les deux descriptions
+     démarrent au même fer, et assez large pour « 3 200 / chantiers ». */
+  --about-stat-col: 12rem;
+
+  /* Colonnes d'avis en défilement continu. Deux durées différentes pour que
+     les colonnes ne se synchronisent pas : le motif se répéterait à l'œil. */
+  /* Débord de la carte formulaire sur le pied de page */
+  --quote-overlap: clamp(56px, 9vw, 130px);
+  --callout-min-h: clamp(240px, 22vw, 320px);
+  /* Avis : hauteur des colonnes verticales, largeur d'une carte du rail */
+  --reviews-h: clamp(460px, 74vh, 660px);
+  --review-w: clamp(272px, 76vw, 340px);
+  --dur-marquee: 70s;
+  --dur-marquee-alt: 88s;
+
+  /* ---------------------------------------------------------------------- */
+  /* 6 — Rayons (liste fermée)                                              */
+  /* ---------------------------------------------------------------------- */
+  --r-xs: 6px;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 20px;
+  --r-2xl: 24px;
+  --r-pill: 999px;
+  --r-circle: 50%;
+
+  /* ---------------------------------------------------------------------- */
+  /* 7 — Bordures                                                           */
+  /* ---------------------------------------------------------------------- */
+  --border-w: 1px;
+  --border-w-accent: 4px;
+  --border-subtle: #edf1f7;
+  --border-default: #dde4ef;
+  --border-strong: #c2cbda;
+  --border-accent: #0b6ede;
+  --border-on-dark: rgba(255, 255, 255, 0.1);
+
+  /* ---------------------------------------------------------------------- */
+  /* 8.1 — Élévation (ombres froides, teintées ink-900)                     */
+  /* ---------------------------------------------------------------------- */
+  --shadow-xs: 0 1px 2px rgba(14, 23, 38, 0.04);
+  --shadow-sm: 0 1px 3px rgba(14, 23, 38, 0.06), 0 1px 2px rgba(14, 23, 38, 0.04);
+  --shadow-md: 0 4px 12px rgba(14, 23, 38, 0.06), 0 2px 4px rgba(14, 23, 38, 0.04);
+  --shadow-lg: 0 12px 28px rgba(14, 23, 38, 0.08), 0 4px 10px rgba(14, 23, 38, 0.04);
+  --shadow-xl: 0 24px 48px rgba(14, 23, 38, 0.1), 0 8px 16px rgba(14, 23, 38, 0.04);
+
+  /* 8.2 — Ombres colorées (boutons primaires uniquement) */
+  --shadow-accent: 0 6px 16px rgba(11, 110, 222, 0.24);
+  --shadow-accent-lg: 0 10px 28px rgba(11, 110, 222, 0.32);
+
+  /* 8.3 — Header & focus */
+  --shadow-header: 0 1px 0 rgba(14, 23, 38, 0.06), 0 6px 20px rgba(14, 23, 38, 0.04);
+  --ring-accent: 0 0 0 4px rgba(11, 110, 222, 0.18);
+  --ring-danger: 0 0 0 4px rgba(217, 45, 32, 0.16);
+
+  /* ---------------------------------------------------------------------- */
+  /* 9 — Iconographie (tailles)                                             */
+  /* ---------------------------------------------------------------------- */
+  --accordion-sign: 32px;
+
+  --icon-sm: 16px;
+  --icon-md: 20px;
+  --icon-lg: 24px;
+  --icon-xl: 30px;
+
+  /* ---------------------------------------------------------------------- */
+  /* 13 — Mouvement                                                         */
+  /* ---------------------------------------------------------------------- */
+  --dur-fast: 150ms;
+  --dur-base: 200ms;
+  --dur-slow: 300ms;
+  --dur-reveal: 600ms;
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Dépasse légèrement la cible avant de se replacer : donne le petit rebond
+     du saut, là où --ease-out se contenterait de décélérer. */
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Déplacements (liste fermée) */
+  --lift: -4px;
+  --lift-btn: -1px;
+  --lift-card: -2px;
+  --lift-icon: -8px;
+
+  /* ---------------------------------------------------------------------- */
+  /* Plans (z-index)                                                        */
+  /* ---------------------------------------------------------------------- */
+  --z-sticky: 100;
+  --z-header: 200;
+  --z-drawer: 300;
+}
+
+/* Marge latérale élargie sur petit écran. Elle est portée par le token et non
+   par chaque composant : .container, le tiroir mobile et le rail d'avis la
+   consomment tous, un seul point de réglage suffit donc.
+   Une clamp() ne pouvait pas l'exprimer — elle croît avec la largeur, or on
+   veut ici l'inverse : plus de marge sur petit écran que sur grand. */
+@media (max-width: 640px) {
+  :root {
+    --container-pad: var(--container-pad-sm);
+  }
+}
+/* ==========================================================================
+   base.css — Reset, typographie, conteneurs, grilles, utilitaires
+   Chargé après tokens.css. Ne contient aucune valeur brute.
+   ========================================================================== */
+
+/* --- Reset ---------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  /* Les ancres ne passent jamais sous le header (§ 11.6) */
+  scroll-padding-top: calc(var(--header-h) + var(--sp-4));
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  color: var(--text-body);
+  background-color: var(--bg-canvas);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden; /* filet de sécurité (§ 15.3) */
+}
+
+body.is-locked {
+  overflow: hidden;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* --- Titres --------------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-strong);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+.h1,
+h1 {
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+}
+
+.h2,
+h2 {
+  font-size: var(--fs-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: var(--ls-h2);
+}
+
+.h3,
+h3 {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-tight);
+}
+
+.h4,
+h4 {
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-tight);
+}
+
+h5 {
+  font-size: var(--fs-h5);
+  font-weight: var(--fw-semibold);
+}
+
+/* --- Rôles typographiques nommés (§ 4.3) ---------------------------------- */
+/* Sur-titre dans l'ambre clair du mot « Gironde » de la bannière.
+   ATTENTION : --warm-300 sur fond blanc ne donne que 1,5:1, très en dessous
+   du minimum AA de 4,5:1. La teinte tient sur la photo sombre de la bannière,
+   pas sur les fonds clairs des sections. */
+.eyebrow {
+  display: inline-block;
+  font-size: var(--fs-2xs);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-ui);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-eyebrow);
+  color: var(--warm-300);
+}
+
+.eyebrow--on-dark {
+  color: var(--warm-300);
+}
+
+.lead {
+  font-size: var(--fs-lead);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  color: var(--text-body);
+}
+
+.text-accent {
+  color: var(--accent-500);
+}
+
+/* --- Conteneurs (§ 5.2) --------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: calc(var(--container-max) + 2 * var(--container-pad));
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+.container--narrow {
+  max-width: calc(var(--container-narrow) + 2 * var(--container-pad));
+}
+
+/* --- Rythme vertical (§ 5.3) ---------------------------------------------- */
+.section {
+  padding-block: var(--section-py);
+}
+
+.section--tight {
+  padding-block: calc(var(--section-py) * 0.66);
+}
+
+/* Fonds de section (§ 3.3) */
+.section--subtle {
+  background-color: var(--bg-subtle);
+}
+
+.section--canvas {
+  background-color: var(--bg-canvas);
+}
+
+.section--dark {
+  background-color: var(--bg-dark);
+}
+
+/* --- En-tête de section (§ 12) -------------------------------------------- */
+.section-head {
+  max-width: var(--container-narrow);
+  margin-inline: auto;
+  margin-bottom: var(--sp-12);
+  text-align: center;
+}
+
+.section-head .eyebrow {
+  margin-bottom: var(--sp-3);
+}
+
+.section-head__text {
+  margin-top: var(--sp-4);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  color: var(--text-muted);
+}
+
+/* --- Grilles (§ 5.4) ------------------------------------------------------ */
+.grid {
+  display: grid;
+  gap: var(--gutter);
+}
+
+.grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1023px) {
+  .grid--3,
+  .grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 639px) {
+  .grid--2,
+  .grid--3,
+  .grid--4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Accessibilité -------------------------------------------------------- */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.skip-link {
+  position: absolute;
+  top: var(--sp-2);
+  left: var(--sp-2);
+  z-index: var(--z-drawer);
+  padding: var(--sp-2) var(--sp-4);
+  background-color: var(--accent-600);
+  color: var(--white);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  border-radius: var(--r-sm);
+  transform: translateY(-150%);
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* --- Focus visible global (§ 14) ------------------------------------------ */
+:focus-visible {
+  outline: 2px solid var(--accent-500);
+  outline-offset: 3px;
+  border-radius: var(--r-xs);
+}
+
+/* --- Mouvement réduit (§ 13) ---------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* ==========================================================================
+   components.css — Boutons, liens, cards, formulaire, accordéon, icônes
+   Chargé après base.css. Aucune valeur brute.
+   ========================================================================== */
+
+/* ==========================================================================
+   11.1 — BOUTONS
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  height: 48px;
+  padding-inline: var(--sp-6);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  line-height: 1;
+  white-space: nowrap;
+  border: var(--border-w) solid transparent;
+  border-radius: var(--r-pill);
+  transition: background-color var(--dur-fast) var(--ease-standard),
+    color var(--dur-fast) var(--ease-standard),
+    border-color var(--dur-fast) var(--ease-standard),
+    box-shadow var(--dur-base) var(--ease-standard),
+    transform var(--dur-base) var(--ease-standard);
+}
+
+.btn__icon {
+  width: var(--icon-md);
+  height: var(--icon-md);
+  flex-shrink: 0;
+}
+
+/* Tailles */
+.btn--sm {
+  height: 40px;
+  padding-inline: var(--sp-5);
+  font-size: var(--fs-xs);
+}
+
+.btn--lg {
+  height: 56px;
+  padding-inline: var(--sp-8);
+  font-size: var(--fs-body);
+}
+
+.btn--block {
+  width: 100%;
+}
+
+/* Variantes ---------------------------------------------------------------- */
+.btn--primary {
+  background-color: var(--accent-500);
+  color: var(--white);
+  box-shadow: var(--shadow-accent);
+}
+.btn--primary:hover {
+  background-color: var(--accent-600);
+  box-shadow: var(--shadow-accent-lg);
+  transform: translateY(var(--lift-btn));
+}
+.btn--primary:active {
+  background-color: var(--accent-700);
+  transform: translateY(0);
+}
+
+.btn--outline {
+  background-color: var(--bg-canvas);
+  border-color: var(--accent-200);
+  color: var(--accent-600);
+}
+.btn--outline:hover {
+  background-color: var(--accent-50);
+  border-color: var(--accent-500);
+  transform: translateY(var(--lift-btn));
+}
+.btn--outline:active {
+  background-color: var(--accent-100);
+}
+
+.btn--ghost {
+  background-color: transparent;
+  color: var(--text-body);
+}
+.btn--ghost:hover {
+  background-color: var(--bg-muted);
+  color: var(--text-strong);
+}
+
+.btn--light {
+  background-color: var(--bg-canvas);
+  color: var(--accent-600);
+}
+.btn--light:hover {
+  background-color: var(--accent-50);
+  transform: translateY(var(--lift-btn));
+}
+
+.btn--ghost-light {
+  background-color: transparent;
+  border-color: var(--border-on-dark);
+  color: var(--white);
+}
+.btn--ghost-light:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.32);
+}
+
+/* États -------------------------------------------------------------------- */
+.btn:disabled,
+.btn[aria-disabled='true'] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+  pointer-events: none;
+  transform: none;
+}
+
+.btn.is-loading {
+  color: transparent;
+  position: relative;
+  pointer-events: none;
+}
+.btn.is-loading::after {
+  content: '';
+  position: absolute;
+  width: var(--icon-md);
+  height: var(--icon-md);
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: var(--r-circle);
+  animation: btn-spin 700ms linear infinite;
+  color: var(--white);
+}
+@keyframes btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   11.2 — LIENS
+   ========================================================================== */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  font-size: var(--fs-2xs);
+  font-weight: var(--fw-semibold);
+  color: var(--accent-600);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-200);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color var(--dur-base) var(--ease-standard),
+    text-decoration-color var(--dur-base) var(--ease-standard);
+}
+.link-arrow::after {
+  content: '→';
+  transition: transform var(--dur-base) var(--ease-standard);
+}
+.link-arrow:hover {
+  color: var(--accent-700);
+  text-decoration-color: var(--accent-500);
+}
+.link-arrow:hover::after {
+  transform: translateX(3px);
+}
+
+.link-plain {
+  color: var(--accent-600);
+  font-weight: var(--fw-medium);
+}
+.link-plain:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   9 — ICÔNES / PASTILLE
+   ========================================================================== */
+.icon-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-circle);
+  background-color: var(--warm-50);
+  color: var(--warm-700);
+  flex-shrink: 0;
+}
+.icon-dot svg {
+  width: var(--icon-md);
+  height: var(--icon-md);
+}
+
+/* ==========================================================================
+   11.3 — CARDS (5 variantes, liste fermée)
+   ========================================================================== */
+.card {
+  background-color: var(--bg-canvas);
+  border: var(--border-w) solid var(--border-subtle);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* --- .card--feature (argument) ---
+   L'accent ne passe plus par un filet à gauche mais par la pastille d'icône,
+   le même dispositif que les onglets de services et l'orbite « À propos ». */
+.card--feature {
+  padding: var(--sp-6);
+  transition: box-shadow var(--dur-slow) var(--ease-standard),
+    transform var(--dur-slow) var(--ease-standard),
+    border-color var(--dur-slow) var(--ease-standard);
+}
+.card--feature:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent-200);
+  transform: translateY(var(--lift-card));
+}
+.card--feature .card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: var(--sp-4);
+  border-radius: var(--r-lg);
+  background-color: var(--warm-50);
+  color: var(--warm-700);
+  transition: background-color var(--dur-base) var(--ease-standard),
+    color var(--dur-base) var(--ease-standard);
+}
+.card--feature:hover .card__icon {
+  background-color: var(--warm-400);
+  color: var(--text-strong);
+}
+.card--feature .card__icon svg {
+  width: var(--icon-lg);
+  height: var(--icon-lg);
+}
+
+/* --- .card--service (prestation) --- */
+.card--service {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow var(--dur-slow) var(--ease-standard),
+    transform var(--dur-slow) var(--ease-standard),
+    border-color var(--dur-slow) var(--ease-standard);
+}
+.card--service .card__media {
+  aspect-ratio: 16 / 10;
+  background-color: var(--bg-muted);
+  overflow: hidden;
+}
+.card--service .card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease-standard);
+}
+.card--service .card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding: var(--sp-5) var(--sp-6) var(--sp-6);
+  flex: 1;
+}
+.card--service .card__text {
+  flex: 1;
+}
+.card--service:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(var(--lift));
+  border-color: var(--border-default);
+}
+.card--service:hover .card__media img {
+  transform: scale(1.04);
+}
+
+/* --- .card--quote (avis) ---
+   Plus de filet à gauche : le guillemet en filigrane dans l'angle signe la
+   citation, sans barrer la carte. */
+.card--quote {
+  position: relative;
+  overflow: hidden;
+  padding: var(--sp-6);
+  transition: box-shadow var(--dur-slow) var(--ease-standard),
+    border-color var(--dur-slow) var(--ease-standard);
+}
+.card--quote:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent-200);
+}
+/* Élément réel plutôt que ::before : porté par un aria-hidden, il ne risque
+   pas d'être annoncé comme du texte avant chaque avis. */
+/* top: 0 et non une valeur négative — la carte est en overflow: hidden, le
+   guillemet en dépassait et se retrouvait tronqué net. */
+.card--quote .card__mark {
+  position: absolute;
+  top: 0;
+  right: var(--sp-4);
+  font-size: var(--fs-display);
+  font-weight: var(--fw-bold);
+  line-height: 1;
+  color: var(--accent-100);
+  user-select: none;
+  pointer-events: none;
+}
+.card--quote .card__quote {
+  font-style: italic;
+  font-size: var(--fs-xs);
+  line-height: var(--lh-body);
+  color: var(--text-body);
+  margin-bottom: var(--sp-4);
+}
+.card--quote .card__author {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+.card--quote .card__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-circle);
+  object-fit: cover;
+  background-color: var(--bg-muted);
+}
+.card--quote .card__author-name {
+  font-size: var(--fs-2xs);
+  font-weight: var(--fw-semibold);
+  color: var(--accent-600);
+}
+.card--quote .card__author-role {
+  font-size: var(--fs-2xs);
+  font-weight: var(--fw-regular);
+  color: var(--text-faint);
+}
+/* Atome réutilisable : les étoiles servent aussi hors carte (note moyenne de
+   la section avis), le style ne doit donc pas dépendre de .card--quote. */
+.card__stars {
+  display: inline-flex;
+  gap: 2px;
+  color: var(--warning-500);
+}
+.card__stars svg {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+  fill: currentColor;
+}
+.card--quote .card__stars {
+  margin-bottom: var(--sp-3);
+}
+
+/* --- .card--paint (familles de peinture) ---
+   Même carte que la FAQ et les avis : posée, ombre franche au repos,
+   élévation et bordure d'accent au survol. */
+.card--paint {
+  height: 100%;
+  padding: var(--sp-6);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  transition: box-shadow var(--dur-slow) var(--ease-standard),
+    border-color var(--dur-slow) var(--ease-standard),
+    transform var(--dur-slow) var(--ease-standard);
+}
+.card--paint:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--accent-200);
+  transform: translateY(var(--lift-card));
+}
+.card--paint .card__title {
+  margin-bottom: var(--sp-3);
+}
+
+/* --- .card--form (devis) --- */
+/* La carte chevauche le pied de page sombre : elle doit se détacher franchement
+   du fond, d'où le rayon large et l'ombre la plus marquée de l'échelle. */
+.card--form {
+  padding: var(--sp-10);
+  border-radius: var(--r-2xl);
+  border-color: transparent;
+  box-shadow: var(--shadow-xl);
+}
+@media (max-width: 900px) {
+  .card--form {
+    padding: var(--sp-8);
+  }
+}
+@media (max-width: 479px) {
+  .card--form {
+    padding: var(--sp-6);
+  }
+}
+
+/* --- Éléments communs de card --- */
+.card__title {
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-semibold);
+  color: var(--text-strong);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+}
+.card__text {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   11.4 — FORMULAIRE
+   ========================================================================== */
+.form {
+  display: grid;
+  gap: var(--sp-5);
+}
+
+.field {
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.field--split {
+  display: grid;
+  gap: var(--sp-5);
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 479px) {
+  .field--split {
+    grid-template-columns: 1fr;
+  }
+}
+
+.field__label {
+  font-size: var(--fs-3xs);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  color: var(--text-muted);
+}
+.field__label .req {
+  color: var(--accent-500);
+}
+
+.field__control {
+  height: 46px;
+  padding-inline: var(--sp-4);
+  background-color: var(--bg-canvas);
+  border: var(--border-w) solid var(--border-default);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-sm);
+  color: var(--text-strong);
+  transition: border-color var(--dur-fast) var(--ease-standard),
+    box-shadow var(--dur-fast) var(--ease-standard);
+}
+.field__control::placeholder {
+  color: var(--text-faint);
+}
+.field__control:hover {
+  border-color: var(--border-strong);
+}
+.field__control:focus {
+  outline: none;
+  border-color: var(--accent-500);
+  box-shadow: var(--ring-accent);
+}
+.field__control:disabled {
+  background-color: var(--bg-subtle);
+  color: var(--text-faint);
+}
+
+textarea.field__control {
+  height: auto;
+  min-height: 96px;
+  padding-block: var(--sp-3);
+  resize: vertical;
+  line-height: var(--lh-body);
+}
+
+/* Erreur */
+.field.has-error .field__control {
+  border-color: var(--danger-500);
+}
+.field.has-error .field__control:focus {
+  box-shadow: var(--ring-danger);
+}
+.field__error {
+  display: none;
+  font-size: var(--fs-2xs);
+  color: var(--danger-500);
+}
+.field.has-error .field__error {
+  display: block;
+}
+
+/* Consentement */
+
+/* Note de réassurance */
+/* Bloc de retour (§ 3.4) */
+.form__feedback {
+  display: none;
+  padding: var(--sp-4);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-xs);
+  line-height: var(--lh-ui);
+}
+.form__feedback.is-visible {
+  display: block;
+}
+.form__feedback--success {
+  background-color: var(--success-50);
+  color: var(--success-700);
+}
+.form__feedback--error {
+  background-color: var(--danger-50);
+  color: var(--danger-700);
+}
+
+/* ==========================================================================
+   11.5 — ACCORDÉON (FAQ)
+   ========================================================================== */
+.accordion {
+  display: grid;
+  gap: var(--sp-4);
+}
+
+/* Même carte que les étapes : posée, ombre franche au repos, élévation et
+   bordure d'accent quand elle réagit. */
+.accordion__item {
+  background-color: var(--bg-canvas);
+  border: var(--border-w) solid var(--border-subtle);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-md);
+  transition: border-color var(--dur-base) var(--ease-standard),
+    box-shadow var(--dur-slow) var(--ease-standard);
+}
+.accordion__item:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--accent-200);
+}
+.accordion__item.is-open {
+  border-color: var(--accent-200);
+  box-shadow: var(--shadow-lg);
+}
+
+.accordion__heading {
+  margin: 0;
+}
+
+.accordion__trigger {
+  display: flex;
+  /* Question et signe centrés verticalement l'un par rapport à l'autre : sur
+     une question qui passe à deux lignes, un alignement en tête laissait le
+     bouton collé à la première ligne. */
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-5);
+  width: 100%;
+  padding: var(--sp-6);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-tight);
+  color: var(--text-strong);
+}
+.accordion__label {
+  flex: 1;
+  text-align: left;
+}
+.accordion__item.is-open .accordion__trigger,
+.accordion__trigger:hover {
+  color: var(--accent-600);
+}
+
+.accordion__sign {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--accordion-sign);
+  height: var(--accordion-sign);
+  border-radius: var(--r-circle);
+  background-color: var(--accent-50);
+  color: var(--accent-600);
+  flex-shrink: 0;
+  transition: background-color var(--dur-base) var(--ease-standard),
+    color var(--dur-base) var(--ease-standard);
+}
+.accordion__item.is-open .accordion__sign {
+  background-color: var(--accent-500);
+  color: var(--white);
+}
+.accordion__sign::before,
+.accordion__sign::after {
+  content: '';
+  position: absolute;
+  background-color: currentColor;
+  border-radius: var(--r-pill);
+}
+.accordion__sign::before {
+  width: 10px;
+  height: 2px;
+}
+.accordion__sign::after {
+  width: 2px;
+  height: 10px;
+  transition: transform var(--dur-base) var(--ease-standard);
+}
+.accordion__item.is-open .accordion__sign::after {
+  transform: scaleY(0);
+}
+
+.accordion__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--dur-slow) var(--ease-standard);
+}
+.accordion__item.is-open .accordion__panel {
+  grid-template-rows: 1fr;
+}
+.accordion__panel-inner {
+  overflow: hidden;
+}
+.accordion__answer {
+  padding: 0 var(--sp-6) var(--sp-6);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   13 — RÉVÉLATION AU DÉFILEMENT
+   ========================================================================== */
+/* L'état masqué est conditionné à .has-js (posé en tête de <head>). Sans
+   JavaScript, plus rien ne retire jamais le .is-visible qui rend l'élément
+   visible : la page entière resterait à opacity 0. Le contenu s'affiche donc
+   par défaut, et l'animation n'existe que si le script peut tourner. */
+.has-js .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--dur-reveal) var(--ease-out),
+    transform var(--dur-reveal) var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.has-js .reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .has-js .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+/* ==========================================================================
+   sections.css — Header, hero, zones, footer, barre d'appel mobile
+   Chargé en dernier. Porte la mise en page des zones du § 12.
+   ========================================================================== */
+
+/* ==========================================================================
+   11.6 — HEADER
+   ========================================================================== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  background-color: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: var(--border-w) solid transparent;
+  transition: box-shadow var(--dur-base) var(--ease-standard),
+    border-color var(--dur-base) var(--ease-standard);
+}
+.header.is-stuck {
+  border-bottom-color: var(--border-subtle);
+  box-shadow: var(--shadow-header);
+}
+
+/* Grille à trois colonnes plutôt qu'un space-between : avec ce dernier, le
+   menu se centrait entre le logo et les actions, dont les largeurs diffèrent
+   (94 px contre 172 px) — il tombait 39 px trop à gauche. Les deux colonnes
+   latérales en 1fr garantissent un menu centré sur le conteneur, quelles que
+   soient leurs largeurs. Les colonnes sont assignées explicitement pour que
+   masquer le menu sous 1024 px ne décale pas les actions. */
+.header__inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: var(--sp-6);
+  height: var(--header-h);
+}
+.header__inner > .logo {
+  grid-column: 1;
+  justify-self: start;
+}
+.header__inner > .nav {
+  grid-column: 2;
+}
+.header__inner > .header__actions {
+  grid-column: 3;
+  justify-self: end;
+}
+@media (max-width: 767px) {
+  .header__inner {
+    height: var(--header-h-sm);
+  }
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+}
+/* Le logo est un bloc image : sa hauteur est pilotée, la largeur suit le
+   rapport du fichier (400x272). */
+.logo__img {
+  width: auto;
+  height: 64px;
+}
+@media (max-width: 767px) {
+  .logo__img {
+    height: 48px;
+  }
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+}
+.nav__link {
+  position: relative;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--text-body);
+  padding-block: var(--sp-2);
+  transition: color var(--dur-fast) var(--ease-standard);
+}
+.nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent-500);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.nav__link:hover {
+  color: var(--text-strong);
+}
+.nav__link:hover::after,
+.nav__link[aria-current='true']::after {
+  transform: scaleX(1);
+}
+.nav__link[aria-current='true'] {
+  color: var(--text-strong);
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+}
+/* 3 px de respiration au-dessus et au-dessous. .btn impose une hauteur fixe :
+   un padding-block seul n'aurait aucun effet, les 6 px sont donc ajoutés à la
+   hauteur de la variante --sm (40 px). */
+.header__cta {
+  height: calc(40px + 2 * 3px);
+}
+
+/* Bascule mobile (sous 1024px) */
+.header__toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-md);
+  color: var(--text-strong);
+}
+.header__toggle svg {
+  width: var(--icon-lg);
+  height: var(--icon-lg);
+}
+.header__toggle .icon-close {
+  display: none;
+}
+.header__toggle[aria-expanded='true'] .icon-open {
+  display: none;
+}
+.header__toggle[aria-expanded='true'] .icon-close {
+  display: block;
+}
+
+@media (max-width: 1023px) {
+  .nav,
+  .header__cta {
+    display: none;
+  }
+  .header__toggle {
+    display: inline-flex;
+  }
+}
+
+/* Tiroir mobile */
+.drawer {
+  position: fixed;
+  top: var(--header-h);
+  left: 0;
+  right: 0;
+  z-index: var(--z-drawer);
+  padding: var(--sp-6) var(--container-pad) var(--sp-8);
+  background-color: var(--bg-canvas);
+  box-shadow: var(--shadow-xl);
+  opacity: 0;
+  transform: translateY(-12px);
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out), visibility var(--dur-base);
+}
+@media (max-width: 767px) {
+  .drawer {
+    top: var(--header-h-sm);
+  }
+}
+.drawer.is-open {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+}
+.drawer__nav {
+  display: grid;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-6);
+}
+.drawer__link {
+  padding: var(--sp-3) var(--sp-2);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-medium);
+  color: var(--text-body);
+  border-radius: var(--r-sm);
+}
+.drawer__link:hover {
+  background-color: var(--bg-muted);
+  color: var(--text-strong);
+}
+@media (min-width: 1024px) {
+  .drawer {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   HERO (§ 12, zone 2)
+   ========================================================================== */
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  min-height: var(--hero-min-h);
+  padding-block: var(--hero-py);
+  background-color: var(--bg-dark);
+}
+
+/* Photo plein cadre : sort du flux et occupe toute la bannière.
+   z-index négatif = passe sous le contenu mais reste au-dessus du fond de
+   .hero (fond sombre visible tant que l'image n'est pas chargée). */
+.hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+.hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Cadrage sur la droite : garde le peintre et le nuancier dans le champ,
+     et dégage le mur bleu à gauche pour y poser le texte. */
+  object-position: 74% center;
+}
+/* Voile de lisibilité posé par-dessus la photo */
+.hero__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--scrim-hero);
+}
+
+.hero__inner {
+  position: relative;
+}
+.hero__content {
+  max-width: var(--hero-content-max);
+}
+
+.hero__title {
+  margin-bottom: var(--sp-5);
+  color: var(--white);
+  text-wrap: balance;
+}
+.hero__title .text-accent {
+  color: var(--warm-300);
+}
+.hero__lead {
+  max-width: 46ch;
+  margin-bottom: var(--sp-8);
+  color: var(--text-on-dark);
+}
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-8);
+}
+.hero__trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-4) var(--sp-5);
+}
+.hero__trust-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-xs);
+  color: var(--text-on-dark);
+}
+.hero__trust-item svg {
+  width: var(--icon-md);
+  height: var(--icon-md);
+  color: var(--warm-300);
+  flex-shrink: 0;
+}
+
+/* Preuve chiffrée, en pied de colonne, séparée par un filet discret */
+.hero__stat {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-3);
+  margin-top: var(--sp-8);
+  padding-top: var(--sp-6);
+  border-top: var(--border-w) solid var(--border-on-dark);
+  /* Couleur posée ici aussi, pas seulement sur les span enfants : si le
+     balisage interne saute un jour, le texte reste lisible sur le fond sombre
+     au lieu d'hériter de la couleur sombre du body. */
+  color: var(--text-on-dark);
+}
+.hero__stat-num {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  color: var(--white);
+  line-height: 1.1;
+}
+.hero__stat-label {
+  font-size: var(--fs-2xs);
+  color: var(--text-on-dark);
+}
+
+/* --- Laptop : le texte occupe une part plus large de la bannière, on
+       décale le cadrage vers le mur et on renforce le voile ---------------- */
+@media (max-width: 1200px) {
+  .hero__media img {
+    object-position: 62% center;
+  }
+  .hero__media::after {
+    background: var(--scrim-hero-md);
+  }
+}
+
+/* --- Tablette : le texte couvre l'essentiel de la largeur → le dégradé
+       horizontal ne protège plus le bord droit, voile uniforme ------------- */
+@media (max-width: 900px) {
+  .hero__media::after {
+    background: var(--scrim-hero-sm);
+  }
+}
+
+/* --- Mobile : recadrage serré sur le mur, actions pleine largeur --------- */
+@media (max-width: 640px) {
+  .hero {
+    min-height: auto;
+  }
+  .hero__media img {
+    object-position: 58% center;
+  }
+  .hero__actions .btn {
+    width: 100%;
+  }
+  .hero__trust {
+    flex-direction: column;
+    gap: var(--sp-3);
+  }
+}
+
+/* ==========================================================================
+   EXPLORATEUR DE SERVICES (§ 12, zone 2 bis)
+
+   Deux états, dans cet ordre :
+   1. état brut (HTML seul, sans JS)  — les 4 fiches sont empilées et visibles.
+      C'est ce que voit un crawler qui n'exécute pas le script, et c'est aussi
+      le rendu de secours si le JS casse.
+   2. état enrichi (.is-enhanced, posé par main.js) — deux colonnes, une seule
+      fiche affichée à la fois.
+   ========================================================================== */
+
+/* --- 1. État brut --------------------------------------------------------- */
+.services__list {
+  display: grid;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-10);
+  list-style: none;
+}
+.services__tab {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  width: 100%;
+  padding: var(--sp-5);
+  border: var(--border-w) solid var(--border-default);
+  border-radius: var(--r-xl);
+  background-color: var(--bg-subtle);
+  color: var(--text-strong);
+  font-size: var(--fs-h5);
+  font-weight: var(--fw-semibold);
+  text-align: left;
+  text-decoration: none;
+  transition: background-color var(--dur-fast) var(--ease-standard),
+    border-color var(--dur-fast) var(--ease-standard),
+    box-shadow var(--dur-base) var(--ease-standard),
+    color var(--dur-fast) var(--ease-standard),
+    transform var(--dur-base) var(--ease-standard);
+}
+.services__tab-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: var(--r-lg);
+  background-color: var(--accent-50);
+  color: var(--accent-600);
+  transition: background-color var(--dur-fast) var(--ease-standard),
+    color var(--dur-fast) var(--ease-standard);
+}
+.services__tab-icon svg {
+  width: var(--icon-md);
+  height: var(--icon-md);
+}
+.services__tab-label {
+  flex: 1;
+}
+.services__tab-chevron {
+  width: var(--icon-md);
+  height: var(--icon-md);
+  flex-shrink: 0;
+  color: var(--text-faint);
+  transition: transform var(--dur-base) var(--ease-standard),
+    color var(--dur-fast) var(--ease-standard);
+}
+.services__tab:hover {
+  border-color: var(--accent-200);
+  background-color: var(--accent-50);
+}
+.services__tab:hover .services__tab-chevron {
+  transform: translateX(3px);
+  color: var(--accent-600);
+}
+
+.services__panel {
+  padding: var(--sp-10);
+  margin-bottom: var(--sp-6);
+  border: var(--border-w) solid var(--border-subtle);
+  border-radius: var(--r-2xl);
+  background-color: var(--bg-canvas);
+}
+.services__panel-head {
+  padding-bottom: var(--sp-6);
+  margin-bottom: var(--sp-6);
+  border-bottom: var(--border-w) solid var(--border-subtle);
+}
+.services__panel-title {
+  margin-bottom: var(--sp-4);
+}
+.services__panel-text {
+  max-width: 62ch;
+  color: var(--text-body);
+}
+/* Visuel à gauche, détails à droite (l'accroche court sur toute la largeur).
+   Permutation faite dans le HTML et non par un `order` CSS : l'ordre de
+   lecture au clavier et aux lecteurs d'écran suit ainsi l'ordre visuel. */
+.services__panel-grid {
+  display: grid;
+  gap: var(--gutter);
+  align-items: start;
+  grid-template-columns: 0.75fr 1fr;
+}
+/* Une seule colonne : à côté du visuel, la place restante ne permet pas deux
+   colonnes sans casser chaque intitulé sur trois lignes. */
+.services__features {
+  display: grid;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-6);
+  list-style: none;
+}
+.services__features li {
+  position: relative;
+  padding-left: var(--sp-5);
+  font-size: var(--fs-xs);
+  color: var(--text-body);
+}
+/* Puce dessinée en CSS : pas de <svg> répété 24 fois dans la source */
+.services__features li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: var(--sp-2);
+  height: var(--sp-2);
+  border-radius: var(--r-circle);
+  background-color: var(--accent-300);
+}
+/* Un cran au-dessus du lien fléché courant (13 → 15 px) : c'est l'action
+   principale de la fiche, elle ne doit pas passer pour une note de bas de bloc. */
+.services__panel-cta {
+  font-size: var(--fs-sm);
+}
+.services__panel-media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--r-xl);
+  background-color: var(--bg-muted);
+}
+
+/* --- 2. État enrichi (JS actif) ------------------------------------------ */
+.services.is-enhanced {
+  display: grid;
+  /* Colonnes nettement plus écartées que la gouttière courante : la liste et
+     le panneau sont deux blocs distincts, pas deux colonnes d'un même tableau.
+     La gouttière ne sert plus qu'à l'empilement sous 1000 px. */
+  row-gap: var(--gutter);
+  column-gap: var(--sp-12);
+  align-items: start;
+  grid-template-columns: 0.8fr 1.2fr;
+}
+.services.is-enhanced .services__list {
+  margin-bottom: 0;
+}
+.services.is-enhanced .services__tab {
+  color: var(--text-body);
+  cursor: pointer;
+}
+.services.is-enhanced .services__tab-icon {
+  background-color: var(--bg-muted);
+  color: var(--text-muted);
+}
+.services.is-enhanced .services__tab:hover {
+  background-color: var(--accent-50);
+  border-color: var(--accent-100);
+  color: var(--text-strong);
+}
+/* Onglet sélectionné : c'est [aria-selected] qui pilote le style, pas une
+   classe — l'état visuel ne peut donc pas diverger de l'état annoncé aux
+   technologies d'assistance. La ligne se détache en carte blanche surélevée
+   et glisse vers le panneau qu'elle commande. */
+.services.is-enhanced .services__tab[aria-selected='true'] {
+  background-color: var(--bg-canvas);
+  border-color: var(--accent-200);
+  color: var(--text-strong);
+  box-shadow: var(--shadow-md);
+  transform: translateX(var(--sp-2));
+}
+.services.is-enhanced .services__tab[aria-selected='true'] .services__tab-icon {
+  background-color: var(--accent-500);
+  color: var(--white);
+}
+.services.is-enhanced
+  .services__tab[aria-selected='true']
+  .services__tab-chevron {
+  color: var(--accent-500);
+  transform: translateX(3px);
+}
+
+.services.is-enhanced .services__panels {
+  position: relative;
+}
+.services.is-enhanced .services__panel {
+  margin-bottom: 0;
+  box-shadow: var(--shadow-lg);
+  border-color: transparent;
+}
+/* Le panneau est en display:grid ; sans cette règle explicite l'attribut
+   [hidden] serait écrasé par la cascade et le contenu resterait affiché. */
+.services.is-enhanced .services__panel[hidden] {
+  display: none;
+}
+.services.is-enhanced .services__panel:focus-visible {
+  outline: var(--border-w-accent) solid var(--accent-500);
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .services.is-enhanced .services__panel:not([hidden]) {
+    animation: services-panel-in var(--dur-slow) var(--ease-out) both;
+  }
+}
+@keyframes services-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --- Responsive ----------------------------------------------------------- */
+/* Sous 900 px, main.js n'active plus les onglets : les quatre fiches sont
+   déployées, chacune sous son propre titre. La liste d'ancres ferait alors
+   doublon avec ces titres, on la retire. */
+@media (max-width: 900px) {
+  .services__list {
+    display: none;
+  }
+}
+@media (max-width: 820px) {
+  .services__panel {
+    padding: var(--sp-8);
+  }
+  .services__panel-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 560px) {
+  .services__tab {
+    gap: var(--sp-3);
+    padding: var(--sp-4);
+    font-size: var(--fs-sm);
+  }
+}
+
+/* ==========================================================================
+   ZONE DEVIS (§ 12, zone 3)
+   ========================================================================== */
+/* La carte formulaire déborde sur le pied de page. Le débord se joue en trois
+   points solidaires : la section perd sa marge basse, la colonne du formulaire
+   prend une marge négative de la même valeur, et le pied de page se décale
+   d'autant pour que son contenu ne passe pas dessous. */
+.quote {
+  padding-bottom: 0;
+}
+.quote__grid {
+  display: grid;
+  gap: var(--gutter);
+  align-items: start;
+  grid-template-columns: 1fr 1fr;
+}
+.quote__form-col {
+  /* position: relative suffit à passer au-dessus du pied de page : un élément
+     positionné est peint après les blocs qui ne le sont pas, même situés plus
+     loin dans le document. */
+  position: relative;
+  margin-bottom: calc(var(--quote-overlap) * -1);
+}
+.quote__args-col {
+  padding-bottom: var(--section-py);
+}
+
+.quote__intro {
+  margin-bottom: var(--sp-8);
+}
+
+/* Coordonnées : pastille d'icône arrondie, comme partout ailleurs sur le site */
+.quote__contacts {
+  display: grid;
+  gap: var(--sp-5);
+  margin-bottom: var(--sp-8);
+  list-style: none;
+}
+.quote__contact {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+}
+.quote__contact-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: var(--r-lg);
+  background-color: var(--warm-50);
+  color: var(--warm-700);
+}
+.quote__contact-icon svg {
+  width: var(--icon-md);
+  height: var(--icon-md);
+}
+.quote__contact-body {
+  display: grid;
+  gap: var(--sp-1);
+}
+.quote__contact-label {
+  font-size: var(--fs-3xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.quote__contact a,
+.quote__contact-value {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--text-strong);
+}
+.quote__contact a:hover {
+  color: var(--accent-600);
+}
+
+/* Note affichée sous les coordonnées, alignée sur le fer des libellés plutôt
+   que sur la pastille : elle se lit comme un prolongement du bloc contact. */
+.quote__rating {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-3);
+  margin-top: var(--sp-5);
+  padding-top: var(--sp-5);
+  border-top: var(--border-w) solid var(--border-default);
+}
+.quote__rating-num {
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-bold);
+  color: var(--text-strong);
+  line-height: 1;
+}
+.quote__rating-label {
+  font-size: var(--fs-2xs);
+  color: var(--text-muted);
+}
+.quote__intro .eyebrow {
+  margin-bottom: var(--sp-3);
+}
+.quote__intro .lead {
+  margin-top: var(--sp-4);
+}
+.quote__features {
+  display: grid;
+  gap: var(--sp-4);
+}
+/* Empilé, le débord n'a plus de sens : la carte ne chevauche plus une
+   frontière, elle se contenterait de mordre sur le pied de page. */
+@media (max-width: 900px) {
+  .quote {
+    padding-bottom: var(--section-py);
+  }
+  .quote__grid {
+    grid-template-columns: 1fr;
+  }
+  .quote__form-col {
+    order: -1;
+    margin-bottom: 0;
+  }
+  .quote__args-col {
+    padding-bottom: 0;
+  }
+  /* Le débord de la carte étant neutralisé, le pied de page n'a plus rien à
+     dégager en haut : sa marge se règle sur le seul confort de lecture. */
+  .footer {
+    padding-top: var(--sp-12);
+  }
+}
+
+.quote__form-head {
+  margin-bottom: var(--sp-6);
+}
+.quote__form-head .card__title {
+  margin-bottom: var(--sp-2);
+}
+.quote__form-sub {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   À PROPOS (§ 12) — zone dédiée sur ce site
+   ========================================================================== */
+
+/* Filet d'accent au-dessus du sur-titre, centré sur le chapô */
+.section-head--marked .eyebrow::before {
+  content: '';
+  display: block;
+  width: var(--sp-8);
+  height: var(--border-w-accent);
+  margin: 0 auto var(--sp-3);
+  border-radius: var(--r-pill);
+  /* Même valeur que le sur-titre qu'il surmonte : le filet et le texte se
+     lisent comme un seul bloc, pas comme deux tons d'ambre. */
+  background-color: var(--warm-300);
+}
+
+.about__grid {
+  display: grid;
+  gap: var(--gutter);
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* --- Colonne gauche : l'orbite ------------------------------------------- */
+.about__orbit {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--orbit-size);
+  height: var(--orbit-size);
+  margin-inline: auto;
+}
+/* Anneaux pointillés. Purement décoratifs : ils sortent du flux et ne sont
+   pas exposés aux lecteurs d'écran. */
+.about__orbit-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--orbit-ring);
+  height: var(--orbit-ring);
+  transform: translate(-50%, -50%);
+  border: var(--border-w) dashed var(--border-strong);
+  border-radius: var(--r-circle);
+}
+.about__orbit-ring--outer {
+  width: var(--orbit-size);
+  height: var(--orbit-size);
+  border-color: var(--border-default);
+}
+.about__orbit-photo {
+  position: relative;
+  width: var(--orbit-photo);
+  height: var(--orbit-photo);
+}
+.about__orbit-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Recentre le cadrage sur l'artisan : la photo est en paysage, un recadrage
+     circulaire au centre le couperait. */
+  object-position: 58% center;
+  border-radius: var(--r-circle);
+  box-shadow: var(--shadow-lg);
+  background-color: var(--bg-muted);
+}
+
+/* Hors flux, sinon la liste occupe une seconde rangée de la grille et pousse
+   la photo vers le haut : les pastilles ne tournent alors plus autour d'elle. */
+.about__orbit-icons {
+  position: absolute;
+  inset: 0;
+  list-style: none;
+}
+/* Chaque pastille est posée au centre puis poussée sur l'anneau : on tourne
+   du bon angle, on translate d'un rayon, on annule la rotation pour que
+   l'icône reste droite. L'angle est porté par les règles :nth-child
+   ci-dessous — aucune valeur en dur dans le HTML. */
+.about__orbit-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: var(--orbit-icon);
+  height: var(--orbit-icon);
+  margin: calc(var(--orbit-icon) / -2);
+  border-radius: var(--r-circle);
+  background-color: var(--accent-50);
+  border: var(--border-w) solid var(--accent-100);
+  box-shadow: var(--shadow-md);
+  color: var(--accent-600);
+  transform: rotate(var(--a))
+    translateY(calc(var(--orbit-ring) / -2))
+    rotate(calc(var(--a) * -1));
+  transition: background-color var(--dur-base) var(--ease-standard),
+    border-color var(--dur-base) var(--ease-standard),
+    color var(--dur-base) var(--ease-standard),
+    box-shadow var(--dur-base) var(--ease-standard),
+    transform var(--dur-slow) var(--ease-bounce);
+}
+/* Le saut est un translateY ajouté EN FIN de chaîne. Les deux rotations de la
+   chaîne de positionnement s'annulent, sa partie linéaire vaut donc l'identité :
+   ce dernier déplacement se lit tel quel dans le repère de la page, soit un
+   saut vertical franc — et non un décalage le long du rayon. */
+.about__orbit-icon:hover {
+  background-color: var(--accent-500);
+  border-color: var(--accent-500);
+  color: var(--white);
+  box-shadow: var(--shadow-accent-lg);
+  transform: rotate(var(--a))
+    translateY(calc(var(--orbit-ring) / -2))
+    rotate(calc(var(--a) * -1))
+    translateY(var(--lift-icon));
+}
+.about__orbit-icon svg {
+  width: var(--icon-lg);
+  height: var(--icon-lg);
+}
+/* Cinq pastilles régulièrement réparties (360° / 5 = 72°), la première au
+   sommet de l'anneau. */
+.about__orbit-icon:nth-child(1) {
+  --a: 0deg;
+}
+.about__orbit-icon:nth-child(2) {
+  --a: 72deg;
+}
+.about__orbit-icon:nth-child(3) {
+  --a: 144deg;
+}
+.about__orbit-icon:nth-child(4) {
+  --a: 216deg;
+}
+.about__orbit-icon:nth-child(5) {
+  --a: 288deg;
+}
+
+/* --- Colonne droite ------------------------------------------------------ */
+.about__subtitle {
+  position: relative;
+  margin-bottom: var(--sp-4);
+  padding-top: var(--sp-4);
+  font-size: var(--fs-h2);
+}
+.about__subtitle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--sp-8);
+  height: var(--border-w-accent);
+  border-radius: var(--r-pill);
+  background-color: var(--warm-300);
+}
+.about__text {
+  color: var(--text-body);
+  margin-bottom: var(--sp-5);
+}
+/* Chiffres clés : mesure à gauche, ce qu'elle recouvre à droite, séparés par
+   un filet — la lecture se fait ligne par ligne, pas en damier. */
+.about__stats {
+  margin-top: var(--sp-4);
+  margin-bottom: var(--sp-8);
+  list-style: none;
+  border-top: var(--border-w) solid var(--border-default);
+}
+.about__stat {
+  display: grid;
+  gap: var(--sp-4);
+  align-items: center;
+  grid-template-columns: minmax(0, var(--about-stat-col)) 1fr;
+  padding-block: var(--sp-5);
+  border-bottom: var(--border-w) solid var(--border-default);
+}
+.about__stat-figure {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+  /* Le nombre et son unité tiennent sur une ligne : sans ça « / chantiers »
+     passe sous le chiffre dès que la colonne se resserre. */
+  white-space: nowrap;
+}
+.about__stat-num {
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-bold);
+  color: var(--text-strong);
+  line-height: 1.1;
+  white-space: nowrap;
+}
+.about__stat-unit {
+  font-size: var(--fs-2xs);
+  color: var(--text-muted);
+}
+.about__stat-text {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+/* --- Responsive ----------------------------------------------------------- */
+@media (max-width: 900px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-12);
+  }
+  .about__orbit {
+    order: -1;
+  }
+}
+@media (max-width: 600px) {
+  /* L'orbite est à son plancher (320 px) : on rétrécit les pastilles pour
+     qu'elles ne viennent pas mordre sur la photo. */
+  .about__orbit {
+    --orbit-icon: 42px;
+  }
+  .about__orbit-icon svg {
+    width: var(--icon-md);
+    height: var(--icon-md);
+  }
+}
+@media (max-width: 479px) {
+  /* Sous 480 px même réduites, les pastilles se chevauchent : on garde la
+     photo seule, sans les anneaux. */
+  .about__orbit-ring,
+  .about__orbit-icons {
+    display: none;
+  }
+  .about__orbit {
+    width: auto;
+    height: auto;
+  }
+  .about__orbit-photo {
+    /* Anneaux et pastilles masqués : plus rien ne borne la photo, elle peut
+       occuper toute la largeur de la colonne. */
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    aspect-ratio: 1;
+  }
+  /* Le cercle n'a plus d'anneaux à épouser : un carré arrondi cadre mieux le
+     sujet et s'aligne sur le rayon des autres visuels de la page. */
+  .about__orbit-photo img {
+    border-radius: var(--r-2xl);
+  }
+  .about__stat {
+    grid-template-columns: 1fr;
+    gap: var(--sp-2);
+  }
+}
+
+/* ==========================================================================
+   FAQ — deux colonnes
+
+   Deux conteneurs indépendants plutôt qu'une grille à deux colonnes : dans une
+   grille, l'ouverture d'une réponse étire la rangée et creuse un vide en face.
+   Ici chaque colonne se réagence seule.
+   Les six questions restent dans #accordion, le script continue donc de n'en
+   garder qu'une ouverte à la fois, colonnes confondues.
+   ========================================================================== */
+.faq {
+  display: grid;
+  gap: var(--sp-4) var(--gutter);
+  align-items: start;
+  grid-template-columns: 1fr 1fr;
+}
+.faq__col {
+  display: grid;
+  gap: var(--sp-4);
+  align-content: start;
+}
+@media (max-width: 860px) {
+  .faq {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   NOS PEINTURES
+   ========================================================================== */
+.paints__note {
+  max-width: 78ch;
+  margin-inline: auto;
+  margin-top: var(--sp-10);
+  padding-top: var(--sp-8);
+  border-top: var(--border-w) solid var(--border-default);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  color: var(--text-body);
+  text-align: center;
+}
+.paints__note strong {
+  color: var(--text-strong);
+  font-weight: var(--fw-semibold);
+}
+
+/* ==========================================================================
+   AVIS CLIENTS
+
+   Une seule liste dans le HTML, deux mises en scène construites par main.js :
+   .is-cols  — deux pistes verticales à sens inverse, au-dessus de 900 px ;
+   .is-rail  — une piste horizontale, en dessous.
+   Sans script, aucune des deux classes n'est posée : la liste reste empilée.
+   ========================================================================== */
+.reviews__grid {
+  display: grid;
+  gap: var(--sp-12) var(--gutter);
+  align-items: center;
+  grid-template-columns: 0.85fr 1.15fr;
+}
+.reviews__text {
+  margin-top: var(--sp-5);
+  color: var(--text-body);
+}
+.reviews__score {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-3);
+  margin-top: var(--sp-6);
+  padding-top: var(--sp-6);
+  border-top: var(--border-w) solid var(--border-default);
+}
+.reviews__score-num {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  color: var(--text-strong);
+  line-height: 1;
+}
+.reviews__score-label {
+  font-size: var(--fs-2xs);
+  color: var(--text-muted);
+}
+.reviews__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  margin-top: var(--sp-8);
+}
+
+/* Le passage de deux colonnes verticales à une ligne horizontale se fait au
+   même seuil que l'empilement de la section — au-delà, les deux colonnes
+   deviendraient des bandes trop étroites pour une citation. */
+@media (max-width: 900px) {
+  .reviews__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Repli sans script ---------------------------------------------------- */
+.reviews__body {
+  min-width: 0;
+}
+.reviews__group,
+.reviews__item {
+  list-style: none;
+}
+.reviews__group {
+  display: grid;
+  gap: var(--gutter);
+}
+
+/* Le fondu d'entrée et de sortie des cartes, commun aux deux dispositions ;
+   seul l'axe change. */
+.reviews__marquee {
+  overflow: hidden;
+}
+.reviews__marquee:hover .reviews__track,
+.reviews__marquee:focus-within .reviews__track {
+  animation-play-state: paused;
+}
+
+/* --- Deux pistes verticales (≥ 900 px) ------------------------------------ */
+.reviews__body.is-cols {
+  display: grid;
+  gap: var(--gutter);
+  grid-template-columns: 1fr 1fr;
+}
+.is-cols .reviews__marquee {
+  height: var(--reviews-h);
+  mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    #000 12%,
+    #000 88%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    #000 12%,
+    #000 88%,
+    transparent 100%
+  );
+}
+.is-cols .reviews__track {
+  display: grid;
+  gap: var(--gutter);
+  animation: reviews-scroll-y var(--dur-marquee) linear infinite;
+}
+.is-cols .reviews__marquee:nth-child(2) .reviews__track {
+  animation-duration: var(--dur-marquee-alt);
+  animation-direction: reverse;
+}
+/* La piste porte deux exemplaires du groupe : la translater de la moitié de sa
+   hauteur, plus la moitié de la gouttière, la ramène exactement sur le double. */
+@keyframes reviews-scroll-y {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-50% - var(--gutter) / 2));
+  }
+}
+
+/* --- Une piste horizontale (< 900 px) ------------------------------------- */
+.is-rail .reviews__marquee {
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 6%,
+    #000 94%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 6%,
+    #000 94%,
+    transparent 100%
+  );
+}
+.is-rail .reviews__track,
+.is-rail .reviews__group {
+  display: flex;
+  gap: var(--gutter);
+  width: max-content;
+}
+.is-rail .reviews__track {
+  animation: reviews-scroll-x var(--dur-marquee) linear infinite;
+}
+.is-rail .reviews__item {
+  width: var(--review-w);
+  display: flex;
+}
+.is-rail .reviews__item .card {
+  width: 100%;
+}
+@keyframes reviews-scroll-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - var(--gutter) / 2));
+  }
+}
+
+/* Mouvement réduit : plus de défilement du tout. La découpe saute, le double
+   est masqué, et les avis restent tous lisibles d'un coup. */
+@media (prefers-reduced-motion: reduce) {
+  .reviews__marquee {
+    height: auto;
+    overflow: visible;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+  .reviews__track {
+    animation-name: none;
+  }
+  .reviews__group[aria-hidden='true'] {
+    display: none;
+  }
+  .is-rail .reviews__marquee {
+    overflow-x: auto;
+  }
+}
+
+/* ==========================================================================
+   BANDEAU DE RAPPEL SOMBRE (§ 12, zone 5)
+   ========================================================================== */
+/* La section colle à la précédente : la carte photo fait déjà rupture, une
+   marge haute en plus creusait un vide inutile. */
+.callout {
+  padding-top: 0;
+}
+
+/* Carte photo à grand rayon, posée dans la section : la photo est enfermée
+   dans la carte, pas dans la section — c'est ce qui donne le bloc flottant. */
+.callout__card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  min-height: var(--callout-min-h);
+  padding: var(--sp-10) var(--sp-12);
+  border-radius: var(--r-2xl);
+  background-color: var(--bg-dark);
+  box-shadow: var(--shadow-xl);
+}
+.callout__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+.callout__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Photo panoramique (2,42:1) recadrée dans un bandeau plus large encore :
+     c'est la hauteur qui est rognée, le centrage vertical garde le rouleau
+     et la limite entre mur brut et mur peint dans le champ. */
+  object-position: center;
+}
+.callout__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--scrim-callout);
+}
+
+.callout__body {
+  display: grid;
+  gap: var(--gutter);
+  align-items: center;
+  /* Colonne d'actions resserrée : ce sont les boutons qui s'en trouvent
+     réduits, sans avoir à leur poser une largeur individuelle — ils restent
+     ainsi de même longueur l'un que l'autre. */
+  grid-template-columns: 1fr 0.6fr;
+  width: 100%;
+}
+.callout__title {
+  color: var(--white);
+  margin-bottom: var(--sp-4);
+  text-wrap: balance;
+}
+.callout__text {
+  color: var(--text-on-dark);
+  max-width: 42ch;
+}
+
+/* Panneau translucide : la photo reste lisible derrière, le champ blanc pose
+   le contraste nécessaire à la saisie. */
+/* Panneau translucide : il ne porte plus que les deux actions, aucune saisie.
+   La photo reste lisible derrière, les boutons posent le contraste. */
+.callout__panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  padding: var(--sp-4);
+  border-radius: var(--r-xl);
+  background-color: var(--surface-on-dark);
+  border: var(--border-w) solid var(--border-on-dark);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+@media (max-width: 900px) {
+  .callout__card {
+    padding: var(--sp-8);
+  }
+  .callout__body {
+    grid-template-columns: 1fr;
+  }
+  .callout__media img {
+    object-position: 40% center;
+  }
+}
+/* Sous 560 px, le libellé « Demander un devis gratuit » ne tenait plus : le
+   bouton est en white-space: nowrap et sa largeur minimale forçait la colonne
+   à 346 px dans un espace de 286. Le contenu débordait alors de la carte, qui
+   le rognait à droite — d'où une marge apparente plus large à gauche.
+   On resserre les paddings et on autorise le libellé à passer à la ligne : la
+   largeur minimale retombe à celle du mot le plus long. */
+@media (max-width: 560px) {
+  .callout__card {
+    padding: var(--sp-6);
+  }
+  .callout__panel {
+    padding: var(--sp-3);
+  }
+  .callout__panel .btn {
+    white-space: normal;
+    height: auto;
+    min-height: 56px;
+    padding: var(--sp-3) var(--sp-5);
+    text-align: center;
+  }
+}
+
+
+/* ==========================================================================
+   11.8 — FOOTER
+   ========================================================================== */
+.footer {
+  background-color: var(--bg-dark);
+  color: var(--text-on-dark-muted);
+  /* Dégage en haut la hauteur dont la carte formulaire déborde ; en bas, la
+     mention légale n'appelle pas la même respiration qu'une section. */
+  padding-top: calc(var(--section-py) + var(--quote-overlap));
+  padding-bottom: var(--sp-6);
+}
+
+/* Strate 1 — colonnes */
+.footer__cols {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: var(--gutter);
+  padding-bottom: var(--sp-10);
+}
+@media (max-width: 900px) {
+  .footer__cols {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--sp-8);
+  }
+}
+@media (max-width: 479px) {
+  .footer__cols {
+    grid-template-columns: 1fr;
+  }
+}
+/* Le fichier logo porte un texte bleu nuit, invisible sur ce fond sombre. Le
+   filtre le ramène en blanc plein : brightness(0) écrase tout en noir, invert
+   retourne le tout en blanc, la transparence étant préservée. Rendu
+   monochrome — une version inversée du fichier restituerait le bleu. */
+.footer__brand-img {
+  width: auto;
+  height: 64px;
+  margin-bottom: var(--sp-5);
+  filter: brightness(0) invert(1);
+}
+.footer__brand-text {
+  max-width: 34ch;
+  font-size: var(--fs-xs);
+  line-height: var(--lh-body);
+  color: var(--text-on-dark-muted);
+  margin-bottom: var(--sp-5);
+}
+.footer__social {
+  display: flex;
+  gap: var(--sp-3);
+}
+.footer__social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-circle);
+  border: var(--border-w) solid var(--border-on-dark);
+  color: rgba(255, 255, 255, 0.72);
+  transition: color var(--dur-fast) var(--ease-standard),
+    border-color var(--dur-fast) var(--ease-standard);
+}
+.footer__social a:hover {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.32);
+}
+.footer__social svg {
+  width: var(--icon-md);
+  height: var(--icon-md);
+}
+.footer__col-title {
+  color: var(--white);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  margin-bottom: var(--sp-5);
+}
+.footer__list {
+  display: grid;
+  gap: var(--sp-3);
+}
+.footer__list a,
+.footer__list span {
+  font-size: var(--fs-xs);
+  color: var(--text-on-dark-muted);
+  transition: color var(--dur-fast) var(--ease-standard);
+}
+.footer__list a:hover {
+  color: var(--white);
+}
+.footer__contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+}
+.footer__contact-item svg {
+  width: var(--icon-md);
+  height: var(--icon-md);
+  color: var(--warm-300);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.footer__phone {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--warm-300);
+}
+
+/* Strate 2 — barre de bas de page */
+.footer__bottom {
+  padding-top: var(--sp-6);
+  border-top: var(--border-w) solid var(--border-on-dark);
+  text-align: center;
+  font-size: var(--fs-2xs);
+  color: var(--text-on-dark-muted);
+}
+@media (max-width: 767px) {
+  .footer {
+    padding-bottom: calc(var(--section-py) + 76px);
+  }
+}
+
+/* ==========================================================================
+   11.7 — BARRE D'APPEL MOBILE (< 768px)
+   ========================================================================== */
+.callbar {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-sticky);
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--container-pad);
+  padding-bottom: calc(var(--sp-3) + env(safe-area-inset-bottom));
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: var(--border-w) solid var(--border-subtle);
+  transform: translateY(100%);
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+.callbar.is-visible {
+  transform: translateY(0);
+}
+.callbar .btn {
+  flex: 1;
+}
+@media (max-width: 767px) {
+  .callbar {
+    display: flex;
+  }
+}
+
+/* ── Services : grille 2×2 ────────────────────────────────────────────────
+   Remplace l'explorateur à onglets. Les quatre prestations sont visibles
+   d'emblée : un contenu masqué derrière un onglet est moins bien lu par les
+   moteurs, et impose un clic au visiteur pour une information courte. */
+.services-grille{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:27px;
+}
+.service-carte{
+  display:flex;flex-direction:column;overflow:hidden;
+  background:var(--bg-canvas,#fff);
+  /* Bordure à 50 % d'opacité. La ligne rgba sert de repli aux navigateurs
+     sans color-mix ; celle qui suit reprend le jeton du thème. */
+  border:1px solid rgba(221,228,239,.5);
+  border:1px solid color-mix(in srgb, var(--border-default,#dde4ef) 50%, transparent);
+  border-radius:var(--r-lg,16px);
+  box-shadow:0 2px 10px rgba(14,23,38,.05);
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+/* Pas de changement de bordure au survol : seuls l'élévation et l'ombre
+   signalent l'interaction. */
+.service-carte:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 30px rgba(14,23,38,.12);
+}
+.service-carte__media{aspect-ratio:3/2;overflow:hidden;background:var(--bg-subtle,#f4f7fb)}
+.service-carte__media img{width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .4s ease}
+.service-carte:hover .service-carte__media img{transform:scale(1.04)}
+.service-carte__corps{padding:20px 22px 22px;display:flex;flex-direction:column;gap:12px;flex:1}
+.service-carte__corps h3{margin:0;font-size:19px;line-height:1.25;color:var(--text-strong,#0e1726)}
+.service-carte__corps p{margin:0}
+.service-carte .link-arrow{margin-top:auto;align-self:flex-start}
+
+@media (max-width:1000px){
+  .services-grille{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:700px){
+  .services-grille{grid-template-columns:1fr;gap:18px}
+  .service-carte__corps{padding:20px 22px 22px}
+  .service-carte__corps h3{font-size:19px}
+}
+
+/* ── Formulaire de bannière ───────────────────────────────────────────────
+   La carte seule est habillée ici. Les champs réutilisent tels quels field,
+   field__label, field__control, field__error et field--split du formulaire du
+   bas : mêmes bordures, mêmes états d'erreur, aucune règle dupliquée. */
+.hero__inner{
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  gap:44px;
+  align-items:center;
+}
+.hero__form{
+  justify-self:end;
+  width:100%;
+  max-width:480px;
+  background:var(--bg-canvas,#fff);
+  border:var(--border-w,1px) solid var(--border-default,#e6e2dc);
+  border-radius:var(--r-lg,16px);
+  /* 1 px tout autour : le contenu ne touche plus la bordure, qui se lit comme
+     un cadre. Le padding intérieur du formulaire reste porté par .hero__form .form. */
+  padding:1px;
+  box-shadow:0 20px 48px rgba(20,18,15,.24);
+}
+.hero__form-titre{
+  margin:0;padding:22px 24px 0;font-weight:700;font-size:18px;line-height:1.25;
+  color:var(--text-strong,#1a1815);
+}
+.hero__form .form{gap:var(--sp-4,14px);padding:22px 24px}
+
+/* Un <input> conserve sa largeur intrinsèque (~20 caractères) tant qu'on ne la
+   contraint pas : dans une carte étroite il déborde de sa colonne. Le formulaire
+   du bas n'en souffre pas, ses colonnes étant larges. min-width:0 est le pendant
+   nécessaire côté grille, sinon la piste refuse de descendre sous le contenu. */
+.hero__form .field{min-width:0}
+.hero__form .field__control{width:100%;min-width:0;box-sizing:border-box}
+.hero__form .field--split{gap:var(--sp-3,10px)}
+.hero__form .field__label{font-size:11px;letter-spacing:.04em}
+.hero__form .form__feedback{margin:0}
+
+@media (max-width:1000px){
+  .hero__inner{grid-template-columns:1fr;gap:32px}
+  .hero__form{justify-self:start;max-width:560px}
+}
+
+/* ── Bannière sur mobile ──────────────────────────────────────────────────
+   Le formulaire prend toute la largeur et respire davantage ; les champs
+   restent à deux par ligne, un empilement complet allongerait trop la page. */
+@media (max-width:700px){
+  .hero__form{max-width:none;width:100%}
+  .hero__form-titre{padding:26px 20px 0;font-size:19px}
+  .hero__form .form{padding:26px 20px;gap:var(--sp-4,14px)}
+  .hero__form .field--split{grid-template-columns:1fr 1fr;gap:12px}
+  .hero__form .field__control{height:48px}
+
+  /* L'appel passe devant : c'est l'action la plus directe sur mobile.
+     Il prend l'accent, le devis passe dessous en second rôle. */
+  .hero__actions{flex-direction:column;align-items:stretch;gap:10px}
+  .hero__actions .btn{width:100%;justify-content:center}
+  .hero__actions a[href^="tel:"]{
+    order:-1;
+    background-color:var(--accent-500,#0b6ede);
+    border-color:var(--accent-500,#0b6ede);
+    color:var(--white,#fff);
+    box-shadow:var(--shadow-accent,0 8px 22px rgba(11,110,222,.34));
+  }
+  .hero__actions a[href^="tel:"]:hover{background-color:var(--accent-600,#0a5cbb)}
+}
+

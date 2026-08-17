@@ -1,0 +1,32 @@
+# ─── Secrets ────────────────────────────────────────────────────────────────
+# Les clés Supabase ne sont JAMAIS versionnées. Un nouvel arrivant demande le
+# .env à un membre de l'équipe. Voir §9 de PROJET-O2SWITCH.md.
+.env
+.env.*
+!.env.example
+
+# ─── Sorties régénérables ───────────────────────────────────────────────────
+# Rien de ce qui se reconstruit avec ./build.sh n'a sa place dans le dépôt :
+# 250 sites par département × 95 départements sont produits en quelques
+# secondes, mais pèseraient des gigaoctets une fois versionnés.
+#
+# `**/` indispensable : un motif à slash médian est ancré à la racine du dépôt,
+# donc `_generator/output/` seul n'ignorerait PAS couvreur/_generator/output/
+**/_generator/output/
+**/_generator/output-urls/
+*/*/_root/
+*/*/_villes/
+
+# ─── Données volumineuses écartées ──────────────────────────────────────────
+# communes_avec_adresses.json (21 Mo) n'apporte que l'adresse de mairie en pied
+# de page du couvreur, et le générateur a un repli. Les .bak sont des copies.
+_shared/data/communes_avec_adresses.json
+*.bak
+
+# ─── Sauvegardes de travail ─────────────────────────────────────────────────
+# Créées avant les refontes de template ; utiles en local, sans intérêt partagé.
+*.avant-*
+
+# ─── Divers ─────────────────────────────────────────────────────────────────
+.DS_Store
+node_modules/

@@ -1,0 +1,7 @@
+DOMAIN="couvreur-gironde-33.fr"
+DEP="33"
+DEP_NOM="Gironde"
+
+# Redirection HTTP -> HTTPS. Passer à 1 UNIQUEMENT quand tous les
+# sous-domaines ont leur certificat (./ssl-check.sh doit être vert).
+HTTPS_REDIRECT="0"

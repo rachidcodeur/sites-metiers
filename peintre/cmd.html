@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Mise en ligne · peintre</title>
+<style>
+  :root{
+    --accent:#F28C1F; --accent-fort:#BC5A00; --accent-doux:#FDF0E1;
+    --bg:#FBF8F3; --bg2:#F4EFE7; --surface:#fff;
+    --ink:#1A1815; --ink2:#4A453E; --ink3:#7A7165;
+    --line:#E7E1D6; --line2:#D8D0C2;
+    --ok:#2E9E5B; --attente:#B98900;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --r:12px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+       background:var(--bg);color:var(--ink);padding:32px 20px 80px}
+  .page{max-width:1080px;margin:0 auto}
+  h1{font-size:30px;letter-spacing:-.02em;margin-bottom:6px}
+  .sous{color:var(--ink3);font-size:14.5px;margin-bottom:28px}
+  h2{font-size:15px;text-transform:uppercase;letter-spacing:.09em;
+     color:var(--accent-fort);margin:0 0 14px}
+
+  .bloc{background:var(--surface);border:1px solid var(--line);
+        border-radius:var(--r);padding:22px 24px;margin-bottom:22px}
+
+  /* Commande copiable */
+  .cmd{display:flex;align-items:stretch;gap:0;margin:8px 0;
+       border:1px solid var(--line2);border-radius:9px;overflow:hidden;background:#1A1815}
+  .cmd code{flex:1;font-family:var(--mono);font-size:13.5px;color:#F4EFE7;
+            padding:11px 14px;overflow-x:auto;white-space:pre}
+  .cmd button{border:0;border-left:1px solid #3a352e;background:#2a251f;color:#F4EFE7;
+              font:600 12.5px system-ui;padding:0 15px;cursor:pointer;white-space:nowrap}
+  .cmd button:hover{background:var(--accent-fort);color:#fff}
+  .cmd button.ok{background:var(--ok);color:#fff}
+
+  /* Valeur à saisir dans cPanel */
+  .val{display:grid;grid-template-columns:200px 1fr auto;gap:10px;align-items:center;
+       padding:8px 0;border-bottom:1px dashed var(--line)}
+  .val:last-child{border-bottom:0}
+  .val span{color:var(--ink3);font-size:13.5px}
+  .val b{font-family:var(--mono);font-size:13.5px;font-weight:600;word-break:break-all}
+  .val button{border:1px solid var(--line2);background:var(--bg2);border-radius:7px;
+              font:600 12px system-ui;padding:5px 11px;cursor:pointer;color:var(--ink2)}
+  .val button:hover{border-color:var(--accent);color:var(--accent-fort)}
+  .val button.ok{background:var(--ok);color:#fff;border-color:var(--ok)}
+
+  select,input[type=search]{font:15px system-ui;padding:10px 13px;border:1px solid var(--line2);
+    border-radius:9px;background:var(--surface);color:var(--ink);width:100%}
+  select:focus,input:focus{outline:0;border-color:var(--accent);
+    box-shadow:0 0 0 3px rgba(242,140,31,.22)}
+
+  .grille{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px}
+  @media(max-width:760px){.grille{grid-template-columns:1fr}
+    .val{grid-template-columns:1fr;gap:4px}}
+
+  .villes{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));
+          gap:7px;max-height:340px;overflow-y:auto;padding:4px;
+          border:1px solid var(--line);border-radius:9px;background:var(--bg2)}
+  .ville{display:flex;align-items:center;gap:9px;background:var(--surface);
+         border:1px solid var(--line);border-radius:8px;padding:7px 10px}
+  .ville:has(.nom:hover){border-color:var(--accent)}
+  .ville[data-actif="1"]{background:var(--accent-fort);border-color:var(--accent-fort)}
+  .ville[data-actif="1"] .nom{color:#fff}
+  .ville[data-fait="1"] .nom{opacity:.5;text-decoration:line-through}
+  .ville input{width:16px;height:16px;margin:0;flex-shrink:0;cursor:pointer;accent-color:var(--ok)}
+  .nom{flex:1;display:flex;align-items:center;justify-content:space-between;gap:8px;
+       background:none;border:0;padding:0;text-align:left;cursor:pointer;
+       font:14px system-ui;color:var(--ink2)}
+  .nom em{font-style:normal;font-size:11.5px;opacity:.6}
+  .pastille{width:7px;height:7px;border-radius:50%;background:var(--attente);flex-shrink:0}
+  .ville[data-https="1"] .pastille{background:var(--ok)}
+
+  .barre{display:flex;align-items:center;justify-content:space-between;
+         gap:12px;flex-wrap:wrap;margin-bottom:12px}
+  .filtres{display:inline-flex;border:1px solid var(--line2);border-radius:9px;overflow:hidden}
+  .filtres button{border:0;border-right:1px solid var(--line2);background:var(--surface);
+    font:600 13px system-ui;color:var(--ink2);padding:8px 15px;cursor:pointer}
+  .filtres button:last-child{border-right:0}
+  .filtres button:hover{background:var(--bg2)}
+  .filtres button.on{background:var(--accent-fort);color:#fff}
+  .compteur{font-size:13.5px;color:var(--ink3)}
+  .compteur b{color:var(--ink);font-variant-numeric:tabular-nums}
+  .reinit{background:none;border:0;color:var(--ink3);font:13px system-ui;
+          cursor:pointer;text-decoration:underline}
+  .reinit:hover{color:var(--accent-fort)}
+
+  .etape{border-left:3px solid var(--accent);padding:2px 0 2px 16px;margin:22px 0}
+  .etape h3{font-size:16px;margin-bottom:3px}
+  .etape p{color:var(--ink3);font-size:13.5px;margin-bottom:8px}
+  .note{background:var(--accent-doux);border-radius:9px;padding:12px 15px;
+        font-size:13.5px;color:#7a3d00;margin-top:10px}
+
+  .fin{display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+       margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+  .termine{border:0;border-radius:10px;cursor:pointer;
+           font:600 15px system-ui;padding:13px 26px;
+           background:var(--accent-fort);color:#fff}
+  .termine:hover{background:#a34e00}
+  .termine.fait{background:var(--ok)}
+  .termine.fait:hover{background:#25845c}
+  .suivante{background:none;border:0;color:var(--accent-fort);cursor:pointer;
+            font:600 14px system-ui;text-decoration:underline}
+  .suivante:hover{color:var(--ink)}
+  .fin .info{font-size:13.5px;color:var(--ink3)}
+  .vide{color:var(--ink3);font-size:14.5px;padding:28px 0;text-align:center}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>Mise en ligne — peintre</h1>
+  <p class="sous">Choisir un département puis une commune pour obtenir les commandes et les valeurs à saisir dans cPanel. Page hors ligne, générée depuis l'état local du projet.</p>
+
+  <div class="bloc">
+    <h2>Avant tout — autoriser l'IP</h2>
+    <p style="color:var(--ink3);font-size:14px;margin-bottom:6px">L'IP publique change souvent : sans elle en liste blanche, <code>ssh</code> et <code>deploy.sh</code> partent en timeout.</p>
+    <div class="cmd"><code>curl -s https://ifconfig.me; echo</code><button data-copie="curl -s https://ifconfig.me; echo">copier</button></div>
+    <div class="note">Coller le résultat dans <b>cPanel → Autorisation SSH</b>. Cette page accepte aussi un nom DynDNS, qui évite d'y revenir à chaque changement d'IP.</div>
+    <div class="cmd"><code>ssh o2 'echo OK'</code><button data-copie="ssh o2 'echo OK'">copier</button></div>
+  </div>
+
+  <div class="bloc">
+    <h2>Vider le cache DNS</h2>
+    <p style="color:var(--ink3);font-size:14px;margin-bottom:6px">macOS mémorise l'<b>absence</b> d'un sous-domaine interrogé avant sa création. Le site répond alors « serveur introuvable » alors qu'il est en ligne, et les contrôles de certificat concluent à tort « pas de certificat ».</p>
+    <div class="cmd"><code>sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder</code><button data-copie="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder">copier</button></div>
+    <div class="note">À lancer après avoir déclaré un sous-domaine, avant d'ouvrir son URL. Le réflexe qui évite le problème : ne pas visiter l'adresse tant que le sous-domaine n'est pas créé.</div>
+  </div>
+
+  <div class="bloc">
+    <h2>Département et commune</h2>
+    <div class="grille">
+      <select id="dep"></select>
+      <input type="search" id="rech" placeholder="Filtrer une commune…" autocomplete="off">
+    </div>
+    <div class="barre">
+      <div class="filtres">
+        <button data-f="tous" class="on">Toutes</button>
+        <button data-f="afaire">À faire</button>
+        <button data-f="faites">Faites</button>
+      </div>
+      <span class="compteur" id="compteur"></span>
+      <button class="reinit" id="reinit">réinitialiser le suivi</button>
+    </div>
+    <div class="villes" id="villes"></div>
+    <p style="color:var(--ink3);font-size:12.5px;margin-top:9px">
+      Cocher une commune la marque comme faite — le suivi reste dans ce navigateur.
+      <span class="pastille" style="display:inline-block;vertical-align:middle;background:var(--ok)"></span>
+      pastille verte = redirection HTTPS constatée sur le serveur &nbsp;·&nbsp; triées par population
+    </p>
+  </div>
+
+  <div id="fiche"></div>
+
+</div>
+
+<script>
+const D = {"metier":"peintre","user":"movi6707","departements":[{"rel":"peintre/gironde","nom":"Gironde","dep":"33","domain":"artisan-peintre-pro-33.fr","communes":[{"slug":"bordeaux","nom":"Bordeaux","pop":261804},{"slug":"merignac","nom":"Mérignac","pop":75729},{"slug":"pessac","nom":"Pessac","pop":66760},{"slug":"talence","nom":"Talence","pop":45225},{"slug":"villenave-d-ornon","nom":"Villenave-d'Ornon","pop":40500},{"slug":"saint-medard-en-jalles","nom":"Saint-Médard-en-Jalles","pop":32538},{"slug":"begles","nom":"Bègles","pop":30813},{"slug":"cenon","nom":"Cenon","pop":26778},{"slug":"la-teste-de-buch","nom":"La Teste-de-Buch","pop":26556},{"slug":"gradignan","nom":"Gradignan","pop":25835},{"slug":"libourne","nom":"Libourne","pop":24557},{"slug":"eysines","nom":"Eysines","pop":24374},{"slug":"le-bouscat","nom":"Le Bouscat","pop":24339},{"slug":"lormont","nom":"Lormont","pop":23291},{"slug":"gujan-mestras","nom":"Gujan-Mestras","pop":22399},{"slug":"bruges","nom":"Bruges","pop":20215},{"slug":"floirac","nom":"Floirac","pop":17749},{"slug":"ambares-et-lagrave","nom":"Ambarès-et-Lagrave","pop":16798},{"slug":"cestas","nom":"Cestas","pop":16789},{"slug":"blanquefort","nom":"Blanquefort","pop":16004},{"slug":"saint-andre-de-cubzac","nom":"Saint-André-de-Cubzac","pop":12854},{"slug":"andernos-les-bains","nom":"Andernos-les-Bains","pop":12472},{"slug":"le-haillan","nom":"Le Haillan","pop":11572},{"slug":"mios","nom":"Mios","pop":11469},{"slug":"arcachon","nom":"Arcachon","pop":11259},{"slug":"biganos","nom":"Biganos","pop":11095},{"slug":"le-taillan-medoc","nom":"Le Taillan-Médoc","pop":10727},{"slug":"leognan","nom":"Léognan","pop":10708},{"slug":"parempuyre","nom":"Parempuyre","pop":10142},{"slug":"saint-loubes","nom":"Saint-Loubès","pop":10005},{"slug":"audenge","nom":"Audenge","pop":9371},{"slug":"saint-jean-d-illac","nom":"Saint-Jean-d'Illac","pop":9304},{"slug":"le-teich","nom":"Le Teich","pop":9004},{"slug":"coutras","nom":"Coutras","pop":8669},{"slug":"artigues-pres-bordeaux","nom":"Artigues-près-Bordeaux","pop":8645},{"slug":"carbon-blanc","nom":"Carbon-Blanc","pop":8300},{"slug":"lege-cap-ferret","nom":"Lège-Cap-Ferret","pop":8193},{"slug":"salles","nom":"Salles","pop":7887},{"slug":"martignas-sur-jalle","nom":"Martignas-sur-Jalle","pop":7850},{"slug":"bassens","nom":"Bassens","pop":7842},{"slug":"saint-aubin-de-medoc","nom":"Saint-Aubin-de-Médoc","pop":7583},{"slug":"langon","nom":"Langon","pop":7345},{"slug":"lanton","nom":"Lanton","pop":7276},{"slug":"le-pian-medoc","nom":"Le Pian-Médoc","pop":7105},{"slug":"cadaujac","nom":"Cadaujac","pop":6671},{"slug":"ares","nom":"Arès","pop":6441},{"slug":"izon","nom":"Izon","pop":6320},{"slug":"belin-beliet","nom":"Belin-Béliet","pop":6039},{"slug":"canejan","nom":"Canéjan","pop":5916},{"slug":"lesparre-medoc","nom":"Lesparre-Médoc","pop":5844},{"slug":"saint-denis-de-pile","nom":"Saint-Denis-de-Pile","pop":5816},{"slug":"le-barp","nom":"Le Barp","pop":5654},{"slug":"marcheprime","nom":"Marcheprime","pop":5367},{"slug":"ludon-medoc","nom":"Ludon-Médoc","pop":5352},{"slug":"pauillac","nom":"Pauillac","pop":5098},{"slug":"tresses","nom":"Tresses","pop":5086},{"slug":"lacanau","nom":"Lacanau","pop":5031},{"slug":"blaye","nom":"Blaye","pop":4957},{"slug":"saint-laurent-medoc","nom":"Saint-Laurent-Médoc","pop":4940},{"slug":"sainte-eulalie","nom":"Sainte-Eulalie","pop":4925},{"slug":"creon","nom":"Créon","pop":4880},{"slug":"saint-sulpice-et-cameyrac","nom":"Saint-Sulpice-et-Cameyrac","pop":4879},{"slug":"castelnau-de-medoc","nom":"Castelnau-de-Médoc","pop":4829},{"slug":"bazas","nom":"Bazas","pop":4799},{"slug":"sadirac","nom":"Sadirac","pop":4687},{"slug":"macau","nom":"Macau","pop":4527},{"slug":"la-brede","nom":"La Brède","pop":4469},{"slug":"pineuilh","nom":"Pineuilh","pop":4409},{"slug":"la-reole","nom":"La Réole","pop":4396},{"slug":"carignan-de-bordeaux","nom":"Carignan-de-Bordeaux","pop":4237},{"slug":"vayres","nom":"Vayres","pop":4204},{"slug":"hourtin","nom":"Hourtin","pop":3983},{"slug":"arsac","nom":"Arsac","pop":3956},{"slug":"bouliac","nom":"Bouliac","pop":3773},{"slug":"val-de-virvee","nom":"Val de Virvée","pop":3705},{"slug":"latresne","nom":"Latresne","pop":3639},{"slug":"saint-selve","nom":"Saint-Selve","pop":3578},{"slug":"martillac","nom":"Martillac","pop":3504},{"slug":"montussan","nom":"Montussan","pop":3451},{"slug":"saint-caprais-de-bordeaux","nom":"Saint-Caprais-de-Bordeaux","pop":3440},{"slug":"fargues-saint-hilaire","nom":"Fargues-Saint-Hilaire","pop":3404},{"slug":"pompignac","nom":"Pompignac","pop":3393},{"slug":"saucats","nom":"Saucats","pop":3388},{"slug":"le-porge","nom":"Le Porge","pop":3371},{"slug":"saint-savin","nom":"Saint-Savin","pop":3347},{"slug":"podensac","nom":"Podensac","pop":3285},{"slug":"castillon-la-bataille","nom":"Castillon-la-Bataille","pop":3279},{"slug":"saint-medard-d-eyrans","nom":"Saint-Médard-d'Eyrans","pop":3263},{"slug":"ambes","nom":"Ambès","pop":3207},{"slug":"saint-seurin-sur-l-isle","nom":"Saint-Seurin-sur-l'Isle","pop":3151},{"slug":"camblanes-et-meynac","nom":"Camblanes-et-Meynac","pop":3093},{"slug":"saint-ciers-sur-gironde","nom":"Saint-Ciers-sur-Gironde","pop":3081},{"slug":"avensan","nom":"Avensan","pop":3076},{"slug":"galgon","nom":"Galgon","pop":3058},{"slug":"sainte-helene","nom":"Sainte-Hélène","pop":3004},{"slug":"soulac-sur-mer","nom":"Soulac-sur-Mer","pop":2922},{"slug":"yvrac","nom":"Yvrac","pop":2881},{"slug":"margaux-cantenac","nom":"Margaux-Cantenac","pop":2831},{"slug":"laruscade","nom":"Laruscade","pop":2814},{"slug":"toulenne","nom":"Toulenne","pop":2813},{"slug":"listrac-medoc","nom":"Listrac-Médoc","pop":2796},{"slug":"cadillac-sur-garonne","nom":"Cadillac-sur-Garonne","pop":2785},{"slug":"salleboeuf","nom":"Sallebœuf","pop":2728},{"slug":"cezac","nom":"Cézac","pop":2694},{"slug":"vendays-montalivet","nom":"Vendays-Montalivet","pop":2684},{"slug":"portets","nom":"Portets","pop":2676},{"slug":"saint-quentin-de-baron","nom":"Saint-Quentin-de-Baron","pop":2675},{"slug":"la-lande-de-fronsac","nom":"La Lande-de-Fronsac","pop":2659},{"slug":"sainte-foy-la-grande","nom":"Sainte-Foy-la-Grande","pop":2615},{"slug":"beychac-et-caillau","nom":"Beychac-et-Caillau","pop":2590},{"slug":"cubzac-les-ponts","nom":"Cubzac-les-Ponts","pop":2581},{"slug":"castres-gironde","nom":"Castres-Gironde","pop":2575},{"slug":"saint-yzan-de-soudiac","nom":"Saint-Yzan-de-Soudiac","pop":2527},{"slug":"beautiran","nom":"Beautiran","pop":2443},{"slug":"carcans","nom":"Carcans","pop":2418},{"slug":"cabanac-et-villagrains","nom":"Cabanac-et-Villagrains","pop":2404},{"slug":"pugnac","nom":"Pugnac","pop":2392},{"slug":"saint-medard-de-guizieres","nom":"Saint-Médard-de-Guizières","pop":2389},{"slug":"cavignac","nom":"Cavignac","pop":2388},{"slug":"cussac-fort-medoc","nom":"Cussac-Fort-Médoc","pop":2372},{"slug":"gaillan-en-medoc","nom":"Gaillan-en-Médoc","pop":2365},{"slug":"bourg","nom":"Bourg","pop":2283},{"slug":"saint-germain-du-puch","nom":"Saint-Germain-du-Puch","pop":2276},{"slug":"cissac-medoc","nom":"Cissac-Médoc","pop":2262},{"slug":"quinsac","nom":"Quinsac","pop":2215},{"slug":"landiras","nom":"Landiras","pop":2191},{"slug":"langoiran","nom":"Langoiran","pop":2191},{"slug":"peujard","nom":"Peujard","pop":2167},{"slug":"les-eglisottes-et-chalaures","nom":"Les Églisottes-et-Chalaures","pop":2147},{"slug":"preignac","nom":"Preignac","pop":2145},{"slug":"saint-louis-de-montferrand","nom":"Saint-Louis-de-Montferrand","pop":2144},{"slug":"cerons","nom":"Cérons","pop":2132},{"slug":"cenac","nom":"Cénac","pop":2131},{"slug":"saint-magne-de-castillon","nom":"Saint-Magne-de-Castillon","pop":2090},{"slug":"barsac","nom":"Barsac","pop":2065},{"slug":"targon","nom":"Targon","pop":2044},{"slug":"saint-maixant","nom":"Saint-Maixant","pop":2033},{"slug":"arveyres","nom":"Arveyres","pop":2029},{"slug":"saint-macaire","nom":"Saint-Macaire","pop":2017},{"slug":"abzac","nom":"Abzac","pop":2013},{"slug":"genissac","nom":"Génissac","pop":2007},{"slug":"saint-gervais","nom":"Saint-Gervais","pop":1948},{"slug":"moulis-en-medoc","nom":"Moulis-en-Médoc","pop":1908},{"slug":"sainte-terre","nom":"Sainte-Terre","pop":1897},{"slug":"saint-christoly-de-blaye","nom":"Saint-Christoly-de-Blaye","pop":1877},{"slug":"sauveterre-de-guyenne","nom":"Sauveterre-de-Guyenne","pop":1868},{"slug":"saint-symphorien","nom":"Saint-Symphorien","pop":1824},{"slug":"berson","nom":"Berson","pop":1821},{"slug":"cambes","nom":"Cambes","pop":1810},{"slug":"cubnezais","nom":"Cubnezais","pop":1807},{"slug":"saint-vivien-de-medoc","nom":"Saint-Vivien-de-Médoc","pop":1796},{"slug":"val-de-livenne","nom":"Val-de-Livenne","pop":1793},{"slug":"saint-morillon","nom":"Saint-Morillon","pop":1786},{"slug":"roaillan","nom":"Roaillan","pop":1777},{"slug":"saint-emilion","nom":"Saint-Émilion","pop":1769},{"slug":"soussans","nom":"Soussans","pop":1692},{"slug":"noaillan","nom":"Noaillan","pop":1662},{"slug":"les-peintures","nom":"Les Peintures","pop":1646},{"slug":"saint-mariens","nom":"Saint-Mariens","pop":1628},{"slug":"guitres","nom":"Guîtres","pop":1622},{"slug":"reignac","nom":"Reignac","pop":1622},{"slug":"saint-estephe","nom":"Saint-Estèphe","pop":1617},{"slug":"lagorce","nom":"Lagorce","pop":1616},{"slug":"fargues","nom":"Fargues","pop":1613},{"slug":"monsegur","nom":"Monségur","pop":1591},{"slug":"la-sauve","nom":"La Sauve","pop":1586},{"slug":"grayan-et-l-hopital","nom":"Grayan-et-l'Hôpital","pop":1542},{"slug":"etauliers","nom":"Étauliers","pop":1534},{"slug":"saint-laurent-d-arce","nom":"Saint-Laurent-d'Arce","pop":1526},{"slug":"montagne","nom":"Montagne","pop":1525},{"slug":"castets-et-castillon","nom":"Castets et Castillon","pop":1513},{"slug":"saint-ciers-d-abzac","nom":"Saint-Ciers-d'Abzac","pop":1513},{"slug":"braud-et-saint-louis","nom":"Braud-et-Saint-Louis","pop":1510},{"slug":"rions","nom":"Rions","pop":1500},{"slug":"hostens","nom":"Hostens","pop":1488},{"slug":"saint-avit-saint-nazaire","nom":"Saint-Avit-Saint-Nazaire","pop":1488},{"slug":"gauriaguet","nom":"Gauriaguet","pop":1478},{"slug":"prignac-et-marcamps","nom":"Prignac-et-Marcamps","pop":1420},{"slug":"ayguemorte-les-graves","nom":"Ayguemorte-les-Graves","pop":1394},{"slug":"illats","nom":"Illats","pop":1387},{"slug":"lugon-et-l-ile-du-carnay","nom":"Lugon-et-l'Île-du-Carnay","pop":1386},{"slug":"le-verdon-sur-mer","nom":"Le Verdon-sur-Mer","pop":1369},{"slug":"arbanats","nom":"Arbanats","pop":1353},{"slug":"queyrac","nom":"Queyrac","pop":1346},{"slug":"cadillac-en-fronsadais","nom":"Cadillac-en-Fronsadais","pop":1345},{"slug":"lamarque","nom":"Lamarque","pop":1337},{"slug":"captieux","nom":"Captieux","pop":1336},{"slug":"saint-sulpice-de-faleyrens","nom":"Saint-Sulpice-de-Faleyrens","pop":1319},{"slug":"tauriac","nom":"Tauriac","pop":1318},{"slug":"saint-germain-d-esteuil","nom":"Saint-Germain-d'Esteuil","pop":1315},{"slug":"gironde-sur-dropt","nom":"Gironde-sur-Dropt","pop":1311},{"slug":"sablons","nom":"Sablons","pop":1310},{"slug":"branne","nom":"Branne","pop":1309},{"slug":"saint-pierre-d-aurillac","nom":"Saint-Pierre-d'Aurillac","pop":1309},{"slug":"vertheuil","nom":"Vertheuil","pop":1306},{"slug":"virsac","nom":"Virsac","pop":1305},{"slug":"villegouge","nom":"Villegouge","pop":1281},{"slug":"cartelegue","nom":"Cartelègue","pop":1261},{"slug":"saint-sauveur","nom":"Saint-Sauveur","pop":1258},{"slug":"rauzan","nom":"Rauzan","pop":1249},{"slug":"saint-pierre-de-mons","nom":"Saint-Pierre-de-Mons","pop":1236},{"slug":"salaunes","nom":"Salaunes","pop":1227},{"slug":"marsas","nom":"Marsas","pop":1226},{"slug":"cars","nom":"Cars","pop":1211},{"slug":"beguey","nom":"Béguey","pop":1208},{"slug":"paillet","nom":"Paillet","pop":1207},{"slug":"grignols","nom":"Grignols","pop":1202},{"slug":"baron","nom":"Baron","pop":1193},{"slug":"perissac","nom":"Périssac","pop":1186},{"slug":"lussac","nom":"Lussac","pop":1184},{"slug":"saint-magne","nom":"Saint-Magne","pop":1172},{"slug":"saint-martin-lacaussade","nom":"Saint-Martin-Lacaussade","pop":1166},{"slug":"les-billaux","nom":"Les Billaux","pop":1165},{"slug":"bernos-beaulac","nom":"Bernos-Beaulac","pop":1136},{"slug":"villandraut","nom":"Villandraut","pop":1131},{"slug":"lamothe-landerron","nom":"Lamothe-Landerron","pop":1121},{"slug":"fronsac","nom":"Fronsac","pop":1120},{"slug":"les-artigues-de-lussac","nom":"Les Artigues-de-Lussac","pop":1114},{"slug":"virelade","nom":"Virelade","pop":1109},{"slug":"caudrot","nom":"Caudrot","pop":1106},{"slug":"loupiac","nom":"Loupiac","pop":1097},{"slug":"vensac","nom":"Vensac","pop":1095},{"slug":"naujac-sur-mer","nom":"Naujac-sur-Mer","pop":1086},{"slug":"tabanac","nom":"Tabanac","pop":1085},{"slug":"coimeres","nom":"Coimères","pop":1073},{"slug":"lugos","nom":"Lugos","pop":1066},{"slug":"auros","nom":"Auros","pop":1047},{"slug":"maransin","nom":"Maransin","pop":1040},{"slug":"prechac","nom":"Préchac","pop":1040},{"slug":"verdelais","nom":"Verdelais","pop":1035},{"slug":"mouliets-et-villemartin","nom":"Mouliets-et-Villemartin","pop":1025},{"slug":"bonnetan","nom":"Bonnetan","pop":1024},{"slug":"camarsac","nom":"Camarsac","pop":1022},{"slug":"moulon","nom":"Moulon","pop":1022},{"slug":"saint-paul","nom":"Saint-Paul","pop":1021},{"slug":"saint-vincent-de-paul","nom":"Saint-Vincent-de-Paul","pop":997},{"slug":"baurech","nom":"Baurech","pop":965},{"slug":"jau-dignac-et-loirac","nom":"Jau-Dignac-et-Loirac","pop":956},{"slug":"saint-girons-d-aiguevives","nom":"Saint-Girons-d'Aiguevives","pop":953},{"slug":"le-pian-sur-garonne","nom":"Le Pian-sur-Garonne","pop":949},{"slug":"blasimon","nom":"Blasimon","pop":940},{"slug":"plassac","nom":"Plassac","pop":939},{"slug":"saint-genes-de-fronsac","nom":"Saint-Genès-de-Fronsac","pop":933},{"slug":"verac","nom":"Vérac","pop":930},{"slug":"donnezac","nom":"Donnezac","pop":927},{"slug":"saint-romain-la-virvee","nom":"Saint-Romain-la-Virvée","pop":922},{"slug":"loupes","nom":"Loupes","pop":916},{"slug":"anglade","nom":"Anglade","pop":906},{"slug":"begadan","nom":"Bégadan","pop":901}],"https":["bordeaux","merignac","talence","villenave-d-ornon","saint-medard-en-jalles","begles","cenon","la-teste-de-buch","gradignan","libourne","eysines","le-bouscat","lormont","gujan-mestras","bruges","floirac","ambares-et-lagrave","cestas","blanquefort","saint-andre-de-cubzac","andernos-les-bains","le-haillan","mios","arcachon","biganos","le-taillan-medoc","leognan","parempuyre","saint-loubes","audenge","saint-jean-d-illac","le-teich","coutras","carbon-blanc","artigues-pres-bordeaux","lege-cap-ferret","salles","martignas-sur-jalle","bassens","saint-aubin-de-medoc","langon","le-pian-medoc","lanton","ares","cadaujac","izon","belin-beliet","canejan","lesparre-medoc","saint-denis-de-pile","le-barp"]}]};
+
+const el = (h) => { const d=document.createElement('div'); d.innerHTML=h.trim(); return d.firstChild; };
+const esc = (s) => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+const cmd = (c) => `<div class="cmd"><code>${esc(c)}</code><button data-copie="${esc(c)}">copier</button></div>`;
+const val = (label, v) => `<div class="val"><span>${esc(label)}</span><b>${esc(v)}</b><button data-copie="${esc(v)}">copier</button></div>`;
+
+const selDep = document.getElementById('dep');
+const zoneVilles = document.getElementById('villes');
+const rech = document.getElementById('rech');
+const fiche = document.getElementById('fiche');
+
+D.departements.forEach((d,i) => {
+  const o = document.createElement('option');
+  o.value = i; o.textContent = `${d.nom} (${d.dep}) — ${d.communes.length} communes`;
+  selDep.appendChild(o);
+});
+
+let iDep = 0, slugActif = null, filtre = 'tous';
+
+/* Suivi des communes traitées, conservé dans ce navigateur.
+   Les communes dont la redirection est constatée côté serveur (.https-actives)
+   sont fusionnées à chaque chargement : l'état réel prime toujours sur la coche. */
+const cle = () => 'cmd:' + D.metier + ':' + D.departements[iDep].rel;
+let faites = new Set();
+
+function chargerFaites() {
+  const d = D.departements[iDep];
+  let stocke = [];
+  try { stocke = JSON.parse(localStorage.getItem(cle()) || '[]'); } catch (_) {}
+  faites = new Set([...stocke, ...d.https]);
+}
+function enregistrerFaites() {
+  try { localStorage.setItem(cle(), JSON.stringify([...faites])); } catch (_) {}
+}
+
+function listeVilles() {
+  const d = D.departements[iDep];
+  const q = rech.value.trim().toLowerCase();
+  zoneVilles.innerHTML = '';
+
+  const vues = d.communes.filter(c => {
+    if (q && !c.nom.toLowerCase().includes(q) && !c.slug.includes(q)) return false;
+    if (filtre === 'afaire') return !faites.has(c.slug);
+    if (filtre === 'faites') return faites.has(c.slug);
+    return true;
+  });
+
+  const nbFaites = d.communes.filter(c => faites.has(c.slug)).length;
+  document.getElementById('compteur').innerHTML =
+    `<b>${nbFaites}</b> / ${d.communes.length} faites · <b>${d.communes.length - nbFaites}</b> restantes`;
+
+  if (!vues.length) {
+    zoneVilles.innerHTML = '<p class="vide">' +
+      (filtre === 'afaire' ? 'Tout est fait pour ce département.' : 'Aucune commune ne correspond.') +
+      '</p>';
+    return;
+  }
+
+  vues.forEach(c => {
+    const surServeur = d.https.includes(c.slug) ? '1' : '0';
+    const fait = faites.has(c.slug) ? '1' : '0';
+    const ligne = el(`<div class="ville" data-https="${surServeur}" data-fait="${fait}"
+                          data-actif="${c.slug === slugActif ? 1 : 0}">
+        <input type="checkbox" ${fait === '1' ? 'checked' : ''}
+               title="Marquer comme faite" aria-label="${esc(c.nom)} : faite">
+        <button class="nom"><span><span class="pastille"></span> ${esc(c.nom)}</span>
+        <em>${c.pop ? c.pop.toLocaleString('fr-FR') : ''}</em></button></div>`);
+
+    ligne.querySelector('input').addEventListener('change', e => {
+      if (e.target.checked) faites.add(c.slug); else faites.delete(c.slug);
+      enregistrerFaites();
+      listeVilles();
+    });
+    ligne.querySelector('.nom').addEventListener('click', () => {
+      slugActif = c.slug; listeVilles(); afficher(c);
+    });
+    zoneVilles.appendChild(ligne);
+  });
+}
+
+document.querySelectorAll('.filtres button').forEach(b => {
+  b.addEventListener('click', () => {
+    filtre = b.dataset.f;
+    document.querySelectorAll('.filtres button').forEach(x => x.classList.toggle('on', x === b));
+    listeVilles();
+  });
+});
+
+document.getElementById('reinit').addEventListener('click', () => {
+  const d = D.departements[iDep];
+  if (!confirm(`Effacer le suivi de ${d.nom} ?\nLes communes déjà en HTTPS sur le serveur resteront cochées.`)) return;
+  try { localStorage.removeItem(cle()); } catch (_) {}
+  chargerFaites();
+  listeVilles();
+});
+
+function afficher(c) {
+  const d = D.departements[iDep];
+  const hote = `${c.slug}.${d.domain}`;
+  const racine = `sites/${d.domain}/villes`;
+  const dejaHttps = d.https.includes(c.slug);
+
+  fiche.innerHTML = '';
+  fiche.appendChild(el(`
+    <div class="bloc">
+      <h2>${esc(c.nom)} — ${esc(hote)}</h2>
+
+      <div class="etape">
+        <h3>0 · Où en est cette commune</h3>
+        <p>Affiche l'état des 4 étapes et indique la suivante.</p>
+        ${cmd(`./golive.sh ${d.rel} ${c.slug}`)}
+      </div>
+
+      <div class="etape">
+        <h3>1 · Déployer le contenu</h3>
+        <p>Envoie le socle commun puis cette commune seule. Les autres ne sont pas touchées.</p>
+        ${cmd(`./golive.sh ${d.rel} ${c.slug} --deploy`)}
+      </div>
+
+      <div class="etape">
+        <h3>2 · Déclarer le sous-domaine</h3>
+        <p>cPanel → Domaines → Créer un domaine</p>
+        ${val('Domaine', c.slug)}
+        ${val('Domaine racine', d.domain)}
+        ${val('Répertoire racine', racine)}
+        ${val('Partager le répertoire racine', 'DÉCOCHÉ')}
+
+        <div class="note"><b>Le champ Domaine ne prend que le nom de la ville</b>,
+        pas l'adresse complète. cPanel ajoute le domaine racine lui-même — résultat attendu :
+        <b>${esc(hote)}</b>.<br>
+        Y saisir <b>${esc(hote)}</b> donnerait <b>${esc(hote)}.${esc(D.user)}.odns.fr</b>,
+        et le certificat échouerait ensuite sur une erreur CAA.</div>
+
+        <div class="note">La racine est <b>villes</b>, sans <b>/${esc(c.slug)}</b> : le routeur lit le nom d'hôte et sert le bon dossier. C'est ce qui permet de mutualiser les assets.</div>
+
+        <p style="margin-top:12px">Ou en ligne de commande, sans ambiguïté possible :</p>
+        ${cmd(`ssh o2 "uapi SubDomain addsubdomain domain='${c.slug}' rootdomain='${d.domain}' dir='/sites/${d.domain}/villes'"`)}
+      </div>
+
+      <div class="etape">
+        <h3>3 · Émettre le certificat</h3>
+        <p>cPanel → SSL/TLS → Let's Encrypt™</p>
+        ${val('Domaine', hote)}
+        ${val('Validation', 'http-01')}
+        ${val('Inclure le wildcard', 'NON')}
+        <div class="note"><b>Plafond : 50 certificats par domaine racine sur 168 h glissantes.</b> Atteint, le refus indique l'heure exacte de déblocage — s'y fier plutôt que compter. Seules les émissions réussies comptent : un échec ne coûte rien, inutile de simuler.</div>
+      </div>
+
+      <div class="etape">
+        <h3>4 · Activer la redirection HTTP → HTTPS</h3>
+        <p>${dejaHttps ? 'Déjà active pour cette commune.' : 'Refusé tant que le certificat n\'est pas reconnu.'}</p>
+        ${cmd(`./golive.sh ${d.rel} ${c.slug} --https`)}
+        ${cmd(`./build.sh ${d.rel} && ./deploy.sh ${d.rel} _villes`)}
+      </div>
+
+      <div class="etape">
+        <h3>Vérifier</h3>
+        ${cmd(`curl -sI https://${hote}/ | head -1`)}
+        ${cmd(`./ssl-check.sh ${d.rel}`)}
+      </div>
+
+      <div class="fin">
+        <button class="termine${faites.has(c.slug) ? ' fait' : ''}" id="btnFini">
+          ${faites.has(c.slug) ? '✓ Terminée — annuler' : 'Marquer comme terminée'}
+        </button>
+        <span class="info" id="infoFini"></span>
+      </div>
+    </div>`));
+
+  // Même effet que la case à cocher de la liste, mais au bout des étapes :
+  // on ne remonte pas chercher la ligne après avoir déroulé la procédure.
+  const btn = document.getElementById('btnFini');
+  btn.addEventListener('click', () => {
+    if (faites.has(c.slug)) faites.delete(c.slug); else faites.add(c.slug);
+    enregistrerFaites();
+    listeVilles();
+    afficher(c);
+
+    // Proposer la suivante à traiter, dans l'ordre de la liste
+    if (faites.has(c.slug)) {
+      const suiv = D.departements[iDep].communes.find(x => !faites.has(x.slug));
+      const info = document.getElementById('infoFini');
+      if (suiv) {
+        info.innerHTML = 'Suivante : ';
+        const a = document.createElement('button');
+        a.className = 'suivante';
+        a.textContent = suiv.nom + ' →';
+        a.onclick = () => { slugActif = suiv.slug; listeVilles(); afficher(suiv); };
+        info.appendChild(a);
+      } else {
+        info.textContent = 'Toutes les communes du département sont faites.';
+      }
+    }
+  });
+
+  fiche.scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-copie]');
+  if (!b) return;
+  navigator.clipboard.writeText(b.dataset.copie).then(() => {
+    const t = b.textContent; b.textContent = 'copié'; b.classList.add('ok');
+    setTimeout(() => { b.textContent = t; b.classList.remove('ok'); }, 1200);
+  });
+});
+
+selDep.addEventListener('change', () => {
+  iDep = +selDep.value; slugActif = null; fiche.innerHTML = '';
+  chargerFaites(); listeVilles();
+});
+rech.addEventListener('input', listeVilles);
+chargerFaites();
+listeVilles();
+</script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Suivi des sites en ligne</title>
+<style>
+  :root{
+    --bg:#0E1116; --bg2:#141920; --surface:#1A212B; --surface2:#212A36;
+    --line:#252F3D; --line2:#334153;
+    --ink:#E8EDF4; --ink2:#A3B2C4; --ink3:#6D7E92;
+    --ok:#35C08A; --attente:#C9922E;
+    --accent:#F28C1F; --accent2:#BC5A00;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+       background:var(--bg);color:var(--ink);min-height:100vh}
+
+  .entete{border-bottom:1px solid var(--line);background:var(--bg2);
+          padding:16px 24px;display:flex;align-items:center;gap:16px;
+          position:sticky;top:0;z-index:20}
+  .marque{font-weight:700;font-size:16.5px;letter-spacing:-.01em}
+  .marque span{color:var(--ink3);font-weight:500}
+  .fil{margin-left:auto;display:flex;align-items:center;gap:8px;
+       font-size:13.5px;color:var(--ink3);flex-wrap:wrap}
+  .fil button{background:none;border:0;color:var(--accent);cursor:pointer;
+              font:600 13.5px system-ui;padding:0}
+  .fil button:hover{text-decoration:underline}
+
+  .page{max-width:1240px;margin:0 auto;padding:38px 24px 90px}
+  h1{font-size:34px;letter-spacing:-.02em;text-align:center;margin-bottom:8px}
+  .sous{text-align:center;color:var(--ink3);font-size:14.5px;margin-bottom:28px}
+  .pilule{display:block;width:fit-content;margin:0 auto 30px;
+          background:linear-gradient(135deg,var(--accent),var(--accent2));
+          color:#fff;font-weight:600;font-size:14px;padding:8px 20px;border-radius:999px}
+
+  input[type=search]{display:block;width:100%;max-width:620px;margin:0 auto 26px;
+    font:15.5px system-ui;padding:13px 18px;border:1px solid var(--line2);
+    border-radius:11px;background:var(--surface);color:var(--ink)}
+  input[type=search]::placeholder{color:var(--ink3)}
+  input[type=search]:focus{outline:0;border-color:var(--accent)}
+
+  .cartes{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:16px}
+  .carte{position:relative;overflow:hidden;border:0;border-radius:15px;
+         background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 100%);
+         padding:20px 22px;cursor:pointer;text-align:left;color:#fff;
+         box-shadow:0 6px 18px rgba(0,0,0,.30);
+         transition:transform .16s ease,box-shadow .16s ease}
+  .carte:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.42)}
+  /* voile diagonal : donne du relief au dégradé sans changer la teinte */
+  .carte::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(160deg,rgba(255,255,255,.16),rgba(255,255,255,0) 55%)}
+  .carte>*{position:relative;z-index:1}
+  .carte h3{font-size:17.5px;color:#fff;margin-bottom:7px;padding-right:38px}
+  .carte .n{font-size:19px;font-weight:700;color:#fff;line-height:1.15}
+  .carte .l{font-size:13.5px;color:rgba(255,255,255,.84);margin-top:2px}
+  .carte .globe{position:absolute;top:15px;right:15px;z-index:2;
+    width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.24);
+    display:grid;place-items:center;font-size:15px;text-decoration:none;
+    border:1px solid rgba(255,255,255,.28);transition:background .15s,transform .15s}
+  .carte .globe:hover{background:rgba(255,255,255,.42);transform:scale(1.08)}
+  .carte .barre{height:5px;border-radius:3px;background:rgba(255,255,255,.26);
+    margin-top:15px;overflow:hidden}
+  .carte .barre i{display:block;height:100%;background:#fff;border-radius:3px}
+  .carte .pct{font-size:12.5px;color:rgba(255,255,255,.86);margin-top:7px}
+
+  /* Métiers */
+  .metiers{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;
+           max-width:1000px;margin:0 auto}
+  .metier{background:var(--surface);border:1px solid var(--line);border-radius:16px;
+          padding:26px 20px;text-align:center;cursor:pointer;color:inherit;
+          transition:border-color .15s,transform .15s}
+  .metier:hover{transform:translateY(-3px)}
+  .metier .pastille{width:52px;height:52px;border-radius:14px;margin:0 auto 14px;
+                    display:grid;place-items:center;font-size:24px;font-weight:700;color:#fff}
+  .metier h3{font-size:17.5px;margin-bottom:4px}
+  .metier p{font-size:13px;color:var(--ink3)}
+
+  /* Lignes de communes */
+  .liste{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface)}
+  .liste .tete{background:linear-gradient(135deg,var(--accent),var(--accent2));
+               color:#fff;font-weight:600;font-size:14.5px;padding:13px 18px;
+               display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .ligne{display:flex;align-items:center;gap:14px;padding:11px 18px;
+         border-top:1px solid var(--line)}
+  .ligne:hover{background:var(--surface2)}
+  .rang{width:44px;color:var(--ink3);font-size:13px;font-variant-numeric:tabular-nums;flex-shrink:0}
+  .hote{flex:1;min-width:0;font-family:var(--mono);font-size:13.5px;
+        overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .hote b{font-family:system-ui;font-size:14.5px;font-weight:600;color:var(--ink)}
+  .hote em{font-style:normal;color:var(--ink3);display:block;font-size:12.5px}
+  .etat{width:8px;height:8px;border-radius:50%;background:var(--attente);flex-shrink:0}
+  .ligne[data-https="1"] .etat{background:var(--ok)}
+  .actions{display:flex;gap:6px;flex-shrink:0}
+  .actions a{width:36px;height:34px;display:grid;place-items:center;border-radius:8px;
+             background:var(--surface2);border:1px solid var(--line2);color:var(--ink2);
+             text-decoration:none;font:600 12px system-ui;transition:all .13s}
+  .actions a:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+  @media(max-width:720px){
+    .ligne{flex-wrap:wrap} .rang{width:28px}
+    .actions{width:100%;justify-content:flex-end}
+  }
+  .vide{text-align:center;color:var(--ink3);padding:46px 0}
+</style>
+</head>
+<body>
+
+<header class="entete">
+  <div class="marque">Suivi <span>des sites en ligne</span></div>
+  <nav class="fil" id="fil"></nav>
+</header>
+
+<div class="page" id="vue"></div>
+
+<script>
+const D = {"metiers":[{"slug":"couvreur","nom":"Couvreur","motcle":"couvreur","accent":{"c":"#F28C1F","c2":"#BC5A00"},"departements":[{"rel":"couvreur/gironde","nom":"Gironde","dep":"33","domain":"couvreur-gironde-33.fr","https":["abzac","bordeaux","merignac","pessac","talence","villenave-d-ornon","saint-medard-en-jalles","begles","cenon","la-teste-de-buch","gradignan","libourne","eysines","le-bouscat","lormont","gujan-mestras","bruges","floirac","ambares-et-lagrave","cestas","blanquefort","saint-andre-de-cubzac","andernos-les-bains","le-haillan","mios","arcachon","biganos","le-taillan-medoc","leognan","parempuyre","saint-loubes","audenge","saint-jean-d-illac","le-teich","coutras","artigues-pres-bordeaux","carbon-blanc","lege-cap-ferret","salles","martignas-sur-jalle","bassens","saint-aubin-de-medoc","langon","lanton","le-pian-medoc","cadaujac","ares","izon","belin-beliet","canejan","lesparre-medoc","saint-denis-de-pile","le-barp","marcheprime"],"communes":[{"slug":"bordeaux","nom":"Bordeaux","pop":261804},{"slug":"merignac","nom":"Mérignac","pop":75729},{"slug":"pessac","nom":"Pessac","pop":66760},{"slug":"talence","nom":"Talence","pop":45225},{"slug":"villenave-d-ornon","nom":"Villenave-d'Ornon","pop":40500},{"slug":"saint-medard-en-jalles","nom":"Saint-Médard-en-Jalles","pop":32538},{"slug":"begles","nom":"Bègles","pop":30813},{"slug":"cenon","nom":"Cenon","pop":26778},{"slug":"la-teste-de-buch","nom":"La Teste-de-Buch","pop":26556},{"slug":"gradignan","nom":"Gradignan","pop":25835},{"slug":"libourne","nom":"Libourne","pop":24557},{"slug":"eysines","nom":"Eysines","pop":24374},{"slug":"le-bouscat","nom":"Le Bouscat","pop":24339},{"slug":"lormont","nom":"Lormont","pop":23291},{"slug":"gujan-mestras","nom":"Gujan-Mestras","pop":22399},{"slug":"bruges","nom":"Bruges","pop":20215},{"slug":"floirac","nom":"Floirac","pop":17749},{"slug":"ambares-et-lagrave","nom":"Ambarès-et-Lagrave","pop":16798},{"slug":"cestas","nom":"Cestas","pop":16789},{"slug":"blanquefort","nom":"Blanquefort","pop":16004},{"slug":"saint-andre-de-cubzac","nom":"Saint-André-de-Cubzac","pop":12854},{"slug":"andernos-les-bains","nom":"Andernos-les-Bains","pop":12472},{"slug":"le-haillan","nom":"Le Haillan","pop":11572},{"slug":"mios","nom":"Mios","pop":11469},{"slug":"arcachon","nom":"Arcachon","pop":11259},{"slug":"biganos","nom":"Biganos","pop":11095},{"slug":"le-taillan-medoc","nom":"Le Taillan-Médoc","pop":10727},{"slug":"leognan","nom":"Léognan","pop":10708},{"slug":"parempuyre","nom":"Parempuyre","pop":10142},{"slug":"saint-loubes","nom":"Saint-Loubès","pop":10005},{"slug":"audenge","nom":"Audenge","pop":9371},{"slug":"saint-jean-d-illac","nom":"Saint-Jean-d'Illac","pop":9304},{"slug":"le-teich","nom":"Le Teich","pop":9004},{"slug":"coutras","nom":"Coutras","pop":8669},{"slug":"artigues-pres-bordeaux","nom":"Artigues-près-Bordeaux","pop":8645},{"slug":"carbon-blanc","nom":"Carbon-Blanc","pop":8300},{"slug":"lege-cap-ferret","nom":"Lège-Cap-Ferret","pop":8193},{"slug":"salles","nom":"Salles","pop":7887},{"slug":"martignas-sur-jalle","nom":"Martignas-sur-Jalle","pop":7850},{"slug":"bassens","nom":"Bassens","pop":7842},{"slug":"saint-aubin-de-medoc","nom":"Saint-Aubin-de-Médoc","pop":7583},{"slug":"langon","nom":"Langon","pop":7345},{"slug":"lanton","nom":"Lanton","pop":7276},{"slug":"le-pian-medoc","nom":"Le Pian-Médoc","pop":7105},{"slug":"cadaujac","nom":"Cadaujac","pop":6671},{"slug":"ares","nom":"Arès","pop":6441},{"slug":"izon","nom":"Izon","pop":6320},{"slug":"belin-beliet","nom":"Belin-Béliet","pop":6039},{"slug":"canejan","nom":"Canéjan","pop":5916},{"slug":"lesparre-medoc","nom":"Lesparre-Médoc","pop":5844},{"slug":"saint-denis-de-pile","nom":"Saint-Denis-de-Pile","pop":5816},{"slug":"le-barp","nom":"Le Barp","pop":5654},{"slug":"marcheprime","nom":"Marcheprime","pop":5367},{"slug":"ludon-medoc","nom":"Ludon-Médoc","pop":5352},{"slug":"pauillac","nom":"Pauillac","pop":5098},{"slug":"tresses","nom":"Tresses","pop":5086},{"slug":"lacanau","nom":"Lacanau","pop":5031},{"slug":"blaye","nom":"Blaye","pop":4957},{"slug":"saint-laurent-medoc","nom":"Saint-Laurent-Médoc","pop":4940},{"slug":"sainte-eulalie","nom":"Sainte-Eulalie","pop":4925},{"slug":"creon","nom":"Créon","pop":4880},{"slug":"saint-sulpice-et-cameyrac","nom":"Saint-Sulpice-et-Cameyrac","pop":4879},{"slug":"castelnau-de-medoc","nom":"Castelnau-de-Médoc","pop":4829},{"slug":"bazas","nom":"Bazas","pop":4799},{"slug":"sadirac","nom":"Sadirac","pop":4687},{"slug":"macau","nom":"Macau","pop":4527},{"slug":"la-brede","nom":"La Brède","pop":4469},{"slug":"pineuilh","nom":"Pineuilh","pop":4409},{"slug":"la-reole","nom":"La Réole","pop":4396},{"slug":"carignan-de-bordeaux","nom":"Carignan-de-Bordeaux","pop":4237},{"slug":"vayres","nom":"Vayres","pop":4204},{"slug":"hourtin","nom":"Hourtin","pop":3983},{"slug":"arsac","nom":"Arsac","pop":3956},{"slug":"bouliac","nom":"Bouliac","pop":3773},{"slug":"val-de-virvee","nom":"Val de Virvée","pop":3705},{"slug":"latresne","nom":"Latresne","pop":3639},{"slug":"saint-selve","nom":"Saint-Selve","pop":3578},{"slug":"martillac","nom":"Martillac","pop":3504},{"slug":"montussan","nom":"Montussan","pop":3451},{"slug":"saint-caprais-de-bordeaux","nom":"Saint-Caprais-de-Bordeaux","pop":3440},{"slug":"fargues-saint-hilaire","nom":"Fargues-Saint-Hilaire","pop":3404},{"slug":"pompignac","nom":"Pompignac","pop":3393},{"slug":"saucats","nom":"Saucats","pop":3388},{"slug":"le-porge","nom":"Le Porge","pop":3371},{"slug":"saint-savin","nom":"Saint-Savin","pop":3347},{"slug":"podensac","nom":"Podensac","pop":3285},{"slug":"castillon-la-bataille","nom":"Castillon-la-Bataille","pop":3279},{"slug":"saint-medard-d-eyrans","nom":"Saint-Médard-d'Eyrans","pop":3263},{"slug":"ambes","nom":"Ambès","pop":3207},{"slug":"saint-seurin-sur-l-isle","nom":"Saint-Seurin-sur-l'Isle","pop":3151},{"slug":"camblanes-et-meynac","nom":"Camblanes-et-Meynac","pop":3093},{"slug":"saint-ciers-sur-gironde","nom":"Saint-Ciers-sur-Gironde","pop":3081},{"slug":"avensan","nom":"Avensan","pop":3076},{"slug":"galgon","nom":"Galgon","pop":3058},{"slug":"sainte-helene","nom":"Sainte-Hélène","pop":3004},{"slug":"soulac-sur-mer","nom":"Soulac-sur-Mer","pop":2922},{"slug":"yvrac","nom":"Yvrac","pop":2881},{"slug":"margaux-cantenac","nom":"Margaux-Cantenac","pop":2831},{"slug":"laruscade","nom":"Laruscade","pop":2814},{"slug":"toulenne","nom":"Toulenne","pop":2813},{"slug":"listrac-medoc","nom":"Listrac-Médoc","pop":2796},{"slug":"cadillac-sur-garonne","nom":"Cadillac-sur-Garonne","pop":2785},{"slug":"salleboeuf","nom":"Sallebœuf","pop":2728},{"slug":"cezac","nom":"Cézac","pop":2694},{"slug":"vendays-montalivet","nom":"Vendays-Montalivet","pop":2684},{"slug":"portets","nom":"Portets","pop":2676},{"slug":"saint-quentin-de-baron","nom":"Saint-Quentin-de-Baron","pop":2675},{"slug":"la-lande-de-fronsac","nom":"La Lande-de-Fronsac","pop":2659},{"slug":"sainte-foy-la-grande","nom":"Sainte-Foy-la-Grande","pop":2615},{"slug":"beychac-et-caillau","nom":"Beychac-et-Caillau","pop":2590},{"slug":"cubzac-les-ponts","nom":"Cubzac-les-Ponts","pop":2581},{"slug":"castres-gironde","nom":"Castres-Gironde","pop":2575},{"slug":"saint-yzan-de-soudiac","nom":"Saint-Yzan-de-Soudiac","pop":2527},{"slug":"beautiran","nom":"Beautiran","pop":2443},{"slug":"carcans","nom":"Carcans","pop":2418},{"slug":"cabanac-et-villagrains","nom":"Cabanac-et-Villagrains","pop":2404},{"slug":"pugnac","nom":"Pugnac","pop":2392},{"slug":"saint-medard-de-guizieres","nom":"Saint-Médard-de-Guizières","pop":2389},{"slug":"cavignac","nom":"Cavignac","pop":2388},{"slug":"cussac-fort-medoc","nom":"Cussac-Fort-Médoc","pop":2372},{"slug":"gaillan-en-medoc","nom":"Gaillan-en-Médoc","pop":2365},{"slug":"bourg","nom":"Bourg","pop":2283},{"slug":"saint-germain-du-puch","nom":"Saint-Germain-du-Puch","pop":2276},{"slug":"cissac-medoc","nom":"Cissac-Médoc","pop":2262},{"slug":"quinsac","nom":"Quinsac","pop":2215},{"slug":"landiras","nom":"Landiras","pop":2191},{"slug":"langoiran","nom":"Langoiran","pop":2191},{"slug":"peujard","nom":"Peujard","pop":2167},{"slug":"les-eglisottes-et-chalaures","nom":"Les Églisottes-et-Chalaures","pop":2147},{"slug":"preignac","nom":"Preignac","pop":2145},{"slug":"saint-louis-de-montferrand","nom":"Saint-Louis-de-Montferrand","pop":2144},{"slug":"cerons","nom":"Cérons","pop":2132},{"slug":"cenac","nom":"Cénac","pop":2131},{"slug":"saint-magne-de-castillon","nom":"Saint-Magne-de-Castillon","pop":2090},{"slug":"barsac","nom":"Barsac","pop":2065},{"slug":"targon","nom":"Targon","pop":2044},{"slug":"saint-maixant","nom":"Saint-Maixant","pop":2033},{"slug":"arveyres","nom":"Arveyres","pop":2029},{"slug":"saint-macaire","nom":"Saint-Macaire","pop":2017},{"slug":"abzac","nom":"Abzac","pop":2013},{"slug":"genissac","nom":"Génissac","pop":2007},{"slug":"saint-gervais","nom":"Saint-Gervais","pop":1948},{"slug":"moulis-en-medoc","nom":"Moulis-en-Médoc","pop":1908},{"slug":"sainte-terre","nom":"Sainte-Terre","pop":1897},{"slug":"saint-christoly-de-blaye","nom":"Saint-Christoly-de-Blaye","pop":1877},{"slug":"sauveterre-de-guyenne","nom":"Sauveterre-de-Guyenne","pop":1868},{"slug":"saint-symphorien","nom":"Saint-Symphorien","pop":1824},{"slug":"berson","nom":"Berson","pop":1821},{"slug":"cambes","nom":"Cambes","pop":1810},{"slug":"cubnezais","nom":"Cubnezais","pop":1807},{"slug":"saint-vivien-de-medoc","nom":"Saint-Vivien-de-Médoc","pop":1796},{"slug":"val-de-livenne","nom":"Val-de-Livenne","pop":1793},{"slug":"saint-morillon","nom":"Saint-Morillon","pop":1786},{"slug":"roaillan","nom":"Roaillan","pop":1777},{"slug":"saint-emilion","nom":"Saint-Émilion","pop":1769},{"slug":"soussans","nom":"Soussans","pop":1692},{"slug":"noaillan","nom":"Noaillan","pop":1662},{"slug":"les-peintures","nom":"Les Peintures","pop":1646},{"slug":"saint-mariens","nom":"Saint-Mariens","pop":1628},{"slug":"guitres","nom":"Guîtres","pop":1622},{"slug":"reignac","nom":"Reignac","pop":1622},{"slug":"saint-estephe","nom":"Saint-Estèphe","pop":1617},{"slug":"lagorce","nom":"Lagorce","pop":1616},{"slug":"fargues","nom":"Fargues","pop":1613},{"slug":"monsegur","nom":"Monségur","pop":1591},{"slug":"la-sauve","nom":"La Sauve","pop":1586},{"slug":"grayan-et-l-hopital","nom":"Grayan-et-l'Hôpital","pop":1542},{"slug":"etauliers","nom":"Étauliers","pop":1534},{"slug":"saint-laurent-d-arce","nom":"Saint-Laurent-d'Arce","pop":1526},{"slug":"montagne","nom":"Montagne","pop":1525},{"slug":"castets-et-castillon","nom":"Castets et Castillon","pop":1513},{"slug":"saint-ciers-d-abzac","nom":"Saint-Ciers-d'Abzac","pop":1513},{"slug":"braud-et-saint-louis","nom":"Braud-et-Saint-Louis","pop":1510},{"slug":"rions","nom":"Rions","pop":1500},{"slug":"hostens","nom":"Hostens","pop":1488},{"slug":"saint-avit-saint-nazaire","nom":"Saint-Avit-Saint-Nazaire","pop":1488},{"slug":"gauriaguet","nom":"Gauriaguet","pop":1478},{"slug":"prignac-et-marcamps","nom":"Prignac-et-Marcamps","pop":1420},{"slug":"ayguemorte-les-graves","nom":"Ayguemorte-les-Graves","pop":1394},{"slug":"illats","nom":"Illats","pop":1387},{"slug":"lugon-et-l-ile-du-carnay","nom":"Lugon-et-l'Île-du-Carnay","pop":1386},{"slug":"le-verdon-sur-mer","nom":"Le Verdon-sur-Mer","pop":1369},{"slug":"arbanats","nom":"Arbanats","pop":1353},{"slug":"queyrac","nom":"Queyrac","pop":1346},{"slug":"cadillac-en-fronsadais","nom":"Cadillac-en-Fronsadais","pop":1345},{"slug":"lamarque","nom":"Lamarque","pop":1337},{"slug":"captieux","nom":"Captieux","pop":1336},{"slug":"saint-sulpice-de-faleyrens","nom":"Saint-Sulpice-de-Faleyrens","pop":1319},{"slug":"tauriac","nom":"Tauriac","pop":1318},{"slug":"saint-germain-d-esteuil","nom":"Saint-Germain-d'Esteuil","pop":1315},{"slug":"gironde-sur-dropt","nom":"Gironde-sur-Dropt","pop":1311},{"slug":"sablons","nom":"Sablons","pop":1310},{"slug":"branne","nom":"Branne","pop":1309},{"slug":"saint-pierre-d-aurillac","nom":"Saint-Pierre-d'Aurillac","pop":1309},{"slug":"vertheuil","nom":"Vertheuil","pop":1306},{"slug":"virsac","nom":"Virsac","pop":1305},{"slug":"villegouge","nom":"Villegouge","pop":1281},{"slug":"cartelegue","nom":"Cartelègue","pop":1261},{"slug":"saint-sauveur","nom":"Saint-Sauveur","pop":1258},{"slug":"rauzan","nom":"Rauzan","pop":1249},{"slug":"saint-pierre-de-mons","nom":"Saint-Pierre-de-Mons","pop":1236},{"slug":"salaunes","nom":"Salaunes","pop":1227},{"slug":"marsas","nom":"Marsas","pop":1226},{"slug":"cars","nom":"Cars","pop":1211},{"slug":"beguey","nom":"Béguey","pop":1208},{"slug":"paillet","nom":"Paillet","pop":1207},{"slug":"grignols","nom":"Grignols","pop":1202},{"slug":"baron","nom":"Baron","pop":1193},{"slug":"perissac","nom":"Périssac","pop":1186},{"slug":"lussac","nom":"Lussac","pop":1184},{"slug":"saint-magne","nom":"Saint-Magne","pop":1172},{"slug":"saint-martin-lacaussade","nom":"Saint-Martin-Lacaussade","pop":1166},{"slug":"les-billaux","nom":"Les Billaux","pop":1165},{"slug":"bernos-beaulac","nom":"Bernos-Beaulac","pop":1136},{"slug":"villandraut","nom":"Villandraut","pop":1131},{"slug":"lamothe-landerron","nom":"Lamothe-Landerron","pop":1121},{"slug":"fronsac","nom":"Fronsac","pop":1120},{"slug":"les-artigues-de-lussac","nom":"Les Artigues-de-Lussac","pop":1114},{"slug":"virelade","nom":"Virelade","pop":1109},{"slug":"caudrot","nom":"Caudrot","pop":1106},{"slug":"loupiac","nom":"Loupiac","pop":1097},{"slug":"vensac","nom":"Vensac","pop":1095},{"slug":"naujac-sur-mer","nom":"Naujac-sur-Mer","pop":1086},{"slug":"tabanac","nom":"Tabanac","pop":1085},{"slug":"coimeres","nom":"Coimères","pop":1073},{"slug":"lugos","nom":"Lugos","pop":1066},{"slug":"auros","nom":"Auros","pop":1047},{"slug":"maransin","nom":"Maransin","pop":1040},{"slug":"prechac","nom":"Préchac","pop":1040},{"slug":"verdelais","nom":"Verdelais","pop":1035},{"slug":"mouliets-et-villemartin","nom":"Mouliets-et-Villemartin","pop":1025},{"slug":"bonnetan","nom":"Bonnetan","pop":1024},{"slug":"camarsac","nom":"Camarsac","pop":1022},{"slug":"moulon","nom":"Moulon","pop":1022},{"slug":"saint-paul","nom":"Saint-Paul","pop":1021},{"slug":"saint-vincent-de-paul","nom":"Saint-Vincent-de-Paul","pop":997},{"slug":"baurech","nom":"Baurech","pop":965},{"slug":"jau-dignac-et-loirac","nom":"Jau-Dignac-et-Loirac","pop":956},{"slug":"saint-girons-d-aiguevives","nom":"Saint-Girons-d'Aiguevives","pop":953},{"slug":"le-pian-sur-garonne","nom":"Le Pian-sur-Garonne","pop":949},{"slug":"blasimon","nom":"Blasimon","pop":940},{"slug":"plassac","nom":"Plassac","pop":939},{"slug":"saint-genes-de-fronsac","nom":"Saint-Genès-de-Fronsac","pop":933},{"slug":"verac","nom":"Vérac","pop":930},{"slug":"donnezac","nom":"Donnezac","pop":927},{"slug":"saint-romain-la-virvee","nom":"Saint-Romain-la-Virvée","pop":922},{"slug":"loupes","nom":"Loupes","pop":916},{"slug":"anglade","nom":"Anglade","pop":906},{"slug":"begadan","nom":"Bégadan","pop":901}]}]},{"slug":"peintre","nom":"Peintre en Bâtiment","motcle":"peintre en batiment","accent":{"c":"#3B9BE8","c2":"#1F6FB0"},"departements":[{"rel":"peintre/gironde","nom":"Gironde","dep":"33","domain":"artisan-peintre-pro-33.fr","https":["bordeaux","merignac","talence","villenave-d-ornon","saint-medard-en-jalles","begles","cenon","la-teste-de-buch","gradignan","libourne","eysines","le-bouscat","lormont","gujan-mestras","bruges","floirac","ambares-et-lagrave","cestas","blanquefort","saint-andre-de-cubzac","andernos-les-bains","le-haillan","mios","arcachon","biganos","le-taillan-medoc","leognan","parempuyre","saint-loubes","audenge","saint-jean-d-illac","le-teich","coutras","carbon-blanc","artigues-pres-bordeaux","lege-cap-ferret","salles","martignas-sur-jalle","bassens","saint-aubin-de-medoc","langon","le-pian-medoc","lanton","ares","cadaujac","izon","belin-beliet","canejan","lesparre-medoc","saint-denis-de-pile","le-barp"],"communes":[{"slug":"bordeaux","nom":"Bordeaux","pop":261804},{"slug":"merignac","nom":"Mérignac","pop":75729},{"slug":"pessac","nom":"Pessac","pop":66760},{"slug":"talence","nom":"Talence","pop":45225},{"slug":"villenave-d-ornon","nom":"Villenave-d'Ornon","pop":40500},{"slug":"saint-medard-en-jalles","nom":"Saint-Médard-en-Jalles","pop":32538},{"slug":"begles","nom":"Bègles","pop":30813},{"slug":"cenon","nom":"Cenon","pop":26778},{"slug":"la-teste-de-buch","nom":"La Teste-de-Buch","pop":26556},{"slug":"gradignan","nom":"Gradignan","pop":25835},{"slug":"libourne","nom":"Libourne","pop":24557},{"slug":"eysines","nom":"Eysines","pop":24374},{"slug":"le-bouscat","nom":"Le Bouscat","pop":24339},{"slug":"lormont","nom":"Lormont","pop":23291},{"slug":"gujan-mestras","nom":"Gujan-Mestras","pop":22399},{"slug":"bruges","nom":"Bruges","pop":20215},{"slug":"floirac","nom":"Floirac","pop":17749},{"slug":"ambares-et-lagrave","nom":"Ambarès-et-Lagrave","pop":16798},{"slug":"cestas","nom":"Cestas","pop":16789},{"slug":"blanquefort","nom":"Blanquefort","pop":16004},{"slug":"saint-andre-de-cubzac","nom":"Saint-André-de-Cubzac","pop":12854},{"slug":"andernos-les-bains","nom":"Andernos-les-Bains","pop":12472},{"slug":"le-haillan","nom":"Le Haillan","pop":11572},{"slug":"mios","nom":"Mios","pop":11469},{"slug":"arcachon","nom":"Arcachon","pop":11259},{"slug":"biganos","nom":"Biganos","pop":11095},{"slug":"le-taillan-medoc","nom":"Le Taillan-Médoc","pop":10727},{"slug":"leognan","nom":"Léognan","pop":10708},{"slug":"parempuyre","nom":"Parempuyre","pop":10142},{"slug":"saint-loubes","nom":"Saint-Loubès","pop":10005},{"slug":"audenge","nom":"Audenge","pop":9371},{"slug":"saint-jean-d-illac","nom":"Saint-Jean-d'Illac","pop":9304},{"slug":"le-teich","nom":"Le Teich","pop":9004},{"slug":"coutras","nom":"Coutras","pop":8669},{"slug":"artigues-pres-bordeaux","nom":"Artigues-près-Bordeaux","pop":8645},{"slug":"carbon-blanc","nom":"Carbon-Blanc","pop":8300},{"slug":"lege-cap-ferret","nom":"Lège-Cap-Ferret","pop":8193},{"slug":"salles","nom":"Salles","pop":7887},{"slug":"martignas-sur-jalle","nom":"Martignas-sur-Jalle","pop":7850},{"slug":"bassens","nom":"Bassens","pop":7842},{"slug":"saint-aubin-de-medoc","nom":"Saint-Aubin-de-Médoc","pop":7583},{"slug":"langon","nom":"Langon","pop":7345},{"slug":"lanton","nom":"Lanton","pop":7276},{"slug":"le-pian-medoc","nom":"Le Pian-Médoc","pop":7105},{"slug":"cadaujac","nom":"Cadaujac","pop":6671},{"slug":"ares","nom":"Arès","pop":6441},{"slug":"izon","nom":"Izon","pop":6320},{"slug":"belin-beliet","nom":"Belin-Béliet","pop":6039},{"slug":"canejan","nom":"Canéjan","pop":5916},{"slug":"lesparre-medoc","nom":"Lesparre-Médoc","pop":5844},{"slug":"saint-denis-de-pile","nom":"Saint-Denis-de-Pile","pop":5816},{"slug":"le-barp","nom":"Le Barp","pop":5654},{"slug":"marcheprime","nom":"Marcheprime","pop":5367},{"slug":"ludon-medoc","nom":"Ludon-Médoc","pop":5352},{"slug":"pauillac","nom":"Pauillac","pop":5098},{"slug":"tresses","nom":"Tresses","pop":5086},{"slug":"lacanau","nom":"Lacanau","pop":5031},{"slug":"blaye","nom":"Blaye","pop":4957},{"slug":"saint-laurent-medoc","nom":"Saint-Laurent-Médoc","pop":4940},{"slug":"sainte-eulalie","nom":"Sainte-Eulalie","pop":4925},{"slug":"creon","nom":"Créon","pop":4880},{"slug":"saint-sulpice-et-cameyrac","nom":"Saint-Sulpice-et-Cameyrac","pop":4879},{"slug":"castelnau-de-medoc","nom":"Castelnau-de-Médoc","pop":4829},{"slug":"bazas","nom":"Bazas","pop":4799},{"slug":"sadirac","nom":"Sadirac","pop":4687},{"slug":"macau","nom":"Macau","pop":4527},{"slug":"la-brede","nom":"La Brède","pop":4469},{"slug":"pineuilh","nom":"Pineuilh","pop":4409},{"slug":"la-reole","nom":"La Réole","pop":4396},{"slug":"carignan-de-bordeaux","nom":"Carignan-de-Bordeaux","pop":4237},{"slug":"vayres","nom":"Vayres","pop":4204},{"slug":"hourtin","nom":"Hourtin","pop":3983},{"slug":"arsac","nom":"Arsac","pop":3956},{"slug":"bouliac","nom":"Bouliac","pop":3773},{"slug":"val-de-virvee","nom":"Val de Virvée","pop":3705},{"slug":"latresne","nom":"Latresne","pop":3639},{"slug":"saint-selve","nom":"Saint-Selve","pop":3578},{"slug":"martillac","nom":"Martillac","pop":3504},{"slug":"montussan","nom":"Montussan","pop":3451},{"slug":"saint-caprais-de-bordeaux","nom":"Saint-Caprais-de-Bordeaux","pop":3440},{"slug":"fargues-saint-hilaire","nom":"Fargues-Saint-Hilaire","pop":3404},{"slug":"pompignac","nom":"Pompignac","pop":3393},{"slug":"saucats","nom":"Saucats","pop":3388},{"slug":"le-porge","nom":"Le Porge","pop":3371},{"slug":"saint-savin","nom":"Saint-Savin","pop":3347},{"slug":"podensac","nom":"Podensac","pop":3285},{"slug":"castillon-la-bataille","nom":"Castillon-la-Bataille","pop":3279},{"slug":"saint-medard-d-eyrans","nom":"Saint-Médard-d'Eyrans","pop":3263},{"slug":"ambes","nom":"Ambès","pop":3207},{"slug":"saint-seurin-sur-l-isle","nom":"Saint-Seurin-sur-l'Isle","pop":3151},{"slug":"camblanes-et-meynac","nom":"Camblanes-et-Meynac","pop":3093},{"slug":"saint-ciers-sur-gironde","nom":"Saint-Ciers-sur-Gironde","pop":3081},{"slug":"avensan","nom":"Avensan","pop":3076},{"slug":"galgon","nom":"Galgon","pop":3058},{"slug":"sainte-helene","nom":"Sainte-Hélène","pop":3004},{"slug":"soulac-sur-mer","nom":"Soulac-sur-Mer","pop":2922},{"slug":"yvrac","nom":"Yvrac","pop":2881},{"slug":"margaux-cantenac","nom":"Margaux-Cantenac","pop":2831},{"slug":"laruscade","nom":"Laruscade","pop":2814},{"slug":"toulenne","nom":"Toulenne","pop":2813},{"slug":"listrac-medoc","nom":"Listrac-Médoc","pop":2796},{"slug":"cadillac-sur-garonne","nom":"Cadillac-sur-Garonne","pop":2785},{"slug":"salleboeuf","nom":"Sallebœuf","pop":2728},{"slug":"cezac","nom":"Cézac","pop":2694},{"slug":"vendays-montalivet","nom":"Vendays-Montalivet","pop":2684},{"slug":"portets","nom":"Portets","pop":2676},{"slug":"saint-quentin-de-baron","nom":"Saint-Quentin-de-Baron","pop":2675},{"slug":"la-lande-de-fronsac","nom":"La Lande-de-Fronsac","pop":2659},{"slug":"sainte-foy-la-grande","nom":"Sainte-Foy-la-Grande","pop":2615},{"slug":"beychac-et-caillau","nom":"Beychac-et-Caillau","pop":2590},{"slug":"cubzac-les-ponts","nom":"Cubzac-les-Ponts","pop":2581},{"slug":"castres-gironde","nom":"Castres-Gironde","pop":2575},{"slug":"saint-yzan-de-soudiac","nom":"Saint-Yzan-de-Soudiac","pop":2527},{"slug":"beautiran","nom":"Beautiran","pop":2443},{"slug":"carcans","nom":"Carcans","pop":2418},{"slug":"cabanac-et-villagrains","nom":"Cabanac-et-Villagrains","pop":2404},{"slug":"pugnac","nom":"Pugnac","pop":2392},{"slug":"saint-medard-de-guizieres","nom":"Saint-Médard-de-Guizières","pop":2389},{"slug":"cavignac","nom":"Cavignac","pop":2388},{"slug":"cussac-fort-medoc","nom":"Cussac-Fort-Médoc","pop":2372},{"slug":"gaillan-en-medoc","nom":"Gaillan-en-Médoc","pop":2365},{"slug":"bourg","nom":"Bourg","pop":2283},{"slug":"saint-germain-du-puch","nom":"Saint-Germain-du-Puch","pop":2276},{"slug":"cissac-medoc","nom":"Cissac-Médoc","pop":2262},{"slug":"quinsac","nom":"Quinsac","pop":2215},{"slug":"landiras","nom":"Landiras","pop":2191},{"slug":"langoiran","nom":"Langoiran","pop":2191},{"slug":"peujard","nom":"Peujard","pop":2167},{"slug":"les-eglisottes-et-chalaures","nom":"Les Églisottes-et-Chalaures","pop":2147},{"slug":"preignac","nom":"Preignac","pop":2145},{"slug":"saint-louis-de-montferrand","nom":"Saint-Louis-de-Montferrand","pop":2144},{"slug":"cerons","nom":"Cérons","pop":2132},{"slug":"cenac","nom":"Cénac","pop":2131},{"slug":"saint-magne-de-castillon","nom":"Saint-Magne-de-Castillon","pop":2090},{"slug":"barsac","nom":"Barsac","pop":2065},{"slug":"targon","nom":"Targon","pop":2044},{"slug":"saint-maixant","nom":"Saint-Maixant","pop":2033},{"slug":"arveyres","nom":"Arveyres","pop":2029},{"slug":"saint-macaire","nom":"Saint-Macaire","pop":2017},{"slug":"abzac","nom":"Abzac","pop":2013},{"slug":"genissac","nom":"Génissac","pop":2007},{"slug":"saint-gervais","nom":"Saint-Gervais","pop":1948},{"slug":"moulis-en-medoc","nom":"Moulis-en-Médoc","pop":1908},{"slug":"sainte-terre","nom":"Sainte-Terre","pop":1897},{"slug":"saint-christoly-de-blaye","nom":"Saint-Christoly-de-Blaye","pop":1877},{"slug":"sauveterre-de-guyenne","nom":"Sauveterre-de-Guyenne","pop":1868},{"slug":"saint-symphorien","nom":"Saint-Symphorien","pop":1824},{"slug":"berson","nom":"Berson","pop":1821},{"slug":"cambes","nom":"Cambes","pop":1810},{"slug":"cubnezais","nom":"Cubnezais","pop":1807},{"slug":"saint-vivien-de-medoc","nom":"Saint-Vivien-de-Médoc","pop":1796},{"slug":"val-de-livenne","nom":"Val-de-Livenne","pop":1793},{"slug":"saint-morillon","nom":"Saint-Morillon","pop":1786},{"slug":"roaillan","nom":"Roaillan","pop":1777},{"slug":"saint-emilion","nom":"Saint-Émilion","pop":1769},{"slug":"soussans","nom":"Soussans","pop":1692},{"slug":"noaillan","nom":"Noaillan","pop":1662},{"slug":"les-peintures","nom":"Les Peintures","pop":1646},{"slug":"saint-mariens","nom":"Saint-Mariens","pop":1628},{"slug":"guitres","nom":"Guîtres","pop":1622},{"slug":"reignac","nom":"Reignac","pop":1622},{"slug":"saint-estephe","nom":"Saint-Estèphe","pop":1617},{"slug":"lagorce","nom":"Lagorce","pop":1616},{"slug":"fargues","nom":"Fargues","pop":1613},{"slug":"monsegur","nom":"Monségur","pop":1591},{"slug":"la-sauve","nom":"La Sauve","pop":1586},{"slug":"grayan-et-l-hopital","nom":"Grayan-et-l'Hôpital","pop":1542},{"slug":"etauliers","nom":"Étauliers","pop":1534},{"slug":"saint-laurent-d-arce","nom":"Saint-Laurent-d'Arce","pop":1526},{"slug":"montagne","nom":"Montagne","pop":1525},{"slug":"castets-et-castillon","nom":"Castets et Castillon","pop":1513},{"slug":"saint-ciers-d-abzac","nom":"Saint-Ciers-d'Abzac","pop":1513},{"slug":"braud-et-saint-louis","nom":"Braud-et-Saint-Louis","pop":1510},{"slug":"rions","nom":"Rions","pop":1500},{"slug":"hostens","nom":"Hostens","pop":1488},{"slug":"saint-avit-saint-nazaire","nom":"Saint-Avit-Saint-Nazaire","pop":1488},{"slug":"gauriaguet","nom":"Gauriaguet","pop":1478},{"slug":"prignac-et-marcamps","nom":"Prignac-et-Marcamps","pop":1420},{"slug":"ayguemorte-les-graves","nom":"Ayguemorte-les-Graves","pop":1394},{"slug":"illats","nom":"Illats","pop":1387},{"slug":"lugon-et-l-ile-du-carnay","nom":"Lugon-et-l'Île-du-Carnay","pop":1386},{"slug":"le-verdon-sur-mer","nom":"Le Verdon-sur-Mer","pop":1369},{"slug":"arbanats","nom":"Arbanats","pop":1353},{"slug":"queyrac","nom":"Queyrac","pop":1346},{"slug":"cadillac-en-fronsadais","nom":"Cadillac-en-Fronsadais","pop":1345},{"slug":"lamarque","nom":"Lamarque","pop":1337},{"slug":"captieux","nom":"Captieux","pop":1336},{"slug":"saint-sulpice-de-faleyrens","nom":"Saint-Sulpice-de-Faleyrens","pop":1319},{"slug":"tauriac","nom":"Tauriac","pop":1318},{"slug":"saint-germain-d-esteuil","nom":"Saint-Germain-d'Esteuil","pop":1315},{"slug":"gironde-sur-dropt","nom":"Gironde-sur-Dropt","pop":1311},{"slug":"sablons","nom":"Sablons","pop":1310},{"slug":"branne","nom":"Branne","pop":1309},{"slug":"saint-pierre-d-aurillac","nom":"Saint-Pierre-d'Aurillac","pop":1309},{"slug":"vertheuil","nom":"Vertheuil","pop":1306},{"slug":"virsac","nom":"Virsac","pop":1305},{"slug":"villegouge","nom":"Villegouge","pop":1281},{"slug":"cartelegue","nom":"Cartelègue","pop":1261},{"slug":"saint-sauveur","nom":"Saint-Sauveur","pop":1258},{"slug":"rauzan","nom":"Rauzan","pop":1249},{"slug":"saint-pierre-de-mons","nom":"Saint-Pierre-de-Mons","pop":1236},{"slug":"salaunes","nom":"Salaunes","pop":1227},{"slug":"marsas","nom":"Marsas","pop":1226},{"slug":"cars","nom":"Cars","pop":1211},{"slug":"beguey","nom":"Béguey","pop":1208},{"slug":"paillet","nom":"Paillet","pop":1207},{"slug":"grignols","nom":"Grignols","pop":1202},{"slug":"baron","nom":"Baron","pop":1193},{"slug":"perissac","nom":"Périssac","pop":1186},{"slug":"lussac","nom":"Lussac","pop":1184},{"slug":"saint-magne","nom":"Saint-Magne","pop":1172},{"slug":"saint-martin-lacaussade","nom":"Saint-Martin-Lacaussade","pop":1166},{"slug":"les-billaux","nom":"Les Billaux","pop":1165},{"slug":"bernos-beaulac","nom":"Bernos-Beaulac","pop":1136},{"slug":"villandraut","nom":"Villandraut","pop":1131},{"slug":"lamothe-landerron","nom":"Lamothe-Landerron","pop":1121},{"slug":"fronsac","nom":"Fronsac","pop":1120},{"slug":"les-artigues-de-lussac","nom":"Les Artigues-de-Lussac","pop":1114},{"slug":"virelade","nom":"Virelade","pop":1109},{"slug":"caudrot","nom":"Caudrot","pop":1106},{"slug":"loupiac","nom":"Loupiac","pop":1097},{"slug":"vensac","nom":"Vensac","pop":1095},{"slug":"naujac-sur-mer","nom":"Naujac-sur-Mer","pop":1086},{"slug":"tabanac","nom":"Tabanac","pop":1085},{"slug":"coimeres","nom":"Coimères","pop":1073},{"slug":"lugos","nom":"Lugos","pop":1066},{"slug":"auros","nom":"Auros","pop":1047},{"slug":"maransin","nom":"Maransin","pop":1040},{"slug":"prechac","nom":"Préchac","pop":1040},{"slug":"verdelais","nom":"Verdelais","pop":1035},{"slug":"mouliets-et-villemartin","nom":"Mouliets-et-Villemartin","pop":1025},{"slug":"bonnetan","nom":"Bonnetan","pop":1024},{"slug":"camarsac","nom":"Camarsac","pop":1022},{"slug":"moulon","nom":"Moulon","pop":1022},{"slug":"saint-paul","nom":"Saint-Paul","pop":1021},{"slug":"saint-vincent-de-paul","nom":"Saint-Vincent-de-Paul","pop":997},{"slug":"baurech","nom":"Baurech","pop":965},{"slug":"jau-dignac-et-loirac","nom":"Jau-Dignac-et-Loirac","pop":956},{"slug":"saint-girons-d-aiguevives","nom":"Saint-Girons-d'Aiguevives","pop":953},{"slug":"le-pian-sur-garonne","nom":"Le Pian-sur-Garonne","pop":949},{"slug":"blasimon","nom":"Blasimon","pop":940},{"slug":"plassac","nom":"Plassac","pop":939},{"slug":"saint-genes-de-fronsac","nom":"Saint-Genès-de-Fronsac","pop":933},{"slug":"verac","nom":"Vérac","pop":930},{"slug":"donnezac","nom":"Donnezac","pop":927},{"slug":"saint-romain-la-virvee","nom":"Saint-Romain-la-Virvée","pop":922},{"slug":"loupes","nom":"Loupes","pop":916},{"slug":"anglade","nom":"Anglade","pop":906},{"slug":"begadan","nom":"Bégadan","pop":901}]}]}]};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const vue = document.getElementById('vue');
+const fil = document.getElementById('fil');
+
+let iM = null, iD = null, q = '';
+
+function accent(m){
+  document.documentElement.style.setProperty('--accent',  m ? m.accent.c  : '#F28C1F');
+  document.documentElement.style.setProperty('--accent2', m ? m.accent.c2 : '#BC5A00');
+}
+
+function filAriane(){
+  fil.innerHTML = '';
+  if (iM === null) return;
+  const m = D.metiers[iM];
+  fil.appendChild(Object.assign(document.createElement('button'),
+    { textContent:'Métiers', onclick:()=>{ iM=null; iD=null; q=''; rendre(); } }));
+  if (iD !== null) {
+    fil.insertAdjacentHTML('beforeend', '<span>›</span>');
+    fil.appendChild(Object.assign(document.createElement('button'),
+      { textContent:m.nom, onclick:()=>{ iD=null; q=''; rendre(); } }));
+    fil.insertAdjacentHTML('beforeend',
+      '<span>› ' + esc(m.departements[iD].nom) + '</span>');
+  } else {
+    fil.insertAdjacentHTML('beforeend', '<span>› ' + esc(m.nom) + '</span>');
+  }
+}
+
+/* Les 5 liens d'une commune, dans l'ordre demandé :
+   le site · PageSpeed · indexation (site:) · Google · Bing */
+function liens(m, d, c){
+  const hote = c.slug + '.' + d.domain;
+  const req  = encodeURIComponent(m.motcle + ' ' + c.nom);
+  return [
+    ['🔗', 'https://' + hote + '/',                                              'Ouvrir le site'],
+    ['⚡', 'https://developers.google.com/speed/pagespeed/insights/?url=' + hote, 'PageSpeed Insights'],
+    ['Gi', 'https://www.google.com/search?q=' + encodeURIComponent('site:' + hote), 'Indexation Google'],
+    ['G',  'https://www.google.com/search?q=' + req,                              'Recherche Google'],
+    ['B',  'https://www.bing.com/search?q=' + req,                                'Recherche Bing'],
+  ].map(([t,u,titre]) =>
+    '<a href="' + esc(u) + '" target="_blank" rel="noopener" title="' + esc(titre) + '">' + t + '</a>'
+  ).join('');
+}
+
+function rendre(){
+  filAriane();
+
+  // ── Niveau 1 : métiers ────────────────────────────────────────────────────
+  if (iM === null) {
+    accent(null);
+    const total = D.metiers.reduce((n,m)=>n+m.departements.reduce((k,d)=>k+d.communes.length,0),0);
+    vue.innerHTML = '<h1>Suivi des sites</h1>' +
+      '<p class="sous">Un métier, un département, puis les communes et leurs liens de contrôle.</p>' +
+      '<span class="pilule">' + total.toLocaleString('fr-FR') + ' sites · ' + D.metiers.length + ' métier(s)</span>' +
+      '<div class="metiers">' + D.metiers.map((m,i)=>{
+        const nb = m.departements.reduce((k,d)=>k+d.communes.length,0);
+        return '<button class="metier" data-m="'+i+'" style="border-color:'+m.accent.c+'33">' +
+          '<span class="pastille" style="background:linear-gradient(135deg,'+m.accent.c+','+m.accent.c2+')">'+
+          esc(m.nom[0])+'</span>' +
+          '<h3>'+esc(m.nom)+'</h3>' +
+          '<p>'+nb.toLocaleString('fr-FR')+' sites · '+m.departements.length+' département(s)</p></button>';
+      }).join('') + '</div>';
+    vue.querySelectorAll('[data-m]').forEach(b =>
+      b.onclick = () => { iM = +b.dataset.m; q=''; rendre(); });
+    return;
+  }
+
+  const m = D.metiers[iM];
+  accent(m);
+
+  // ── Niveau 2 : départements ───────────────────────────────────────────────
+  if (iD === null) {
+    const total = m.departements.reduce((k,d)=>k+d.communes.length,0);
+    const vus = m.departements.filter(d =>
+      !q || d.nom.toLowerCase().includes(q) || String(d.dep).includes(q));
+    vue.innerHTML = '<h1>Sites ' + esc(m.nom) + '</h1>' +
+      '<span class="pilule">' + total.toLocaleString('fr-FR') + ' sites · ' +
+      m.departements.length + ' département(s)</span>' +
+      '<input type="search" id="rech" placeholder="Rechercher un département…" value="'+esc(q)+'">' +
+      (vus.length ? '<div class="cartes">' + vus.map(d => {
+        const i = m.departements.indexOf(d);
+        const pct = d.communes.length ? Math.round(d.https.length / d.communes.length * 100) : 0;
+        const fini = d.https.length >= d.communes.length && d.communes.length > 0;
+        const q = 'https://www.google.com/search?q=' + encodeURIComponent('site:' + d.domain);
+        return '<div class="carte" data-d="'+i+'" role="button" tabindex="0">' +
+          '<a class="globe" href="'+q+'" target="_blank" rel="noopener" title="'+
+          (fini ? "Département complet — voir indexation Google" : "Mise en ligne en cours — voir indexation Google")+
+          '">'+(fini ? '🌐' : '🕐')+'</a>' +
+          '<h3>'+esc(m.nom)+' '+esc(d.dep)+'</h3>' +
+          '<div class="n">'+d.communes.length+' sites</div>' +
+          '<div class="l">'+esc(d.nom)+'</div>' +
+          '<div class="barre"><i style="width:'+pct+'%"></i></div>' +
+          '<div class="pct">'+d.https.length+' sites · '+pct+' %</div>' +
+          '</div>';
+      }).join('') + '</div>' : '<p class="vide">Aucun département ne correspond.</p>');
+    const r = document.getElementById('rech');
+    r.oninput = () => { q = r.value.trim().toLowerCase(); rendre();
+      const n = document.getElementById('rech'); n.focus();
+      n.setSelectionRange(n.value.length, n.value.length); };
+    vue.querySelectorAll('[data-d]').forEach(b => {
+      const ouvrir = e => { if (e.target.closest('.globe')) return; iD = +b.dataset.d; q=''; rendre(); };
+      b.onclick = ouvrir;
+      b.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); ouvrir(e); } };
+    });
+    return;
+  }
+
+  // ── Niveau 3 : communes ───────────────────────────────────────────────────
+  const d = m.departements[iD];
+  const vus = d.communes.filter(c =>
+    !q || c.nom.toLowerCase().includes(q) || c.slug.includes(q));
+  vue.innerHTML = '<h1>' + esc(m.nom) + ' ' + esc(d.nom) + ' (' + esc(d.dep) + ')</h1>' +
+    '<span class="pilule">' + d.communes.length + ' sites · ' + d.https.length + ' en HTTPS</span>' +
+    '<input type="search" id="rech" placeholder="Rechercher une commune…" value="'+esc(q)+'">' +
+    '<p class="sous">' + vus.length + ' affichés</p>' +
+    (vus.length ? '<div class="liste"><div class="tete">🌐 ' + esc(d.domain) + ' · ' +
+      d.communes.length + ' sites</div>' +
+      vus.map((c,i) =>
+        '<div class="ligne" data-https="'+(d.https.includes(c.slug)?1:0)+'">' +
+        '<span class="rang">'+(i+1)+'.</span>' +
+        '<span class="etat" title="'+(d.https.includes(c.slug)?'HTTPS actif':'HTTPS à activer')+'"></span>' +
+        '<span class="hote"><b>'+esc(c.nom)+'</b><em>'+esc(c.slug+'.'+d.domain)+'</em></span>' +
+        '<span class="actions">'+liens(m,d,c)+'</span></div>').join('') +
+      '</div>' : '<p class="vide">Aucune commune ne correspond.</p>');
+  const r = document.getElementById('rech');
+  r.oninput = () => { q = r.value.trim().toLowerCase(); rendre();
+    const n = document.getElementById('rech'); n.focus();
+    n.setSelectionRange(n.value.length, n.value.length); };
+}
+
+rendre();
+</script>
+</body>
+</html>

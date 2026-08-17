@@ -1,0 +1,1621 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Peintre {{VILLE}} - {{CODE_POSTAL}} - {{VAR_TITLE_ARG}}</title>
+    <meta
+      name="description"
+      content="{{VAR_META_DESC_A}} {{VAR_META_DESC_B}}"
+    />
+    <link rel="canonical" href="https://{{URL}}" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Peintre {{VILLE}} - {{CODE_POSTAL}} - {{VAR_TITLE_ARG}}"
+    />
+    <meta
+      property="og:description"
+      content="{{VAR_META_DESC_A}} {{VAR_META_DESC_B}}"
+    />
+    <meta property="og:url" content="https://{{URL}}" />
+    <meta
+      property="og:image"
+      content="https://{{URL}}/images/image-principale-peintre-batiment.webp"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="public/images/favicon-peintre.webp"
+      type="image/webp"
+      sizes="150x150"
+    />
+    <link rel="apple-touch-icon" href="public/images/favicon-peintre.webp" />
+
+    <!-- Poppins (§ 4.1) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Chargement non bloquant : media="print" écarte la feuille du chemin
+         critique, onload la réactive une fois téléchargée. Avec display=swap,
+         le texte s'affiche immédiatement dans la police de repli puis bascule
+         sur Poppins. Sans cela, la requête Google Fonts retardait le premier
+         rendu d'environ 750 ms en mobile. -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all';this.onload=null"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap"
+      />
+    </noscript>
+
+    <!-- Marque l'exécution du JS AVANT le rendu : conditionne l'état masqué
+         des animations d'apparition. Sans script, la page s'affiche telle
+         quelle au lieu de rester invisible. -->
+    <script>
+      document.documentElement.classList.add('has-js');
+    </script>
+
+    <!-- CSS — ordre imposé : tokens → base → components → sections -->
+    <!-- Une seule feuille : le générateur concatène tokens + base + components
+         + sections dans cet ordre. Quatre requêtes bloquantes devenaient quatre
+         allers-retours réseau avant le premier rendu, coûteux en mobile. -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Données structurées : HousePainter -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "HousePainter",
+        "name": "Peintre {{VILLE}}",
+        "image": "https://{{URL}}/images/image-principale-peintre-batiment.webp",
+        "url": "https://{{URL}}",
+        "telephone": "{{PHONE_TEL}}",
+        "areaServed": [
+          { "@type": "City", "name": "{{VILLE}}" },
+          { "@type": "City", "name": "Mérignac" },
+          { "@type": "City", "name": "Pessac" },
+          { "@type": "AdministrativeArea", "name": "{{DEP_NOM}}" }
+        ],
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "08:00",
+          "closes": "19:00"
+        },
+        "makesOffer": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Peinture intérieure",
+              "description": "Peinture de murs, plafonds, boiseries et menuiseries, préparation des supports comprise.",
+              "url": "https://{{URL}}#service-peinture-interieure"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Peinture extérieure et ravalement de façade",
+              "description": "Nettoyage, traitement, réparation et mise en peinture de façades, volets et ferronneries.",
+              "url": "https://{{URL}}#service-peinture-exterieure"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Rénovation de peinture",
+              "description": "Décapage, traitement de l'humidité, rebouchage et ratissage avant remise en peinture.",
+              "url": "https://{{URL}}#service-renovation-peinture"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Pose de papier peint et revêtements muraux",
+              "description": "Papier peint intissé, vinyle, panoramique sur mesure, toile et fibre de verre à peindre.",
+              "url": "https://{{URL}}#service-papier-peint"
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Données structurées : FAQPage (identique mot pour mot à l'affichage) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Quel est le prix d'une peinture au m² {{VILLE_A}} ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Il n'existe pas de prix unique au mètre carré : tout dépend des surfaces à traiter, de l'état des supports, de la hauteur sous plafond et du nombre de couches nécessaires. Deux pièces de même superficie peuvent demander un travail très différent selon que les murs sont sains ou entièrement à reprendre. C'est précisément pour cela que nous nous déplaçons gratuitement : nous relevons les surfaces sur place et vous établissons une estimation détaillée, poste par poste, sous 48 h. Le montant annoncé est alors ferme."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Faut-il retirer l'ancien papier peint avant de peindre ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Dans la grande majorité des cas, oui. Peindre sur un intissé qui se décolle fait cloquer la finition en quelques semaines, et le relief du papier reste visible par transparence. Nous déposons le revêtement, lessivons la colle résiduelle — c'est elle qui empêche l'accroche — puis rattrapons le support à l'enduit avant la sous-couche. Sur un papier parfaitement collé, lisse et sain, une mise en peinture directe reste possible : nous le vérifions lors de la visite."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Combien de temps dure le chantier et puis-je rester dans le logement ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Comptez 2 à 3 jours pour une pièce de 20 m², murs et plafond, et 5 à 8 jours pour un T3 complet, préparation comprise. Vous pouvez rester sur place : nous travaillons en peinture acrylique en phase aqueuse, dont l'odeur est faible et se dissipe en quelques heures avec une aération. Nous avançons pièce par pièce pour que vous gardiez en permanence une chambre et un point d'eau utilisables."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Que dois-je préparer avant l'arrivée des peintres ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Très peu de choses : videz les petits objets, décrochez les cadres et libérez les étagères. Le reste nous revient. Nous déplaçons et bâchons le mobilier, protégeons les sols et les menuiseries, et remettons la pièce en ordre chaque soir. Vous n'avez ni à louer un garde-meuble ni à déplacer quoi que ce soit de lourd."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Posez-vous le papier peint que j'ai acheté moi-même ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Oui. Nous calculons avec vous le nombre de rouleaux nécessaires, qui dépend du type de raccord : droit, sauté ou libre — un raccord sauté ajoute couramment 15 à 20 % de perte. La pose seule est estimée après relevé des surfaces, comme le reste. Une réserve toutefois : les papiers très fins se déchirent à l'encollage et ne masquent aucun défaut du mur. Nous vous le signalons avant de commencer, pas après."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Le devis est-il gratuit, et bénéficie-t-on de la TVA à 10 % ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Le devis est gratuit et sans engagement, remis sous 48 h après la visite. La TVA réduite à 10 % s'applique aux travaux de peinture réalisés dans un logement achevé depuis plus de deux ans : vous signez l'attestation que nous vous fournissons, rien de plus. Tous nos chantiers sont couverts par une assurance décennale et une garantie de parfait achèvement d'un an."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Aller au contenu principal</a>
+
+    <!-- ================= HEADER ================= -->
+    <header class="header" id="header">
+      <div class="container header__inner">
+        <a
+          class="logo"
+          href="#top"
+        >
+          <img
+            class="logo__img"
+            src="public/images/logo-peintre-batiment.webp"
+            width="248"
+            height="169"
+            alt="Peintre {{VILLE}}, accueil"
+          />
+        </a>
+
+        <nav class="nav" aria-label="Navigation principale">
+          <a class="nav__link" href="#apropos">À propos</a>
+          <a class="nav__link" href="#services">Nos services</a>
+          <a class="nav__link" href="#contact">Contact</a>
+        </nav>
+
+        <div class="header__actions">
+          <a
+            class="btn btn--primary btn--sm header__cta"
+            href="tel:{{PHONE_TEL}}"
+          >
+            <svg
+              class="btn__icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"
+              />
+            </svg>
+            {{PHONE}}
+          </a>
+          <button
+            class="header__toggle"
+            type="button"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+            aria-controls="drawer"
+          >
+            <svg
+              class="icon-open"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <line x1="4" y1="7" x2="20" y2="7" />
+              <line x1="4" y1="12" x2="20" y2="12" />
+              <line x1="4" y1="17" x2="20" y2="17" />
+            </svg>
+            <svg
+              class="icon-close"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <line x1="6" y1="6" x2="18" y2="18" />
+              <line x1="6" y1="18" x2="18" y2="6" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tiroir mobile -->
+      <div class="drawer" id="drawer">
+        <nav class="drawer__nav" aria-label="Navigation mobile">
+          <a class="drawer__link" href="#apropos">À propos</a>
+          <a class="drawer__link" href="#services">Nos services</a>
+          <a class="drawer__link" href="#contact">Contact</a>
+        </nav>
+        <a class="btn btn--primary drawer__cta" href="tel:{{PHONE_TEL}}">
+          <svg
+            class="btn__icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"
+            />
+          </svg>
+          Appeler le {{PHONE}}
+        </a>
+      </div>
+    </header>
+
+    <main id="main">
+      <span id="top"></span>
+
+      <!-- ================= HERO / BANNIÈRE ================= -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__media">
+          <img
+            src="public/images/image-principale-peintre-batiment.webp"
+            width="1200"
+            height="682"
+            alt="Peintre en bâtiment appliquant au rouleau une peinture bleue sur un mur intérieur, nuancier à la main"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </div>
+
+        <div class="container hero__inner">
+          <div class="hero__content">
+            <h1 class="hero__title" id="hero-title">
+              Peintre
+              <span class="text-accent">{{VILLE}}</span>
+            </h1>
+            <p class="lead hero__lead">
+              {{VAR_HERO_A}} {{VAR_HERO_B}}
+            </p>
+            <div class="hero__actions">
+              <a class="btn btn--light btn--lg" href="#contact">
+                <svg
+                  class="btn__icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                  />
+                  <polyline points="14 2 14 8 20 8" />
+                  <line x1="9" y1="15" x2="15" y2="15" />
+                </svg>
+                Devis gratuit
+              </a>
+              <a class="btn btn--ghost-light btn--lg" href="tel:{{PHONE_TEL}}">
+                <svg
+                  class="btn__icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"
+                  />
+                </svg>
+                {{PHONE}}
+              </a>
+            </div>
+            <ul class="hero__trust">
+              <li class="hero__trust-item">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <polyline points="9 12 11 14 15 10" />
+                </svg>
+                Assurance décennale
+              </li>
+              <li class="hero__trust-item">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="8" r="6" />
+                  <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
+                </svg>
+                Artisan certifié RGE
+              </li>
+              <li class="hero__trust-item">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="16 9 11 15 8 12" />
+                </svg>
+                Chantier propre garanti
+              </li>
+            </ul>
+            <p class="hero__stat">
+              <span class="hero__stat-num">{{VAR_HERO_STAT_NUM}}</span>
+              <span class="hero__stat-label">{{VAR_HERO_STAT_LABEL}}</span>
+            </p>
+          </div>
+          <aside class="hero__form">
+            <p class="hero__form-titre">Devis gratuit sous 24&nbsp;h</p>
+            <form class="form form--compact" id="hero-form" data-devis novalidate>
+
+              <div class="field--split">
+                <div class="field">
+                  <label class="field__label" for="h-prenom">Prénom
+                    <span class="req" aria-hidden="true">*</span></label>
+                  <input class="field__control" type="text" id="h-prenom" name="prenom"
+                         placeholder="Jean" autocomplete="given-name" required aria-required="true"
+                         aria-describedby="h-prenom-err" />
+                  <span class="field__error" id="h-prenom-err"></span>
+                </div>
+                <div class="field">
+                  <label class="field__label" for="h-nom">Nom
+                    <span class="req" aria-hidden="true">*</span></label>
+                  <input class="field__control" type="text" id="h-nom" name="nom"
+                         placeholder="Dupont" autocomplete="family-name" required aria-required="true"
+                         aria-describedby="h-nom-err" />
+                  <span class="field__error" id="h-nom-err"></span>
+                </div>
+              </div>
+
+              <div class="field--split">
+                <div class="field">
+                  <label class="field__label" for="h-telephone">Téléphone
+                    <span class="req" aria-hidden="true">*</span></label>
+                  <input class="field__control" type="tel" id="h-telephone" name="telephone"
+                         placeholder="06 XX XX XX XX" autocomplete="tel" required aria-required="true"
+                         aria-describedby="h-telephone-err" />
+                  <span class="field__error" id="h-telephone-err"></span>
+                </div>
+                <div class="field">
+                  <label class="field__label" for="h-email">E-mail
+                    <span class="req" aria-hidden="true">*</span></label>
+                  <input class="field__control" type="email" id="h-email" name="email"
+                         placeholder="jean.dupont@email.fr" autocomplete="email" required aria-required="true"
+                         aria-describedby="h-email-err" />
+                  <span class="field__error" id="h-email-err"></span>
+                </div>
+              </div>
+
+              <div class="field--split">
+                <div class="field">
+                  <label class="field__label" for="h-codePostal">Code postal
+                    <span class="req" aria-hidden="true">*</span></label>
+                  <input class="field__control" type="text" id="h-codePostal" name="codePostal"
+                         placeholder="{{CODE_POSTAL}}" inputmode="numeric" maxlength="5" required aria-required="true"
+                         aria-describedby="h-codePostal-err" />
+                  <span class="field__error" id="h-codePostal-err"></span>
+                </div>
+                <div class="field">
+                  <label class="field__label" for="h-ville">Ville
+                    <span class="req" aria-hidden="true">*</span></label>
+                  <input class="field__control" type="text" id="h-ville" name="ville"
+                         placeholder="{{VILLE}}"  required aria-required="true"
+                         aria-describedby="h-ville-err" />
+                  <span class="field__error" id="h-ville-err"></span>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="h-besoin">Votre projet
+                  <span class="req" aria-hidden="true">*</span></label>
+                <textarea class="field__control" id="h-besoin" name="besoin" rows="2"
+                          placeholder="Ex. : repeindre un séjour de 25 m² {{VILLE_A}}."
+                          required aria-required="true" aria-describedby="h-besoin-err"></textarea>
+                <span class="field__error" id="h-besoin-err"></span>
+              </div>
+
+              <button class="btn btn--primary btn--lg" type="submit">Recevoir mon devis</button>
+              <p class="form__feedback" data-feedback aria-live="polite"></p>
+            </form>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ================= À PROPOS ================= -->
+      <section
+        class="section section--subtle about"
+        id="apropos"
+        aria-labelledby="apropos-title"
+      >
+        <div class="container">
+          <div class="section-head section-head--marked reveal">
+            <span class="eyebrow">À propos de nous</span>
+            <h2 id="apropos-title">Découvrez l'histoire de <br> Peintre {{VILLE}}</h2>
+          </div>
+
+          <div class="about__grid">
+            <!-- Orbite : photo centrale, anneaux et savoir-faire du métier -->
+            <div class="about__orbit reveal">
+              <span
+                class="about__orbit-ring about__orbit-ring--outer"
+                aria-hidden="true"
+              ></span>
+              <span class="about__orbit-ring" aria-hidden="true"></span>
+              <figure class="about__orbit-photo">
+                <img
+                  src="public/images/services/service-peinture-interieur.webp"
+                  width="600"
+                  height="439"
+                  loading="lazy"
+                  decoding="async"
+                  alt="Artisan peintre au travail sur un chantier de peinture intérieure"
+                />
+              </figure>
+              <ul class="about__orbit-icons">
+                <li class="about__orbit-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M19 11 11 3 3 11l8 8z" /><path d="M5 13h12" /><path d="M20 14s2 2.6 2 4a2 2 0 0 1-4 0c0-1.4 2-4 2-4z" />
+                  </svg>
+                  <span class="visually-hidden">Préparation et enduits</span>
+                </li>
+                <li class="about__orbit-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="4" width="13" height="6" rx="1" /><path d="M16 7h3a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-7" /><path d="M12 13v2" /><rect x="10" y="15" width="4" height="6" rx="1" />
+                  </svg>
+                  <span class="visually-hidden">Application au rouleau</span>
+                </li>
+                <li class="about__orbit-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="13.5" cy="6.5" r=".8" /><circle cx="17" cy="11" r=".8" /><circle cx="8.5" cy="7.5" r=".8" /><circle cx="6.5" cy="12.5" r=".8" /><path d="M12 2a10 10 0 0 0 0 20 1.7 1.7 0 0 0 1.7-1.7c0-.44-.18-.84-.44-1.13a1.7 1.7 0 0 1 1.24-2.85h2c3.05 0 5.5-2.5 5.5-5.55C22 6 17.5 2 12 2z" />
+                  </svg>
+                  <span class="visually-hidden">Conseil couleurs et nuancier</span>
+                </li>
+                <li class="about__orbit-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M18.4 2.6 14 7l-1.6-1.6a2 2 0 0 0-2.8 0L8 7l9 9 1.6-1.6a2 2 0 0 0 0-2.8L17 10l4.4-4.4a2.1 2.1 0 1 0-3-3z" /><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7" />
+                  </svg>
+                  <span class="visually-hidden">Finitions au pinceau</span>
+                </li>
+                <li class="about__orbit-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M6 2v20" /><path d="M18 2v20" /><path d="M6 7h12" /><path d="M6 12h12" /><path d="M6 17h12" />
+                  </svg>
+                  <span class="visually-hidden">Travail en hauteur sécurisé</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="about__content reveal">
+              <p class="about__text">
+              {{VAR_ABOUT1_A}} {{VAR_ABOUT1_B}}
+            </p>
+              <p class="about__text">
+              {{VAR_ABOUT2_A}} {{VAR_ABOUT2_B}}
+            </p>
+              <p class="about__text">
+              {{VAR_ABOUT3_A}} {{VAR_ABOUT3_B}}
+            </p>
+
+              <ul class="about__stats">
+                <li class="about__stat">
+                  <p class="about__stat-figure">
+                    <span class="about__stat-num">15+</span>
+                    <span class="about__stat-unit">/ ans</span>
+                  </p>
+                  <p class="about__stat-text">
+              {{VAR_ABOUT_STAT}}
+            </p>
+                </li>
+              </ul>
+
+              <a class="btn btn--primary btn--lg" href="#contact">
+                Parler de votre projet
+                <svg
+                  class="btn__icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= NOS SERVICES =================
+           Explorateur de services. Le HTML livré contient les 4 prestations
+           EN CLAIR et visibles : aucun contenu n'est masqué à la source, et la
+           colonne de gauche n'est qu'une liste d'ancres internes vers chaque
+           <article>. C'est main.js qui promeut l'ensemble en onglets (rôles
+           ARIA + masquage) une fois la page chargée. Sans JS — et pour tout
+           crawler qui n'exécuterait pas le script — les 4 fiches restent
+           empilées et intégralement lisibles.
+           ================================================================ -->
+      <section
+      class="section section--canvas"
+      id="services"
+      aria-labelledby="services-title"
+    >
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Nos prestations</span>
+          <h2 id="services-title">
+            Peintre {{VILLE}} : trois métiers, un seul interlocuteur
+          </h2>
+          <p class="section-head__text">
+            {{VAR_SERVICES_INTRO_A}} {{VAR_SERVICES_INTRO_B}}
+          </p>
+        </div>
+
+        <!-- Trois prestations sur une ligne, sans onglet ni liste à puces :
+             tout est visible d'un coup et la section reste courte. -->
+        <div class="services-grille">
+          <article class="service-carte reveal">
+            <div class="service-carte__media">
+              <img src="public/images/services/service-peinture-interieur.webp" alt="Peinture intérieure {{VILLE_A}}"
+                   width="640" height="420" loading="lazy" decoding="async" />
+            </div>
+            <div class="service-carte__corps">
+              <h3>Peinture intérieure</h3>
+              <p>{{VAR_SERVICE_INT_A}} {{VAR_SERVICE_INT_B}}</p>
+              <a class="link-arrow" href="#contact">Demander un devis</a>
+            </div>
+          </article>
+          <article class="service-carte reveal">
+            <div class="service-carte__media">
+              <img src="public/images/services/peintre-exterieur.webp" alt="Peinture extérieure &amp; ravalement {{VILLE_A}}"
+                   width="640" height="420" loading="lazy" decoding="async" />
+            </div>
+            <div class="service-carte__corps">
+              <h3>Peinture extérieure &amp; ravalement</h3>
+              <p>{{VAR_SERVICE_EXT_A}} {{VAR_SERVICE_EXT_B}}</p>
+              <a class="link-arrow" href="#contact">Demander un devis</a>
+            </div>
+          </article>
+          <article class="service-carte reveal">
+            <div class="service-carte__media">
+              <img src="public/images/services/pose-papier-peint.webp" alt="Pose de papier peint &amp; revêtements {{VILLE_A}}"
+                   width="640" height="420" loading="lazy" decoding="async" />
+            </div>
+            <div class="service-carte__corps">
+              <h3>Pose de papier peint &amp; revêtements</h3>
+              <p>{{VAR_SERVICE_PAPIER_A}} {{VAR_SERVICE_PAPIER_B}}</p>
+              <a class="link-arrow" href="#contact">Demander un devis</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+      <!-- ================= BANDEAU DE RAPPEL (carte photo) ================= -->
+      <section
+        class="section section--canvas callout"
+        aria-labelledby="callout-title"
+      >
+        <div class="container">
+          <div class="callout__card">
+            <div class="callout__media">
+              <img
+                src="public/images/fond-peinture.webp"
+                width="1000"
+                height="413"
+                loading="lazy"
+                decoding="async"
+                alt=""
+              />
+            </div>
+
+            <div class="callout__body">
+              <div class="callout__intro">
+                <h2 class="callout__title" id="callout-title">
+                  Votre chantier avec Peintre {{VILLE}} commence par un devis
+                </h2>
+                <p class="callout__text">
+              {{VAR_CALLOUT_A}} {{VAR_CALLOUT_B}}
+            </p>
+              </div>
+
+              <div class="callout__panel">
+                <a class="btn btn--primary btn--lg" href="#contact">
+                  Demander un devis gratuit
+                  <svg
+                    class="btn__icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </a>
+                <a class="btn btn--light btn--lg" href="tel:{{PHONE_TEL}}">
+                  <svg
+                    class="btn__icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"
+                    />
+                  </svg>
+                  {{PHONE}}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= AVIS CLIENTS =================
+           Le HTML ne contient qu'une liste de 10 avis, écrits une seule fois.
+           main.js en construit la mise en scène : deux pistes verticales à
+           sens inverse au-dessus de 900 px, une piste horizontale en dessous.
+           Sans script, la liste reste empilée, entière et lisible.
+           ================================================================ -->
+      <section
+        class="section section--subtle reviews"
+        id="avis"
+        aria-labelledby="avis-title"
+      >
+        <div class="container">
+          <div class="reviews__grid">
+            <div class="reviews__intro reveal">
+              <span class="eyebrow">Ils nous ont fait confiance</span>
+              <h2 id="avis-title">Ce que disent nos clients sur Peintre {{VILLE}}</h2>
+              <p class="reviews__text">
+              {{VAR_REVIEWS_A}} {{VAR_REVIEWS_B}}
+            </p>
+              <p class="reviews__score">
+                <span class="reviews__score-num">4,9</span>
+                <span class="card__stars" role="img" aria-label="Note moyenne : 4,9 sur 5">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg>
+                </span>
+                <span class="reviews__score-label">sur 128 avis vérifiés</span>
+              </p>
+<div class="reviews__actions">
+                  <a class="btn btn--primary btn--lg" href="#contact">
+                    Demander un devis gratuit
+                  </a>
+                  <a class="btn btn--outline btn--lg" href="tel:{{PHONE_TEL}}">
+                    {{PHONE}}
+                  </a>
+                </div>
+            </div>
+
+            <div class="reviews__body reveal" data-reviews>
+              <ul class="reviews__group">
+                <li class="reviews__item">
+                  <figure class="card card--quote">
+                    <span class="card__mark" aria-hidden="true">”</span>
+                    <div class="card__stars" role="img" aria-label="Note : 5 sur 5">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg>
+                    </div>
+                    <blockquote class="card__quote">{{VAR_AVIS_1}}</blockquote>
+                    <figcaption class="card__author">
+                      <img
+                        class="card__avatar"
+                        src="public/images/avatar-ml.svg"
+                        width="40"
+                        height="40"
+                        loading="lazy"
+                        alt=""
+                      />
+                      <span>
+                        <span class="card__author-name">{{AVIS_1_NOM}}</span><br />
+                        <span class="card__author-role">Particulier — {{AVIS_1_VILLE}}</span>
+                      </span>
+                    </figcaption>
+                  </figure>
+                </li>
+                <li class="reviews__item">
+                  <figure class="card card--quote">
+                    <span class="card__mark" aria-hidden="true">”</span>
+                    <div class="card__stars" role="img" aria-label="Note : 5 sur 5">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg>
+                    </div>
+                    <blockquote class="card__quote">{{VAR_AVIS_2}}</blockquote>
+                    <figcaption class="card__author">
+                      <img
+                        class="card__avatar"
+                        src="public/images/avatar-tr.svg"
+                        width="40"
+                        height="40"
+                        loading="lazy"
+                        alt=""
+                      />
+                      <span>
+                        <span class="card__author-name">{{AVIS_2_NOM}}</span><br />
+                        <span class="card__author-role">Particulier — {{AVIS_2_VILLE}}</span>
+                      </span>
+                    </figcaption>
+                  </figure>
+                </li>
+                <li class="reviews__item">
+                  <figure class="card card--quote">
+                    <span class="card__mark" aria-hidden="true">”</span>
+                    <div class="card__stars" role="img" aria-label="Note : 5 sur 5">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg>
+                    </div>
+                    <blockquote class="card__quote">{{VAR_AVIS_3}}</blockquote>
+                    <figcaption class="card__author">
+                      <img
+                        class="card__avatar"
+                        src="public/images/avatar-sd.svg"
+                        width="40"
+                        height="40"
+                        loading="lazy"
+                        alt=""
+                      />
+                      <span>
+                        <span class="card__author-name">{{AVIS_3_NOM}}</span><br />
+                        <span class="card__author-role">Syndic — {{AVIS_3_VILLE}}</span>
+                      </span>
+                    </figcaption>
+                  </figure>
+                </li>
+                <li class="reviews__item">
+                  <figure class="card card--quote">
+                    <span class="card__mark" aria-hidden="true">”</span>
+                    <div class="card__stars" role="img" aria-label="Note : 5 sur 5">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg>
+                    </div>
+                    <blockquote class="card__quote">{{VAR_AVIS_4}}</blockquote>
+                    <figcaption class="card__author">
+                      <img
+                        class="card__avatar"
+                        src="public/images/avatar-kb.svg"
+                        width="40"
+                        height="40"
+                        loading="lazy"
+                        alt=""
+                      />
+                      <span>
+                        <span class="card__author-name">{{AVIS_4_NOM}}</span><br />
+                        <span class="card__author-role">Particulier — {{AVIS_4_VILLE}}</span>
+                      </span>
+                    </figcaption>
+                  </figure>
+                </li>
+                <li class="reviews__item">
+                  <figure class="card card--quote">
+                    <span class="card__mark" aria-hidden="true">”</span>
+                    <div class="card__stars" role="img" aria-label="Note : 5 sur 5">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg>
+                    </div>
+                    <blockquote class="card__quote">{{VAR_AVIS_5}}</blockquote>
+                    <figcaption class="card__author">
+                      <img
+                        class="card__avatar"
+                        src="public/images/avatar-ef.svg"
+                        width="40"
+                        height="40"
+                        loading="lazy"
+                        alt=""
+                      />
+                      <span>
+                        <span class="card__author-name">{{AVIS_5_NOM}}</span><br />
+                        <span class="card__author-role">Restaurant — {{AVIS_5_VILLE}}</span>
+                      </span>
+                    </figcaption>
+                  </figure>
+                </li>
+                <li class="reviews__item">
+                  <figure class="card card--quote">
+                    <span class="card__mark" aria-hidden="true">”</span>
+                    <div class="card__stars" role="img" aria-label="Note : 5 sur 5">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg>
+                    </div>
+                    <blockquote class="card__quote">{{VAR_AVIS_6}}</blockquote>
+                    <figcaption class="card__author">
+                      <img
+                        class="card__avatar"
+                        src="public/images/avatar-jp.svg"
+                        width="40"
+                        height="40"
+                        loading="lazy"
+                        alt=""
+                      />
+                      <span>
+                        <span class="card__author-name">{{AVIS_6_NOM}}</span><br />
+                        <span class="card__author-role">Particulier — {{AVIS_6_VILLE}}</span>
+                      </span>
+                    </figcaption>
+                  </figure>
+                </li>
+                <li class="reviews__item">
+                  <figure class="card card--quote">
+                    <span class="card__mark" aria-hidden="true">”</span>
+                    <div class="card__stars" role="img" aria-label="Note : 5 sur 5">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg>
+                    </div>
+                    <blockquote class="card__quote">{{VAR_AVIS_7}}</blockquote>
+                    <figcaption class="card__author">
+                      <img
+                        class="card__avatar"
+                        src="public/images/avatar-ng.svg"
+                        width="40"
+                        height="40"
+                        loading="lazy"
+                        alt=""
+                      />
+                      <span>
+                        <span class="card__author-name">{{AVIS_7_NOM}}</span><br />
+                        <span class="card__author-role">Agence immobilière — {{AVIS_7_VILLE}}</span>
+                      </span>
+                    </figcaption>
+                  </figure>
+                </li>
+                <li class="reviews__item">
+                  <figure class="card card--quote">
+                    <span class="card__mark" aria-hidden="true">”</span>
+                    <div class="card__stars" role="img" aria-label="Note : 5 sur 5">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg>
+                    </div>
+                    <blockquote class="card__quote">{{VAR_AVIS_8}}</blockquote>
+                    <figcaption class="card__author">
+                      <img
+                        class="card__avatar"
+                        src="public/images/avatar-vm.svg"
+                        width="40"
+                        height="40"
+                        loading="lazy"
+                        alt=""
+                      />
+                      <span>
+                        <span class="card__author-name">{{AVIS_8_NOM}}</span><br />
+                        <span class="card__author-role">Particulier — {{AVIS_8_VILLE}}</span>
+                      </span>
+                    </figcaption>
+                  </figure>
+                </li>
+                <li class="reviews__item">
+                  <figure class="card card--quote">
+                    <span class="card__mark" aria-hidden="true">”</span>
+                    <div class="card__stars" role="img" aria-label="Note : 5 sur 5">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg>
+                    </div>
+                    <blockquote class="card__quote">{{VAR_AVIS_9}}</blockquote>
+                    <figcaption class="card__author">
+                      <img
+                        class="card__avatar"
+                        src="public/images/avatar-ca.svg"
+                        width="40"
+                        height="40"
+                        loading="lazy"
+                        alt=""
+                      />
+                      <span>
+                        <span class="card__author-name">{{AVIS_9_NOM}}</span><br />
+                        <span class="card__author-role">Copropriété — {{AVIS_9_VILLE}}</span>
+                      </span>
+                    </figcaption>
+                  </figure>
+                </li>
+                <li class="reviews__item">
+                  <figure class="card card--quote">
+                    <span class="card__mark" aria-hidden="true">”</span>
+                    <div class="card__stars" role="img" aria-label="Note : 5 sur 5">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg>
+                    </div>
+                    <blockquote class="card__quote">{{VAR_AVIS_10}}</blockquote>
+                    <figcaption class="card__author">
+                      <img
+                        class="card__avatar"
+                        src="public/images/avatar-ph.svg"
+                        width="40"
+                        height="40"
+                        loading="lazy"
+                        alt=""
+                      />
+                      <span>
+                        <span class="card__author-name">{{AVIS_10_NOM}}</span><br />
+                        <span class="card__author-role">Particulier — {{AVIS_10_VILLE}}</span>
+                      </span>
+                    </figcaption>
+                  </figure>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= NOS PEINTURES ================= -->
+      <section
+        class="section section--canvas"
+        id="peintures"
+        aria-labelledby="peintures-title"
+      >
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="eyebrow">Nos peintures</span>
+            <h2 id="peintures-title">Les peintures que nous utilisons {{VILLE_A}}</h2>
+            <p class="section-head__text">
+              {{VAR_PAINTS_INTRO_A}} {{VAR_PAINTS_INTRO_B}}
+            </p>
+          </div>
+
+          <div class="grid grid--4">
+            <article class="card card--paint reveal">
+              <h3 class="card__title">Peinture acrylique, en phase aqueuse</h3>
+              <p class="card__text">
+              {{VAR_PAINT_ACRYL_A}} {{VAR_PAINT_ACRYL_B}}
+            </p>
+            </article>
+            <article class="card card--paint reveal">
+              <h3 class="card__title">Glycéro et alkyde uréthane</h3>
+              <p class="card__text">
+              {{VAR_PAINT_GLYCERO_A}} {{VAR_PAINT_GLYCERO_B}}
+            </p>
+            </article>
+            <article class="card card--paint reveal">
+              <h3 class="card__title">Pliolite et siloxane pour les façades</h3>
+              <p class="card__text">
+              {{VAR_PAINT_FACADE_A}} {{VAR_PAINT_FACADE_B}}
+            </p>
+            </article>
+            <article class="card card--paint reveal">
+              <h3 class="card__title">Sous-couches et produits techniques</h3>
+              <p class="card__text">
+              {{VAR_PAINT_SOUSCOUCHE_A}} {{VAR_PAINT_SOUSCOUCHE_B}}
+            </p>
+            </article>
+          </div>
+
+          <p class="paints__note reveal">
+              {{VAR_PAINTS_NOTE_A}} {{VAR_PAINTS_NOTE_B}}
+            </p>
+        </div>
+      </section>
+
+      <!-- ================= FAQ ================= -->
+      <section
+        class="section section--subtle"
+        id="faq"
+        aria-labelledby="faq-title"
+      >
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="eyebrow">Questions fréquentes</span>
+            <h2 id="faq-title">Peintre {{VILLE}} : vous vous demandez sûrement…</h2>
+          </div>
+
+          <div class="faq" id="accordion">
+              <div class="faq__col">
+              <div class="accordion__item">
+                <h3 class="accordion__heading">
+                  <button
+                    class="accordion__trigger"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="faq-panel-1"
+                    id="faq-trigger-1"
+                  >
+                    <span class="accordion__label">Quel est le prix d'une peinture au m² {{VILLE_A}} ?</span>
+                    <span class="accordion__sign" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div
+                  class="accordion__panel"
+                  id="faq-panel-1"
+                  role="region"
+                  aria-labelledby="faq-trigger-1"
+                >
+                  <div class="accordion__panel-inner">
+                    <p class="accordion__answer">
+              {{VAR_FAQ_PRIX_A}} {{VAR_FAQ_PRIX_B}}
+            </p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion__item">
+                <h3 class="accordion__heading">
+                  <button
+                    class="accordion__trigger"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="faq-panel-2"
+                    id="faq-trigger-2"
+                  >
+                    <span class="accordion__label">Faut-il retirer l'ancien papier peint avant de peindre ?</span>
+                    <span class="accordion__sign" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div
+                  class="accordion__panel"
+                  id="faq-panel-2"
+                  role="region"
+                  aria-labelledby="faq-trigger-2"
+                >
+                  <div class="accordion__panel-inner">
+                    <p class="accordion__answer">
+              {{VAR_FAQ_PAPIER_A}} {{VAR_FAQ_PAPIER_B}}
+            </p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion__item">
+                <h3 class="accordion__heading">
+                  <button
+                    class="accordion__trigger"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="faq-panel-3"
+                    id="faq-trigger-3"
+                  >
+                    <span class="accordion__label">Combien de temps dure le chantier et puis-je rester dans le logement ?</span>
+                    <span class="accordion__sign" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div
+                  class="accordion__panel"
+                  id="faq-panel-3"
+                  role="region"
+                  aria-labelledby="faq-trigger-3"
+                >
+                  <div class="accordion__panel-inner">
+                    <p class="accordion__answer">
+              {{VAR_FAQ_DUREE_A}} {{VAR_FAQ_DUREE_B}}
+            </p>
+                  </div>
+                </div>
+              </div>
+              </div>
+              <div class="faq__col">
+              <div class="accordion__item">
+                <h3 class="accordion__heading">
+                  <button
+                    class="accordion__trigger"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="faq-panel-4"
+                    id="faq-trigger-4"
+                  >
+                    <span class="accordion__label">Que dois-je préparer avant l'arrivée des peintres ?</span>
+                    <span class="accordion__sign" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div
+                  class="accordion__panel"
+                  id="faq-panel-4"
+                  role="region"
+                  aria-labelledby="faq-trigger-4"
+                >
+                  <div class="accordion__panel-inner">
+                    <p class="accordion__answer">
+              {{VAR_FAQ_PREPARER_A}} {{VAR_FAQ_PREPARER_B}}
+            </p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion__item">
+                <h3 class="accordion__heading">
+                  <button
+                    class="accordion__trigger"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="faq-panel-5"
+                    id="faq-trigger-5"
+                  >
+                    <span class="accordion__label">Posez-vous le papier peint que j'ai acheté moi-même ?</span>
+                    <span class="accordion__sign" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div
+                  class="accordion__panel"
+                  id="faq-panel-5"
+                  role="region"
+                  aria-labelledby="faq-trigger-5"
+                >
+                  <div class="accordion__panel-inner">
+                    <p class="accordion__answer">
+              {{VAR_FAQ_FOURNITURE_A}} {{VAR_FAQ_FOURNITURE_B}}
+            </p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion__item">
+                <h3 class="accordion__heading">
+                  <button
+                    class="accordion__trigger"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="faq-panel-6"
+                    id="faq-trigger-6"
+                  >
+                    <span class="accordion__label">Le devis est-il gratuit, et bénéficie-t-on de la TVA à 10 % ?</span>
+                    <span class="accordion__sign" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div
+                  class="accordion__panel"
+                  id="faq-panel-6"
+                  role="region"
+                  aria-labelledby="faq-trigger-6"
+                >
+                  <div class="accordion__panel-inner">
+                    <p class="accordion__answer">
+              {{VAR_FAQ_DEVIS_A}} {{VAR_FAQ_DEVIS_B}}
+            </p>
+                  </div>
+                </div>
+              </div>
+              </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= CONTACT / DEVIS ================= -->
+      <section
+        class="section section--canvas quote"
+        id="contact"
+        aria-labelledby="contact-title"
+      >
+        <div class="container">
+          <div class="quote__grid">
+            <!-- Colonne arguments -->
+            <div class="quote__args-col reveal">
+              <div class="quote__intro">
+                <span class="eyebrow">Contact & devis</span>
+                <h2 id="contact-title">
+                  Décrivez votre projet à Peintre {{VILLE}}
+                </h2>
+                <p class="lead">
+              {{VAR_FORM_LEAD_A}} {{VAR_FORM_LEAD_B}}
+            </p>
+              </div>
+                <ul class="quote__contacts">
+                  <li class="quote__contact">
+                    <span class="quote__contact-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+                      </svg>
+                    </span>
+                    <span class="quote__contact-body">
+                      <span class="quote__contact-label">Téléphone</span>
+                      <a href="tel:{{PHONE_TEL}}">{{PHONE}}</a>
+                    </span>
+                  </li>
+                </ul>
+
+                <p class="quote__rating">
+                  <span class="card__stars" role="img" aria-label="Note : 5 sur 5">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9" /></svg>
+                  </span>
+                  <span class="quote__rating-num">5/5</span>
+                  <span class="quote__rating-label">Nos clients nous recommandent</span>
+                </p>
+            </div>
+
+            <!-- Colonne formulaire -->
+            <div class="quote__form-col reveal">
+              <div class="card card--form">
+                <div class="quote__form-head">
+                  <h3 class="card__title">Obtenir mon devis gratuit avec Peintre {{VILLE}}</h3>
+                  <p class="quote__form-sub">
+                    Réponse sous 48&nbsp;h, 7 j/7.
+                  </p>
+                </div>
+
+                <form class="form" id="quote-form" data-devis novalidate>
+                  <div class="field--split">
+                    <div class="field">
+                      <label class="field__label" for="f-nom"
+                        >Nom
+                        <span class="req" aria-hidden="true">*</span></label
+                      >
+                      <input
+                        class="field__control"
+                        type="text"
+                        id="f-nom"
+                        name="nom"
+                        placeholder="Dupont"
+                        autocomplete="family-name"
+                        required
+                        aria-required="true"
+                        aria-describedby="f-nom-err"
+                      />
+                      <span class="field__error" id="f-nom-err"></span>
+                    </div>
+                    <div class="field">
+                      <label class="field__label" for="f-prenom"
+                        >Prénom
+                        <span class="req" aria-hidden="true">*</span></label
+                      >
+                      <input
+                        class="field__control"
+                        type="text"
+                        id="f-prenom"
+                        name="prenom"
+                        placeholder="Jean"
+                        autocomplete="given-name"
+                        required
+                        aria-required="true"
+                        aria-describedby="f-prenom-err"
+                      />
+                      <span class="field__error" id="f-prenom-err"></span>
+                    </div>
+                  </div>
+
+                  <div class="field--split">
+                    <div class="field">
+                      <label class="field__label" for="f-tel"
+                        >Téléphone
+                        <span class="req" aria-hidden="true">*</span></label
+                      >
+                      <input
+                        class="field__control"
+                        type="tel"
+                        id="f-tel"
+                        name="telephone"
+                        placeholder="06 XX XX XX XX"
+                        autocomplete="tel"
+                        required
+                        aria-required="true"
+                        aria-describedby="f-tel-err"
+                      />
+                      <span class="field__error" id="f-tel-err"></span>
+                    </div>
+                    <div class="field">
+                      <label class="field__label" for="f-email"
+                        >E-mail
+                        <span class="req" aria-hidden="true">*</span></label
+                      >
+                      <input
+                        class="field__control"
+                        type="email"
+                        id="f-email"
+                        name="email"
+                        placeholder="jean.dupont@email.fr"
+                        autocomplete="email"
+                        required
+                        aria-required="true"
+                        aria-describedby="f-email-err"
+                      />
+                      <span class="field__error" id="f-email-err"></span>
+                    </div>
+                  </div>
+
+                  <div class="field--split">
+                    <div class="field">
+                      <label class="field__label" for="f-cp"
+                        >Code postal
+                        <span class="req" aria-hidden="true">*</span></label
+                      >
+                      <input
+                        class="field__control"
+                        type="text"
+                        inputmode="numeric"
+                        id="f-cp"
+                        name="codePostal"
+                        placeholder="{{CODE_POSTAL}}"
+                        autocomplete="postal-code"
+                        required
+                        aria-required="true"
+                        aria-describedby="f-cp-err"
+                      />
+                      <span class="field__error" id="f-cp-err"></span>
+                    </div>
+                    <div class="field">
+                      <label class="field__label" for="f-ville"
+                        >Ville
+                        <span class="req" aria-hidden="true">*</span></label
+                      >
+                      <input
+                        class="field__control"
+                        type="text"
+                        id="f-ville"
+                        name="ville"
+                        placeholder="{{VILLE}}"
+                        autocomplete="address-level2"
+                        required
+                        aria-required="true"
+                        aria-describedby="f-ville-err"
+                      />
+                      <span class="field__error" id="f-ville-err"></span>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label class="field__label" for="f-besoin"
+                      >Votre besoin
+                      <span class="req" aria-hidden="true">*</span></label
+                    >
+                    <textarea
+                      class="field__control"
+                      id="f-besoin"
+                      name="besoin"
+                      placeholder="Ex. : repeindre un séjour de 25 m² et son couloir {{VILLE_A}}, murs et plafonds, peinture actuelle défraîchie."
+                      required
+                      aria-required="true"
+                      aria-describedby="f-besoin-err"
+                    ></textarea>
+                    <span class="field__error" id="f-besoin-err"></span>
+                  </div>
+
+
+                  <button
+                    class="btn btn--primary btn--lg btn--block"
+                    type="submit"
+                    id="quote-submit"
+                  >
+                    Envoyer ma demande
+                  </button>
+
+                  <div
+                    class="form__feedback"
+                    id="form-feedback"
+                    role="status"
+                    aria-live="polite"
+                  ></div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer" aria-labelledby="footer-title">
+      <h2 id="footer-title" class="visually-hidden">Pied de page — Peintre {{VILLE}}</h2>
+      <div class="container">
+        <!-- Maillage communes -->
+        <div class="footer__cols">
+          <div class="footer__brand">
+            <img
+              class="footer__brand-img"
+              src="public/images/logo-peintre-batiment.webp"
+              width="248"
+              height="169"
+              loading="lazy"
+              alt="Peintre {{VILLE}}"
+            />
+            <p class="footer__brand-text">
+              {{VAR_FOOTER_A}} {{VAR_FOOTER_B}}
+            </p>
+            <div class="footer__social">
+              <a href="#top" aria-label="Facebook">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                  />
+                </svg>
+              </a>
+              <a href="#top" aria-label="Instagram">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <line x1="17.5" y1="6.5" x2="17.5" y2="6.5" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <nav class="footer__col" aria-labelledby="fcol-services">
+            <h2 class="footer__col-title" id="fcol-services">Nos services</h2>
+            <ul class="footer__list">
+              <li><a href="#service-peinture-interieure">Peinture intérieure</a></li>
+              <li><a href="#service-peinture-exterieure">Peinture extérieure &amp; ravalement</a></li>
+              <li><a href="#service-renovation-peinture">Rénovation de peinture</a></li>
+              <li><a href="#service-papier-peint">Pose de papier peint</a></li>
+            </ul>
+          </nav>
+
+          <nav class="footer__col" aria-labelledby="fcol-info">
+            <h2 class="footer__col-title" id="fcol-info">Informations</h2>
+            <ul class="footer__list">
+              <li><a href="#apropos">À propos</a></li>
+              <li><a href="#avis">Avis clients</a></li>
+              <li><a href="#faq">Questions fréquentes</a></li>
+              <li><a href="#contact">Demander un devis</a></li>
+            </ul>
+          </nav>
+
+          <div class="footer__col" aria-labelledby="fcol-contact">
+            <h2 class="footer__col-title" id="fcol-contact">Contact</h2>
+            <ul class="footer__list">
+              <li class="footer__contact-item">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"
+                  />
+                </svg>
+                <a class="footer__phone" href="tel:{{PHONE_TEL}}"
+                  >{{PHONE}}</a
+                >
+              </li>
+              <li class="footer__contact-item">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span>{{VILLE}} &amp; tout le secteur</span>
+              </li>
+              <li class="footer__contact-item">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+                <span>Disponible 7 j/7</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bas de page -->
+        <div class="footer__bottom">
+          © 2026 Peintre {{VILLE}} — Tous droits réservés.
+        </div>
+      </div>
+    </footer>
+
+    <!-- ================= BARRE D'APPEL MOBILE ================= -->
+    <div class="callbar" id="callbar" aria-label="Actions rapides">
+      <a class="btn btn--outline" href="#contact">Devis gratuit</a>
+      <a class="btn btn--primary" href="tel:{{PHONE_TEL}}">
+        <svg
+          class="btn__icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"
+          />
+        </svg>
+        Appeler
+      </a>
+    </div>
+
+    <!-- Config Supabase — remplacée à la génération par les valeurs du .env -->
+    <script type="application/json" id="supabase-config-json">{"directUrl":"","url":"","relative":false,"anon":"","table":"leads_peinture"}</script>
+    <script src="script.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Couvreur {{NOM_COMPLET}} ({{CODE_POSTAL}}) - {{ARGUMENT}}</title>
+<meta name="description" content="{{META_DESC_1}} {{META_DESC_2}}">
+<link rel="canonical" href="https://{{URL}}/">
+<link rel="icon" type="image/png" href="public/images/favicon.png">
+<link rel="icon" type="image/webp" href="public/images/logo-couvreur.webp">
+<link rel="apple-touch-icon" href="public/images/favicon.png">
+<link rel="preload" as="image" href="public/images/fond-couvreur.webp" fetchpriority="high">
+<link rel="stylesheet" href="style.css">
+{{FAQ_JSONLD}}
+</head>
+<body>
+
+<!-- ============ EN-TÊTE ============ -->
+<header class="entete" id="entete">
+  <div class="conteneur entete-contenu">
+    <a href="#accueil" class="logo" aria-label="{{MARQUE}} — Couvreur {{NOM_COMPLET}}">
+      <img src="public/images/logo-couvreur.webp" alt="Logo {{MARQUE}}, couvreur {{NOM_COMPLET}}" width="60" height="60">
+    </a>
+
+    <nav class="navigation" id="navigation" aria-label="Navigation principale">
+      <a href="#apropos">L'entreprise</a>
+      <a href="#services">Services</a>
+      <a href="#pourquoi">Pourquoi nous</a>
+      <a href="#avis">Avis</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <div class="entete-actions">
+      <a href="tel:{{PHONE_TEL}}" class="entete-telephone" aria-label="Nous appeler">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg>
+        <span>{{PHONE_NBSP}}</span>
+      </a>
+      <a href="#devis" class="bouton bouton-principal bouton-petit">Devis gratuit</a>
+    </div>
+
+    <button class="bascule-menu" id="basculeMenu" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ BANNIÈRE ============ -->
+  <section class="banniere" id="accueil">
+    <div class="banniere-image" aria-hidden="true"></div>
+    <div class="banniere-voile" aria-hidden="true"></div>
+    <div class="conteneur banniere-contenu">
+      <div class="banniere-texte">
+        <h1>Couvreur {{NOM_COMPLET}}</h1>
+        <h2 class="banniere-soustitre">{{HERO_H2}}</h2>
+        <p class="banniere-accroche">{{ACCROCHE_1}} {{ACCROCHE_2}}</p>
+        <div class="banniere-actions">
+          <!-- Appel direct : premier bouton, mobile uniquement (l'en-tête masque
+               son lien tél. sous 720 px, il n'y aurait plus aucun accès direct) -->
+          <a href="tel:{{PHONE_TEL}}" class="bouton bouton-principal bouton-grand banniere-appel" aria-label="Nous appeler">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg>
+            <span>{{PHONE_NBSP}}</span>
+          </a>
+          <a href="#devis" class="bouton bouton-principal bouton-grand">Devis gratuit</a>
+          <a href="#services" class="bouton bouton-discret bouton-discret-clair">Voir nos prestations →</a>
+        </div>
+        <ul class="banniere-labels">
+          <li><span class="point"></span> Garantie décennale</li>
+          <li><span class="point"></span> Artisan certifié RGE</li>
+          <li><span class="point"></span> Intervention 24h</li>
+        </ul>
+      </div>
+
+      <div class="banniere-formulaire-cadre">
+        <form class="banniere-formulaire" id="formulaireBanniere" novalidate>
+          <div class="banniere-formulaire-entete">
+            <h2>Devis gratuit sous 24h</h2>
+            <p>Décrivez votre projet, on vous rappelle.</p>
+          </div>
+          <div class="champ-rangee champ-rangee-duo">
+            <div class="champ">
+              <label for="b-prenom">Prénom</label>
+              <input type="text" id="b-prenom" name="prenom" placeholder="Jean" required>
+              <span class="erreur" data-for="prenom"></span>
+            </div>
+            <div class="champ">
+              <label for="b-nom">Nom</label>
+              <input type="text" id="b-nom" name="nom" placeholder="Dupont" required>
+              <span class="erreur" data-for="nom"></span>
+            </div>
+          </div>
+          <div class="champ-rangee champ-rangee-duo">
+            <div class="champ">
+              <label for="b-tel">Téléphone</label>
+              <input type="tel" id="b-tel" name="tel" placeholder="06 00 00 00 00" required>
+              <span class="erreur" data-for="tel"></span>
+            </div>
+            <div class="champ">
+              <label for="b-email">Email</label>
+              <input type="email" id="b-email" name="email" placeholder="vous@email.fr" required>
+              <span class="erreur" data-for="email"></span>
+            </div>
+          </div>
+          <div class="champ-rangee champ-rangee-duo">
+            <div class="champ">
+              <label for="b-ville">Ville</label>
+              <input type="text" id="b-ville" name="ville" placeholder="Ville" required>
+              <span class="erreur" data-for="ville"></span>
+            </div>
+            <div class="champ">
+              <label for="b-cp">Code postal</label>
+              <input type="text" id="b-cp" name="cp" placeholder="Code postal" inputmode="numeric" required>
+              <span class="erreur" data-for="cp"></span>
+            </div>
+          </div>
+          <div class="champ">
+            <label for="b-message">Message</label>
+            <textarea id="b-message" name="message" rows="3" minlength="10" aria-describedby="b-message-aide"
+                      placeholder="Votre besoin en quelques mots…" required></textarea>
+            <span class="champ-aide" id="b-message-aide" data-min="10">10 caractères minimum</span>
+            <span class="erreur" data-for="message"></span>
+          </div>
+          <input type="text" name="field_hp" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;height:1px;width:1px;opacity:0" aria-hidden="true">
+          <button type="submit" class="bouton bouton-principal bouton-pleine-largeur">Recevoir mon devis</button>
+          <p class="formulaire-succes" id="succesBanniere" hidden>✓ Merci&nbsp;! Votre demande est bien envoyée, on vous recontacte très vite.</p>
+          <p class="formulaire-erreur" id="erreurBanniere" hidden style="color:#D14545;text-align:center;font-size:14px;background:rgba(209,69,69,.08);border-radius:8px;padding:10px;margin-top:6px"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ À PROPOS ============ -->
+  <section class="section apropos" id="apropos">
+    <div class="conteneur apropos-grille">
+      <div class="apropos-entete apparition">
+        <span class="surtitre">01 — Couvreur {{NOM_COMPLET}}</span>
+        <h2>Votre couvreur {{NOM_COMPLET}}, un savoir-faire local au service de votre toit</h2>
+      </div>
+
+      <div class="apropos-visuel apparition">
+        <img class="apropos-image" src="public/images/a-propos-couvreur.webp" alt="Artisan couvreur {{NOM_COMPLET}} réalisant la pose d'une toiture en tuiles" width="600" height="600" loading="lazy">
+        <div class="apropos-flottant">
+          <span class="apropos-flottant-icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </span>
+          <div>
+            <b>Garantie décennale</b>
+            <span>Tous nos travaux couverts</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="apropos-corps apparition">
+        <p class="accroche">{{APROPOS_1}}</p>
+        <p>{{APROPOS_2}} {{APROPOS_3}}</p>
+        <div class="apropos-chiffres">
+          <div class="carte-chiffre"><div class="carte-chiffre-grand">+15</div><div class="carte-chiffre-libelle">Ans d'expérience</div></div>
+          <div class="carte-chiffre"><div class="carte-chiffre-grand">RGE</div><div class="carte-chiffre-libelle">Artisan certifié</div></div>
+          <div class="carte-chiffre"><div class="carte-chiffre-grand">24h</div><div class="carte-chiffre-libelle">Devis envoyé</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="section services section-alternee" id="services">
+    <div class="conteneur">
+      <div class="section-entete apparition">
+        <span class="surtitre">02 — Prestations couvreur {{NOM_COMPLET}}</span>
+        <h2>Tout ce dont votre toiture a besoin</h2>
+        <p class="accroche">{{SERVICES_INTRO}}</p>
+      </div>
+
+      <div class="services-liste">
+        <a href="#devis" class="service-carte apparition">
+          <span class="service-media">
+            <img src="public/images/services/renovation-toiture.webp" alt="Pose et rénovation de toiture en tuiles {{NOM_A}}" width="450" height="300" loading="lazy">
+          </span>
+          <span class="service-contenu">
+            <h3>Pose &amp; rénovation de toitures</h3>
+            <p>{{SERVICE_1_1}} {{SERVICE_1_2}}</p>
+          </span>
+          <span class="service-fleche" aria-hidden="true"><span class="service-fleche-txt">Devis</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+
+        <a href="#devis" class="service-carte apparition">
+          <span class="service-media">
+            <img src="public/images/services/pose-gouttieres.webp" alt="Pose de gouttières en zinc par un couvreur {{NOM_A}}" width="450" height="300" loading="lazy">
+          </span>
+          <span class="service-contenu">
+            <h3>Pose de gouttières</h3>
+            <p>{{SERVICE_2_1}} {{SERVICE_2_2}}</p>
+          </span>
+          <span class="service-fleche" aria-hidden="true"><span class="service-fleche-txt">Devis</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+
+        <a href="#devis" class="service-carte apparition">
+          <span class="service-media">
+            <img src="public/images/services/nettoyage-toiture.webp" alt="Nettoyage et démoussage de toiture {{NOM_A}} {{NOM_A}}" width="450" height="300" loading="lazy">
+          </span>
+          <span class="service-contenu">
+            <h3>Nettoyage de toiture</h3>
+            <p>{{SERVICE_3_1}} {{SERVICE_3_2}}</p>
+          </span>
+          <span class="service-fleche" aria-hidden="true"><span class="service-fleche-txt">Devis</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+
+        <a href="#devis" class="service-carte apparition">
+          <span class="service-media">
+            <img src="public/images/services/zinguerie.webp" alt="Travaux de zinguerie en zinc réalisés par un couvreur {{NOM_COMPLET}}" width="450" height="300" loading="lazy">
+          </span>
+          <span class="service-contenu">
+            <h3>Travaux de zinguerie</h3>
+            <p>{{SERVICE_4_1}} {{SERVICE_4_2}}</p>
+          </span>
+          <span class="service-fleche" aria-hidden="true"><span class="service-fleche-txt">Devis</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+
+        <a href="#devis" class="service-carte apparition">
+          <span class="service-media">
+            <img src="public/images/services/fenetre-de-toit.webp" alt="Pose de fenêtre de toit et velux par un couvreur {{NOM_A}}" width="450" height="300" loading="lazy">
+          </span>
+          <span class="service-contenu">
+            <h3>Pose de fenêtre de toit</h3>
+            <p>{{SERVICE_5_1}} {{SERVICE_5_2}}</p>
+          </span>
+          <span class="service-fleche" aria-hidden="true"><span class="service-fleche-txt">Devis</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+
+        <a href="#devis" class="service-carte apparition">
+          <span class="service-media">
+            <img src="public/images/services/isolation-toiture.webp" alt="Isolation thermique des combles réalisée {{NOM_A}} {{NOM_A}}" width="450" height="300" loading="lazy">
+          </span>
+          <span class="service-contenu">
+            <h3>Isolation des combles</h3>
+            <p>{{SERVICE_6_1}} {{SERVICE_6_2}}</p>
+          </span>
+          <span class="service-fleche" aria-hidden="true"><span class="service-fleche-txt">Devis</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TYPES DE TOITURE ============ -->
+  <section class="section types" id="types">
+    <div class="conteneur">
+      <div class="section-entete apparition">
+        <span class="surtitre">Nos savoir-faire</span>
+        <h2>Les différents <span class="surligne">types de toiture</span> que nous installons {{NOM_A}}</h2>
+        <p class="accroche">{{SAVOIR_FAIRE_INTRO}}</p>
+      </div>
+
+      <div class="types-grille">
+        <article class="type-carte apparition">
+          <div class="type-media">
+            <img src="public/images/tuiles.avif" alt="Toiture en tuiles posée par un couvreur {{NOM_COMPLET}}" width="480" height="360" loading="lazy">
+          </div>
+          <h3>Toit en tuile</h3>
+          <p>{{TYPE_1_1}} {{TYPE_1_2}}</p>
+        </article>
+
+        <article class="type-carte apparition">
+          <div class="type-media">
+            <img src="public/images/toit-ardoise.avif" alt="Toiture en ardoises naturelles réalisée {{NOM_A}}" width="480" height="360" loading="lazy">
+          </div>
+          <h3>Toit en ardoise</h3>
+          <p>{{TYPE_2_1}} {{TYPE_2_2}}</p>
+        </article>
+
+        <article class="type-carte apparition">
+          <div class="type-media">
+            <img src="public/images/toit-zinc.avif" alt="Toiture en zinc moderne installée par un couvreur {{NOM_COMPLET}}" width="480" height="360" loading="lazy">
+          </div>
+          <h3>Toit en zinc</h3>
+          <p>{{TYPE_3_1}} {{TYPE_3_2}}</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ POURQUOI NOUS CHOISIR ============ -->
+  <section class="section pourquoi" id="pourquoi">
+    <div class="conteneur">
+      <div class="section-entete apparition">
+        <span class="surtitre">03 — Pourquoi nous choisir</span>
+        <h2>Couvreur {{NOM_COMPLET}} : un artisan sur qui vous pouvez compter</h2>
+        <p class="accroche">{{RAISONS_INTRO}}</p>
+      </div>
+
+      <div class="raisons-grille">
+        <article class="raison-carte apparition">
+          <span class="raison-numero">01</span>
+          <span class="raison-icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 6v6c0 5 3.8 8.4 9 10 5.2-1.6 9-5 9-10V6l-9-4Z"/><path d="m9 12 2 2 4-4"/></svg>
+          </span>
+          <h3>Matériaux de qualité</h3>
+          <p>{{RAISON_1_1}} {{RAISON_1_2}}</p>
+        </article>
+
+        <article class="raison-carte apparition">
+          <span class="raison-numero">02</span>
+          <span class="raison-icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2 4 14h7l-1 8 10-12h-7l1-8Z"/></svg>
+          </span>
+          <h3>Savoir-faire artisanal</h3>
+          <p>{{RAISON_2_1}} {{RAISON_2_2}}</p>
+        </article>
+
+        <article class="raison-carte apparition">
+          <span class="raison-numero">03</span>
+          <span class="raison-icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 7.5 8 9 4.5-1.5 8-4 8-9V6l-8-3Z"/><path d="M12 8v5M12 16h.01"/></svg>
+          </span>
+          <h3>Travaux garantis</h3>
+          <p>{{RAISON_3_1}} {{RAISON_3_2}}</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AVIS CLIENTS ============ -->
+  <section class="section avis section-alternee" id="avis">
+    <div class="conteneur">
+      <div class="section-entete apparition">
+        <span class="surtitre">04 — Ils nous font confiance</span>
+        <h2>Ce que disent nos clients</h2>
+        <p class="accroche">La satisfaction de nos clients {{NOM_A}} est notre meilleure référence.</p>
+      </div>
+
+      <div class="avis-grille">
+        <blockquote class="avis-carte apparition">
+          <div class="etoiles" aria-label="Note de 5 sur 5">★★★★★</div>
+          <p class="avis-texte">{{AVIS_1_1}} {{AVIS_1_2}}</p>
+          <footer class="avis-auteur">
+            <span class="avis-initiales" aria-hidden="true">{{AVIS_1_INIT}}</span>
+            <div>
+              <b>{{AVIS_1_NOM}}</b>
+              <span>{{NOM_COMPLET}} ({{DEP_CODE}})</span>
+            </div>
+          </footer>
+        </blockquote>
+
+        <blockquote class="avis-carte apparition">
+          <div class="etoiles" aria-label="Note de 5 sur 5">★★★★★</div>
+          <p class="avis-texte">{{AVIS_2_1}} {{AVIS_2_2}}</p>
+          <footer class="avis-auteur">
+            <span class="avis-initiales" aria-hidden="true">{{AVIS_2_INIT}}</span>
+            <div>
+              <b>{{AVIS_2_NOM}}</b>
+              <span>{{NOM_COMPLET}} ({{DEP_CODE}})</span>
+            </div>
+          </footer>
+        </blockquote>
+
+        <blockquote class="avis-carte apparition">
+          <div class="etoiles" aria-label="Note de 5 sur 5">★★★★★</div>
+          <p class="avis-texte">{{AVIS_3_1}} {{AVIS_3_2}}</p>
+          <footer class="avis-auteur">
+            <span class="avis-initiales" aria-hidden="true">{{AVIS_3_INIT}}</span>
+            <div>
+              <b>{{AVIS_3_NOM}}</b>
+              <span>{{NOM_COMPLET}} ({{DEP_CODE}})</span>
+            </div>
+          </footer>
+        </blockquote>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section faq" id="faq">
+    <div class="conteneur faq-cadre">
+      <div class="section-entete apparition">
+        <span class="surtitre">05 — Questions fréquentes</span>
+        <h2>Vous vous posez des questions&nbsp;?</h2>
+        <p class="accroche">Les réponses aux interrogations les plus courantes de nos clients. Une autre question&nbsp;? Contactez-nous.</p>
+      </div>
+
+      <div class="faq-liste apparition">
+        <details class="faq-question">
+          <summary>{{FAQ_Q1}}</summary>
+          <div class="faq-reponse"><p>{{FAQ_A1_1}} {{FAQ_A1_2}}</p></div>
+        </details>
+
+        <details class="faq-question">
+          <summary>{{FAQ_Q2}}</summary>
+          <div class="faq-reponse"><p>{{FAQ_A2_1}} {{FAQ_A2_2}}</p></div>
+        </details>
+
+        <details class="faq-question">
+          <summary>{{FAQ_Q3}}</summary>
+          <div class="faq-reponse"><p>{{FAQ_A3_1}} {{FAQ_A3_2}}</p></div>
+        </details>
+
+        <details class="faq-question">
+          <summary>{{FAQ_Q4}}</summary>
+          <div class="faq-reponse"><p>{{FAQ_A4_1}} {{FAQ_A4_2}}</p></div>
+        </details>
+
+        <details class="faq-question">
+          <summary>{{FAQ_Q5}}</summary>
+          <div class="faq-reponse"><p>{{FAQ_A5_1}} {{FAQ_A5_2}}</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DEVIS ============ -->
+  <section class="section devis section-alternee" id="devis">
+    <div class="conteneur">
+      <div class="devis-intro apparition">
+        <span class="surtitre">06 — Contact couvreur {{NOM_COMPLET}}</span>
+        <h2>Recevez votre devis gratuit sous 24h par votre couvreur {{NOM_COMPLET}}</h2>
+        <p class="accroche">{{DEVIS_INTRO}}</p>
+        <ul class="devis-points">
+          <li><span class="point"></span> Déplacement et estimation gratuits</li>
+          <li><span class="point"></span> Réponse sous 24 à 48 heures</li>
+          <li><span class="point"></span> Conseils personnalisés d'un artisan local</li>
+        </ul>
+      </div>
+
+      <form class="devis-formulaire apparition" id="formulaireDevis" novalidate>
+        <div class="champ champ-nom">
+          <label for="d-nom">Nom complet</label>
+          <input type="text" id="d-nom" name="nom" placeholder="Jean Dupont" required>
+          <span class="erreur" data-for="nom"></span>
+        </div>
+        <div class="champ champ-tel">
+          <label for="d-tel">Téléphone</label>
+          <input type="tel" id="d-tel" name="tel" placeholder="06 00 00 00 00" required>
+          <span class="erreur" data-for="tel"></span>
+        </div>
+        <div class="champ champ-email">
+          <label for="d-email">Email</label>
+          <input type="email" id="d-email" name="email" placeholder="vous@email.fr" required>
+          <span class="erreur" data-for="email"></span>
+        </div>
+        <div class="champ champ-ville">
+          <label for="d-ville">Ville</label>
+          <input type="text" id="d-ville" name="ville" placeholder="Ville" required>
+          <span class="erreur" data-for="ville"></span>
+        </div>
+        <div class="champ champ-cp">
+          <label for="d-cp">Code postal</label>
+          <input type="text" id="d-cp" name="cp" placeholder="Code postal" inputmode="numeric" required>
+          <span class="erreur" data-for="cp"></span>
+        </div>
+        <div class="champ champ-projet">
+          <label for="d-projet">Votre projet</label>
+          <select id="d-projet" name="projet">
+            <option value="">Sélectionnez une prestation</option>
+            <option>Pose / rénovation de toiture</option>
+            <option>Pose de gouttières</option>
+            <option>Nettoyage de toiture</option>
+            <option>Travaux de zinguerie</option>
+            <option>Fenêtre de toit</option>
+            <option>Isolation des combles</option>
+            <option>Autre / je ne sais pas</option>
+          </select>
+        </div>
+        <div class="champ champ-message">
+          <label for="d-message">Message</label>
+          <textarea id="d-message" name="message" rows="2" minlength="10" aria-describedby="d-message-aide"
+                    placeholder="Décrivez votre besoin en quelques mots…" required></textarea>
+          <span class="champ-aide" id="d-message-aide" data-min="10">10 caractères minimum</span>
+          <span class="erreur" data-for="message"></span>
+        </div>
+        <input type="text" name="field_hp" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;height:1px;width:1px;opacity:0" aria-hidden="true">
+        <button type="submit" class="bouton bouton-principal devis-envoyer">Envoyer ma demande</button>
+        <p class="formulaire-succes" id="succesFormulaire" hidden>✓ Merci&nbsp;! Votre demande a bien été envoyée, nous vous recontactons très vite.</p>
+        <p class="formulaire-erreur" id="erreurFormulaire" hidden style="grid-column:1/-1;color:#D14545;text-align:center;font-size:14px;background:rgba(209,69,69,.08);border-radius:8px;padding:10px"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ PIED DE PAGE ============ -->
+<footer class="pied" id="contact">
+  <div class="pied-appel conteneur">
+    <div class="apparition">
+      <span class="surtitre">Un projet de toiture&nbsp;?</span>
+      <h2>Parlons de votre chantier dès aujourd'hui.</h2>
+    </div>
+    <a href="tel:{{PHONE_TEL}}" class="bouton bouton-principal bouton-grand">{{PHONE}}</a>
+  </div>
+
+  <div class="pied-principal conteneur">
+    <div class="pied-marque">
+      <a href="#accueil" class="logo logo-pied">
+        <img src="public/images/logo-couvreur.webp" alt="Logo {{MARQUE}}, couvreur {{NOM_COMPLET}}" width="76" height="76">
+      </a>
+      <p>{{FOOTER_P_1}} {{FOOTER_P_2}}</p>
+      <div class="pied-labels">
+        <span>RGE</span><span>Garantie décennale</span><span>Devis 24h</span>
+      </div>
+    </div>
+
+    <div class="pied-colonne">
+      <h3>Prestations</h3>
+      <a href="#services">Rénovation de toiture</a>
+      <a href="#services">Pose de gouttières</a>
+      <a href="#services">Nettoyage &amp; démoussage</a>
+      <a href="#services">Zinguerie</a>
+      <a href="#services">Fenêtre de toit</a>
+      <a href="#services">Isolation des combles</a>
+    </div>
+
+    <div class="pied-colonne">
+      <h3>Zone d'intervention</h3>
+      <a href="#contact">{{NOM_COMPLET}}</a>
+      <a href="#contact">{{DEP_NOM}}</a>
+      <a href="#contact">Communes voisines</a>
+      <a href="#contact">Alentours ({{DEP_CODE}})</a>
+    </div>
+
+    <div class="pied-colonne pied-contact">
+      <h3>Contact</h3>
+      <a href="tel:{{PHONE_TEL}}">{{PHONE}}</a>
+      <p>{{NOM_COMPLET}}, {{CODE_POSTAL}}<br>{{DEP_NOM}} — {{REG_NOM}}</p>
+      <p class="pied-horaires">Lun – Sam · 8h – 19h</p>
+    </div>
+  </div>
+
+  <div class="pied-bas conteneur">
+    <span>© {{YEAR}} {{MARQUE}} — Artisan couvreur {{NOM_COMPLET}} ({{DEP_CODE}})</span>
+  </div>
+</footer>
+
+<script>window.SUPA_CONFIG = {{SUPABASE_CONFIG_JSON}}; window.SITE_META = {url:"{{URL}}", name:"Couvreur — {{NOM_COMPLET}}", dep_code:"{{DEP_CODE}}"};</script>
+<script src="script.js" defer></script>
+</body>
+</html>

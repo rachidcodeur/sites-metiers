@@ -1,0 +1,453 @@
+{
+  "_note": "Chaque slot a 5 variantes. pickVariant() = SHA-256(slug-ville + slot) → distribution uniforme et déterministe par commune.",
+  "argument": [
+    "Devis gratuit sous 24h, garantie décennale",
+    "Artisan RGE, devis rapide et sans engagement",
+    "Intervention rapide, travail garanti 10 ans",
+    "Couvreur certifié RGE, devis clair et détaillé",
+    "Devis sous 24h, matériaux et pose garantis"
+  ],
+  "hero_h2": [
+    "Pose, rénovation et entretien de toiture {NOM_A} et alentours",
+    "Couvreur zingueur {NOM_A} : toiture, gouttières, zinguerie et isolation",
+    "Votre artisan couvreur {NOM_A} pour tous vos travaux de toit",
+    "Travaux de couverture {NOM_A}, du diagnostic à la finition",
+    "Toiture neuve, rénovation et dépannage {NOM_A}"
+  ],
+  "meta_desc_1": [
+    "Artisan couvreur {NOM_A} ({DEP_NOM} {DEP_CODE}). Pose et rénovation de toiture, gouttières, zinguerie, nettoyage et isolation.",
+    "Couvreur professionnel {NOM_A} ({DEP_CODE}). Toiture neuve, rénovation complète, entretien et travaux de zinguerie sur-mesure.",
+    "Spécialiste toiture {NOM_A} ({DEP_NOM}). Pose de tuiles, ardoises et zinc, gouttières et démoussage — travail garanti.",
+    "Toitures neuves et rénovations {NOM_A} ({DEP_CODE}). Diagnostic gratuit, matériaux de qualité et finitions soignées.",
+    "Couvreur zingueur {NOM_A} ({DEP_NOM}). Toutes prestations de couverture pour particuliers et professionnels du {DEP_CODE}."
+  ],
+  "meta_desc_2": [
+    "Devis gratuit sous 24 h, garantie décennale et artisan certifié RGE.",
+    "Devis sous 24 h, sans engagement — artisan certifié RGE et déclaré.",
+    "Devis clair et détaillé sous 24 h, garantie 10 ans sur nos travaux.",
+    "Devis gratuit et rapide, intervention soignée avec assurance décennale.",
+    "Intervention rapide et devis sous 24 h — travaux couverts par la garantie décennale."
+  ],
+  "accroche_1": [
+    "Pose, rénovation, entretien et zinguerie sur tout le secteur {NOM_A} ({DEP_CODE}).",
+    "Artisan couvreur local {NOM_A} : nous prenons en charge tous vos travaux de toiture, du diagnostic à la finition.",
+    "Toiture neuve, rénovation ou simple entretien : nous intervenons {NOM_A} et alentours avec le même soin sur chaque chantier.",
+    "De la petite réparation à la réfection complète, une équipe qualifiée à votre service {NOM_A} ({DEP_CODE}).",
+    "Couverture, zinguerie, gouttières, isolation : tous les métiers du toit réunis pour vos projets {NOM_A}."
+  ],
+  "accroche_2": [
+    "Un travail soigné, garanti décennale, et un devis gratuit sous 24 heures.",
+    "Matériaux de qualité, artisan RGE et devis clair, sans engagement.",
+    "Un savoir-faire artisanal, une garantie décennale et un accompagnement de A à Z.",
+    "Devis gratuit, tarifs transparents et travail garanti sur toutes nos prestations.",
+    "Interventions rapides, finitions impeccables et prix annoncé avant chaque chantier."
+  ],
+  "apropos_1": [
+    "Couvreur {NOM_COMPLET} implanté depuis plus de 15 ans, nous intervenons dans l'ensemble {DEP_NOM_DE}. Chaque chantier est mené avec la même exigence : un travail propre, durable et parfaitement adapté aux contraintes locales.",
+    "En tant que couvreur {NOM_COMPLET} depuis plus d'une décennie, nous connaissons parfaitement les toits {DEP_NOM_DE}. Chaque intervention est pensée pour durer et respecter le caractère de votre maison.",
+    "Votre couvreur {NOM_COMPLET} accompagne particuliers et professionnels sur leurs projets de toiture, avec la rigueur d'une équipe locale et l'expertise d'artisans certifiés partout {DEP_NOM_A}.",
+    "Couvreur {NOM_COMPLET} enraciné depuis plus de quinze ans, nous mettons notre savoir-faire au service des toits {DEP_NOM_DE}. Un travail méticuleux, respectueux du bâti et des règles de l'art.",
+    "Entreprise artisanale de couvreur {NOM_COMPLET}, nous rayonnons {DEP_NOM_A} pour tous les travaux de couverture. Chaque chantier reçoit la même attention, quelle que soit sa taille."
+  ],
+  "apropos_2": [
+    "Faites confiance à votre couvreur {NOM_COMPLET} de la simple réparation à la réfection complète : diagnostic honnête, conseils sur les matériaux, respect des délais et transparence totale sur les prix.",
+    "Notre philosophie de couvreur {NOM_COMPLET} : un diagnostic clair, des recommandations honnêtes et un chantier tenu dans les délais annoncés. Vous savez à tout moment où en est votre projet.",
+    "Devis détaillé avant chaque intervention, choix des matériaux expliqués et suivi personnalisé : votre couvreur {NOM_COMPLET} croit à la transparence et à la relation directe avec ses clients.",
+    "Votre couvreur {NOM_COMPLET} prend le temps de comprendre votre projet, d'évaluer précisément vos besoins et de vous proposer la solution la plus adaptée — pas la plus chère, la plus juste.",
+    "Chaque chantier commence par un échange avec votre couvreur {NOM_COMPLET}, se poursuit par un devis détaillé et se termine par une visite de contrôle. Une approche méthodique qui rassure et convainc."
+  ],
+  "apropos_3": [
+    "Notre objectif : une toiture qui protège votre maison pour les décennies à venir.",
+    "Notre engagement : un toit sain, étanche et durable, qui préserve votre patrimoine sur la durée.",
+    "Notre priorité : la qualité du travail et la satisfaction de nos clients, chantier après chantier.",
+    "Notre promesse : un artisan à l'écoute, un chantier propre et une toiture qui traverse les années sans faiblir.",
+    "Notre ambition : devenir votre artisan de confiance pour tous vos travaux de couverture, aujourd'hui comme demain."
+  ],
+  "services_intro": [
+    "Votre couvreur {NOM_COMPLET} propose une offre complète de couverture et de zinguerie, pour la construction neuve comme pour l'entretien et la rénovation.",
+    "Tous les métiers du toit sous un même toit avec votre couvreur {NOM_COMPLET} : pose, rénovation, entretien, zinguerie et isolation.",
+    "Pose neuve, rénovation complète, réparations ponctuelles et entretien : couvreur {NOM_COMPLET}, nous couvrons tous vos besoins de toiture.",
+    "Une expertise complète de couvreur {NOM_COMPLET}, du gros œuvre aux finitions, pour tous vos projets de couverture et de zinguerie.",
+    "De la charpente à la gouttière, votre couvreur {NOM_COMPLET} prend en charge chaque élément de votre toit avec le même soin professionnel."
+  ],
+  "service_1_1": [
+    "Couverture neuve ou réfection complète en tuiles et ardoises, réalisée dans les règles de l'art.",
+    "Pose de toiture neuve ou rénovation intégrale, en tuiles, ardoises ou zinc, selon vos préférences et le style de votre maison.",
+    "Nous réalisons vos toitures neuves et rénovations complètes avec un savoir-faire artisanal et des matériaux triés sur le volet.",
+    "Réfection totale ou partielle de couverture, adaptée à la structure de votre bâti et aux contraintes {DEP_NOM_DE}.",
+    "Toiture neuve ou rénovation en profondeur : nous prenons en charge l'ensemble du chantier, de la dépose à la couverture finale."
+  ],
+  "service_1_2": [
+    "Nous évaluons l'état de votre charpente, remplaçons les éléments abîmés et posons une toiture étanche et durable, avec garantie décennale sur l'ensemble des travaux.",
+    "Diagnostic préalable, choix des matériaux, pose et finitions : chaque étape est menée avec rigueur et couverte par notre garantie décennale.",
+    "Un chantier propre, des délais tenus, une toiture étanche et esthétique — le tout garanti dix ans pour votre tranquillité.",
+    "De l'analyse de la charpente à la pose des dernières tuiles, nous suivons votre chantier de bout en bout avec un souci du détail garanti décennalement.",
+    "Interventions soignées, matériaux durables et garantie décennale : votre couverture est faite pour durer plusieurs décennies."
+  ],
+  "service_2_1": [
+    "Installation et remplacement de gouttières, chéneaux et descentes en zinc ou en PVC.",
+    "Pose de gouttières neuves ou remplacement de systèmes anciens, en zinc, aluminium ou PVC selon vos besoins.",
+    "Système d'évacuation complet : gouttières, descentes et raccords, adaptés à la configuration de votre toiture.",
+    "Nous concevons et posons vos gouttières sur mesure, pour une évacuation efficace et un rendu esthétique.",
+    "Remplacement de vieilles gouttières ou installation neuve : nous assurons une pose durable et parfaitement étanche."
+  ],
+  "service_2_2": [
+    "Une évacuation des eaux de pluie parfaitement maîtrisée protège vos façades et vos fondations de l'humidité, saison après saison.",
+    "Des gouttières bien dimensionnées et bien posées, c'est l'assurance de préserver vos murs et vos fondations dans le temps.",
+    "Une bonne gestion des eaux pluviales évite les infiltrations, les mousses sur les façades et les problèmes d'humidité.",
+    "Un système d'évacuation performant protège votre maison des désordres liés à l'eau, année après année.",
+    "Gouttières fiables et durables : la première ligne de défense de votre maison contre les intempéries."
+  ],
+  "service_3_1": [
+    "Démoussage, nettoyage haute pression et application d'un traitement hydrofuge protecteur longue durée.",
+    "Nettoyage complet de votre toiture : démoussage, brossage manuel et traitement fongicide/hydrofuge.",
+    "Entretien préventif ou curatif de la couverture, avec démoussage soigné et application d'un produit protecteur.",
+    "Nettoyage et traitement de toiture pour éliminer mousses, lichens et algues, puis protection longue durée.",
+    "Prestation complète : démoussage, rinçage, traitement anti-mousse et hydrofuge de protection."
+  ],
+  "service_3_2": [
+    "Un entretien régulier élimine mousses et lichens, prolonge la vie de votre couverture et préserve l'esthétique de votre maison.",
+    "Un nettoyage régulier tous les 3 à 5 ans prolonge significativement la durée de vie de votre toiture.",
+    "Prévenir plutôt que guérir : un entretien régulier évite des rénovations coûteuses à plus long terme.",
+    "Une toiture propre et traitée reste étanche plus longtemps et conserve son aspect d'origine.",
+    "L'entretien préventif protège votre investissement et repousse d'autant l'échéance des gros travaux."
+  ],
+  "service_4_1": [
+    "Façonnage et pose de zinc : noues, faîtages, solins et raccords étanches réalisés sur mesure.",
+    "Tous travaux de zinguerie : noues, chéneaux, faîtages, habillage de cheminée et lucarnes.",
+    "Zinguerie sur mesure : nous façonnons et posons les éléments de zinc selon les particularités de votre toit.",
+    "Réalisation d'éléments de zinguerie neufs ou en rénovation, pour une étanchéité durable aux points sensibles.",
+    "Interventions ciblées ou complètes en zinguerie, avec un travail précis sur les raccords et les zones exposées."
+  ],
+  "service_4_2": [
+    "La zinguerie assure l'étanchéité des points sensibles de votre toiture et garantit une évacuation impeccable des eaux, pour une protection durable.",
+    "Une zinguerie bien exécutée, c'est l'assurance de zones critiques (noues, cheminées, lucarnes) parfaitement étanches sur la durée.",
+    "Le zinc, matériau noble et durable, offre une longévité exceptionnelle et une esthétique appréciée en couverture traditionnelle.",
+    "Des raccords précis et une pose minutieuse évitent les infiltrations sur les points les plus exposés du toit.",
+    "Un travail de zinguerie soigné, c'est une protection efficace contre les infiltrations sur plusieurs décennies."
+  ],
+  "service_5_1": [
+    "Installation de fenêtres de toit et velux pour apporter plus de lumière naturelle à vos combles.",
+    "Pose de fenêtres de toit, verrières et lucarnes pour agrandir vos espaces de vie sous les combles.",
+    "Création d'ouvertures dans la toiture : fenêtres de toit, velux, chien-assis ou lucarnes selon votre projet.",
+    "Fenêtres de toit sur mesure, avec un choix large de modèles adaptés à vos besoins et au style de votre maison.",
+    "Nous installons vos fenêtres de toit avec une intégration parfaite à la couverture existante."
+  ],
+  "service_5_2": [
+    "Nous assurons une pose soignée et une étanchéité irréprochable, en respectant l'isolation et l'esthétique de votre toiture.",
+    "Une pose soignée garantit l'étanchéité et évite tout pont thermique — vos combles gagnent en lumière sans perdre en confort.",
+    "Étanchéité renforcée, finitions propres et respect de l'isolation existante : une prestation complète et durable.",
+    "L'intégration à la couverture est traitée avec le même soin que la fenêtre elle-même, pour un résultat esthétique et fonctionnel.",
+    "Une intervention rapide, propre et sans mauvaise surprise, avec des fenêtres certifiées et une étanchéité garantie."
+  ],
+  "service_6_1": [
+    "Isolation thermique des combles pour un meilleur confort été comme hiver et des économies d'énergie durables.",
+    "Isolation par l'intérieur ou par sarking, pour transformer vos combles en espaces confortables toute l'année.",
+    "Renforcement de l'isolation des combles perdus ou aménagés, avec des matériaux performants et éco-responsables.",
+    "Nous isolons vos combles selon les meilleurs standards actuels, pour un vrai gain de confort thermique et acoustique.",
+    "Isolation complète des combles pour améliorer la performance énergétique globale de votre maison."
+  ],
+  "service_6_2": [
+    "En limitant les déperditions de chaleur par la toiture, vous réduisez vos factures et améliorez la performance énergétique de votre logement.",
+    "Jusqu'à 30 % des déperditions passent par le toit : bien isoler, c'est réduire durablement ses factures d'énergie.",
+    "Une isolation performante peut ouvrir droit à MaPrimeRénov' ou aux primes CEE, nous vous accompagnons dans les démarches.",
+    "Confort d'été renforcé, chauffage moins sollicité en hiver, valeur du bien augmentée : l'isolation est un investissement à haut rendement.",
+    "Une maison bien isolée par le haut consomme moins et se revend mieux — un double bénéfice immédiat et à long terme."
+  ],
+  "savoir_faire_intro": [
+    "Selon votre maison, vos goûts et votre budget, nous posons et rénovons les principaux types de couverture, dans le respect des règles de l'art.",
+    "Tuiles, ardoises ou zinc : nous maîtrisons les grands matériaux de couverture et vous conseillons celui qui convient à votre habitation.",
+    "Chaque toit a sa personnalité : nous adaptons matériaux, techniques et finitions au style architectural de votre maison.",
+    "Toitures traditionnelles ou contemporaines, matériaux naturels ou modernes : nous couvrons tous les styles avec la même exigence.",
+    "Un savoir-faire artisanal appliqué aux principaux matériaux de couverture, pour un rendu authentique et durable."
+  ],
+  "type_1_1": [
+    "La toiture en tuiles, emblématique de l'architecture traditionnelle française, offre une durabilité exceptionnelle et une esthétique intemporelle.",
+    "Symbole des couvertures traditionnelles, la tuile allie robustesse, résistance aux intempéries et charme intemporel.",
+    "Les tuiles, indémodables, protègent les maisons françaises depuis des siècles avec une durabilité éprouvée.",
+    "Matériau noble et durable, la tuile s'inscrit parfaitement dans le paysage architectural {DEP_NOM_DE}.",
+    "Choix privilégié pour les toitures régionales, la tuile offre une esthétique authentique et une résistance à toute épreuve."
+  ],
+  "type_1_2": [
+    "Nous maîtrisons la pose de divers types de tuiles : canal, plates ou mécaniques, selon le style de votre habitation.",
+    "Tuiles canal, plates, mécaniques ou vieilles tuiles récupérées : nous adaptons le matériau au caractère de votre maison.",
+    "Nous travaillons avec les principaux fabricants et nuances de tuiles pour respecter l'harmonie de votre habitat.",
+    "Notre expertise couvre l'ensemble des poses traditionnelles et mécanisées, avec des matériaux garantis d'origine.",
+    "Chaque type de tuile a ses spécificités : nous vous guidons vers le choix le plus cohérent pour votre projet."
+  ],
+  "type_2_1": [
+    "La toiture en ardoises, synonyme d'élégance et de robustesse, convient parfaitement aux architectures classiques comme contemporaines.",
+    "L'ardoise, matériau minéral d'exception, apporte une signature esthétique unique et une durabilité de plus de 100 ans.",
+    "Naturellement résistante aux intempéries, l'ardoise habille les toits les plus élégants et traverse le temps sans faiblir.",
+    "L'ardoise séduit par sa noblesse, sa longévité et son rendu haut de gamme adapté à toutes les architectures.",
+    "Matériau raffiné et pérenne, l'ardoise reste une valeur sûre pour qui recherche l'excellence en couverture."
+  ],
+  "type_2_2": [
+    "Nous travaillons avec des ardoises naturelles de qualité, pour une couverture raffinée qui traverse les décennies sans faiblir.",
+    "Ardoises naturelles d'Espagne ou synthétiques : nous vous proposons les meilleures options selon votre budget et vos exigences.",
+    "Pose au crochet ou clouée, à recouvrement : nous maîtrisons les techniques traditionnelles pour un rendu parfait.",
+    "Sélection minutieuse des matériaux et pose au clou selon les règles de l'art, pour un toit fait pour durer un siècle.",
+    "Nous garantissons une couverture ardoise soignée, étanche et esthétique, dans le respect des DTU en vigueur."
+  ],
+  "type_3_1": [
+    "La toiture en zinc, alliant modernité et tradition, offre une excellente durabilité et une adaptabilité remarquable aux formes architecturales complexes.",
+    "Le zinc s'adapte à toutes les formes et confère un rendu contemporain apprécié pour les extensions et réhabilitations.",
+    "Ductile et durable, le zinc permet des couvertures aux lignes épurées, résistantes et à faible entretien.",
+    "Matériau moderne par excellence, le zinc s'impose sur les architectures contemporaines et les toits complexes.",
+    "Le zinc, à la fois traditionnel en zinguerie et moderne en couverture, permet des réalisations sur mesure."
+  ],
+  "type_3_2": [
+    "Nous utilisons du zinc naturel ou prépatiné pour des toits contemporains, étanches et parfaitement finis.",
+    "Nous posons du zinc naturel, quartz-zinc, anthra-zinc ou pigmento selon le rendu esthétique recherché.",
+    "Joint debout, à tasseaux ou à ondes : nous adaptons la technique de pose au caractère du bâtiment.",
+    "Zinc VMZINC ou équivalent, garanti sur plusieurs décennies avec une patine évolutive naturelle.",
+    "Choix des finitions, techniques de pose et détails de raccord : chaque projet en zinc est unique et réfléchi."
+  ],
+  "raisons_intro": [
+    "Trois engagements simples qui font toute la différence sur votre chantier.",
+    "Trois piliers qui structurent notre travail et rassurent nos clients chantier après chantier.",
+    "Ce sur quoi vous pouvez compter dès le premier échange, jusqu'à la fin de votre chantier.",
+    "Ce qui distingue notre approche : simple, honnête et rigoureux.",
+    "Trois raisons de nous confier vos travaux — trois engagements que nous tenons depuis 15 ans."
+  ],
+  "raison_1_1": [
+    "Nous sélectionnons des tuiles, ardoises et zinc de premier choix auprès de fournisseurs reconnus, pour une toiture qui dure dans le temps.",
+    "Nos fournitures proviennent des grands industriels français et européens : traçabilité, qualité et durabilité vérifiées.",
+    "Nous choisissons chaque matériau avec soin, en fonction du bâti, du climat local et de vos exigences esthétiques.",
+    "Nos matériaux sont sélectionnés pour leur qualité et leur adaptation au climat {DEP_NOM_DE}.",
+    "Nous ne travaillons qu'avec des matériaux dont nous connaissons la fiabilité et la longévité."
+  ],
+  "raison_1_2": [
+    "Des matériaux fiables et adaptés au climat local, gages d'une couverture résistante aux intempéries et d'une tranquillité sur le long terme.",
+    "Choisir des matériaux de qualité, c'est faire l'économie de rénovations prématurées et gagner en sérénité.",
+    "Une toiture qui traverse les années sans problème, c'est d'abord une toiture faite avec les bons matériaux.",
+    "La différence de coût entre un matériau moyen et un matériau premium se rentabilise largement sur la durée de vie du toit.",
+    "Nos matériaux sont couverts par leurs garanties fabricants, en complément de notre garantie décennale."
+  ],
+  "raison_2_1": [
+    "Plus de 15 ans d'expérience et un travail réalisé dans les règles de l'art, par des artisans qualifiés et passionnés par leur métier.",
+    "Une équipe d'artisans formée aux techniques traditionnelles comme aux méthodes modernes, avec plus de 15 années de chantiers.",
+    "L'expérience de plus de 15 ans nous permet d'anticiper les problèmes et de proposer les solutions les plus adaptées.",
+    "Nos couvreurs sont formés en interne, sur les chantiers, aux exigences précises de chaque type de couverture.",
+    "Un savoir-faire éprouvé sur des centaines de chantiers, qui garantit la qualité de chaque intervention."
+  ],
+  "raison_2_2": [
+    "Nous apportons le même soin à chaque chantier, de la petite réparation à la réfection complète, avec des finitions impeccables et le respect de votre habitation.",
+    "Chantier propre, respect des lieux, communication claire : nous apportons le même soin à chaque intervention, quelle que soit sa taille.",
+    "De la simple réparation à la rénovation lourde, la même rigueur, les mêmes standards, la même relation de confiance.",
+    "Nous traitons chaque chantier comme si c'était notre propre maison — c'est notre définition du savoir-faire artisanal.",
+    "Le souci du détail, du premier échange à la remise des clés, fait la différence entre un travail correct et un travail exemplaire."
+  ],
+  "raison_3_1": [
+    "Artisan certifié RGE et garantie décennale sur toutes nos réalisations. Vous êtes couvert pendant 10 ans, sans mauvaise surprise.",
+    "Certification RGE, assurance responsabilité civile et garantie décennale : votre chantier est protégé sur tous les plans.",
+    "Nous sommes déclarés, certifiés RGE et couverts par les assurances professionnelles obligatoires.",
+    "La garantie décennale et notre certification RGE vous donnent l'assurance d'un chantier réalisé selon les normes en vigueur.",
+    "Nos qualifications RGE ouvrent droit aux aides publiques (MaPrimeRénov', CEE) sur les travaux éligibles."
+  ],
+  "raison_3_2": [
+    "Chaque intervention est assurée et réalisée dans le respect des normes en vigueur, pour vous offrir une sérénité totale et un accompagnement clair du devis à la fin du chantier.",
+    "Vous êtes informé à chaque étape, protégé par toutes les garanties et accompagné jusqu'à la réception du chantier.",
+    "Devis clair, chantier suivi, réception avec vous : nous ne laissons rien au hasard, ni côté sécurité ni côté administratif.",
+    "Toutes les assurances, tous les documents, toutes les factures — la totale transparence dès le premier contact.",
+    "Une intervention encadrée par les normes et les assurances, c'est votre tranquillité pour les dix prochaines années."
+  ],
+  "avis_1_1": [
+    "Réfection complète de notre toiture en tuiles. Chantier impeccable, équipe ponctuelle et très propre.",
+    "Intervention pour changement complet de couverture. Devis clair, matériaux de qualité et travail soigné.",
+    "Rénovation de notre toit en tuiles anciennes. Résultat magnifique, équipe pro et à l'écoute.",
+    "Ils ont refait entièrement notre toiture. Sérieux, ponctuels et vraiment à l'écoute de nos demandes.",
+    "Réfection complète de notre couverture après un dégât des eaux. Réactifs, professionnels et efficaces."
+  ],
+  "avis_1_2": [
+    "Le résultat est superbe, je recommande sans hésiter.",
+    "Un vrai plaisir de travailler avec une équipe aussi soignée. Recommandé les yeux fermés.",
+    "Chantier tenu dans les délais, tarif respecté et finitions parfaites. Merci !",
+    "Rien à redire, un vrai savoir-faire d'artisan. À recommander sans hésitation.",
+    "Je les recommande à 100 %, un travail sérieux et une équipe très agréable."
+  ],
+  "avis_2_1": [
+    "Intervention rapide pour une fuite après la tempête. Diagnostic clair, devis honnête et travail soigné.",
+    "Fuite d'eau détectée un dimanche, ils sont venus dès le lundi. Efficacité et sang-froid, top !",
+    "Réparation d'urgence sur une toiture endommagée par des vents violents. Réactifs et compétents.",
+    "Ils sont intervenus rapidement pour colmater une infiltration. Travail net et prix raisonnable.",
+    "Face à une fuite urgente, réponse immédiate et intervention le lendemain. Chapeau."
+  ],
+  "avis_2_2": [
+    "Un vrai professionnel à qui l'on peut faire confiance.",
+    "Rassurant et compétent, un vrai artisan comme on en trouve peu.",
+    "Rassurés et satisfaits, on ne cherchera plus ailleurs pour la toiture.",
+    "Confiance totale, ils reviendront pour l'isolation cet hiver.",
+    "Une entreprise sérieuse et humaine, ça change tout dans ces moments-là."
+  ],
+  "avis_3_1": [
+    "Pose de deux fenêtres de toit et démoussage. Excellent rapport qualité-prix, conseils avisés et finitions parfaites.",
+    "Installation de velux et nettoyage complet du toit. Devis très correct, résultat au top.",
+    "Démoussage, traitement hydrofuge et pose d'une fenêtre de toit. Résultat visible dès le premier hiver.",
+    "Nous avons fait poser une fenêtre de toit et effectuer un nettoyage complet. Travail nickel, propre et durable.",
+    "Combinaison démoussage + pose de velux réalisée en 3 jours. Chantier propre et bien géré."
+  ],
+  "avis_3_2": [
+    "Merci pour votre sérieux !",
+    "Prestation impeccable de A à Z, merci à toute l'équipe.",
+    "Rien à redire, tarif tenu et équipe très pro.",
+    "Une équipe compétente qui prend le temps d'expliquer chaque étape.",
+    "Très content du service, on reprend contact bientôt pour d'autres travaux."
+  ],
+  "faq_q1": [
+    "Combien coûte la rénovation d'une toiture ?",
+    "Quel est le prix moyen d'une rénovation de toit ?",
+    "Combien faut-il prévoir pour rénover sa toiture ?",
+    "À combien reviennent des travaux de couverture ?",
+    "Peut-on avoir une estimation du coût d'une rénovation ?"
+  ],
+  "faq_a1_1": [
+    "Le prix dépend de plusieurs facteurs : la surface, le type de couverture (tuiles, ardoises, zinc), l'état de la charpente et l'accessibilité du toit.",
+    "Plusieurs paramètres influencent le budget : dimensions du toit, matériau choisi, état de la charpente, complexité de la pose et facilité d'accès.",
+    "Le coût varie selon la surface concernée, le matériau retenu, l'état sous-jacent de la charpente et les contraintes d'accès au chantier.",
+    "Il n'y a pas de prix moyen fiable — chaque projet a ses spécificités : surface, pente, matériau, état de la charpente, accessibilité.",
+    "Le budget d'une rénovation dépend surtout du matériau (tuile, ardoise, zinc), de la surface et de l'état préalable de la charpente."
+  ],
+  "faq_a1_2": [
+    "Chaque chantier étant unique, nous nous déplaçons gratuitement pour évaluer votre toiture et vous remettre un devis clair et détaillé, sans engagement.",
+    "Un déplacement gratuit permet un diagnostic précis et un devis chiffré sous 24 h, sans aucun engagement de votre part.",
+    "Nous préférons voir sur place plutôt que d'estimer à distance : le devis est gratuit et remis sous 48 h.",
+    "Pour une estimation juste, nous nous déplaçons gratuitement chez vous et vous envoyons un devis détaillé rapidement.",
+    "Le déplacement, le diagnostic et le devis sont entièrement gratuits — vous ne payez que si vous validez les travaux."
+  ],
+  "faq_q2": [
+    "Puis-je bénéficier d'aides financières pour mes travaux ?",
+    "Existe-t-il des aides pour la rénovation de toiture ?",
+    "Peut-on prétendre à MaPrimeRénov' pour ce type de travaux ?",
+    "Quelles primes ou subventions sont possibles ?",
+    "Y a-t-il des aides publiques sur ces travaux ?"
+  ],
+  "faq_a2_1": [
+    "Oui, selon les travaux. L'isolation des combles et certaines rénovations énergétiques peuvent ouvrir droit à MaPrimeRénov', aux primes CEE et à la TVA réduite à 10 %.",
+    "Selon la nature des travaux, MaPrimeRénov', les CEE et la TVA à 10 % sont possibles — notamment sur l'isolation des combles et les rénovations énergétiques.",
+    "L'isolation, la pose de fenêtres de toit performantes ou les rénovations énergétiques peuvent être éligibles aux dispositifs d'aide en vigueur.",
+    "Oui, dans la plupart des cas d'isolation ou de rénovation énergétique globale — nous vérifions votre éligibilité au moment du devis.",
+    "MaPrimeRénov', primes CEE, TVA réduite : plusieurs dispositifs sont mobilisables selon la nature de vos travaux."
+  ],
+  "faq_a2_2": [
+    "En tant qu'artisan certifié RGE, nous vous permettons d'y accéder et vous orientons vers les dispositifs adaptés à votre situation.",
+    "Notre certification RGE ouvre la porte à ces aides — nous vous accompagnons dans les démarches administratives.",
+    "Nos qualifications RGE permettent d'accéder à toutes les aides d'État — nous vous guidons pas à pas dans le montage du dossier.",
+    "Nous vous aidons à constituer votre dossier de demande d'aide et à identifier tous les dispositifs mobilisables.",
+    "L'obtention des aides passe par un artisan RGE — c'est notre cas, et nous vous accompagnons sur la partie administrative."
+  ],
+  "faq_q3": [
+    "Combien de temps dure un chantier de toiture ?",
+    "Quelle est la durée moyenne d'une intervention sur toiture ?",
+    "En combien de temps est réalisé un chantier ?",
+    "Combien de jours dure une rénovation de toit ?",
+    "Quelle est la durée typique d'un chantier ?"
+  ],
+  "faq_a3_1": [
+    "Une intervention d'entretien (démoussage, réparation) prend généralement 1 à 2 jours. Une rénovation complète de couverture s'étale le plus souvent sur 1 à 2 semaines.",
+    "Cela dépend de la nature des travaux : 1 à 2 jours pour un nettoyage, 3 à 7 jours pour une pose de gouttières, 1 à 3 semaines pour une réfection complète.",
+    "L'entretien est rapide (1-2 jours), la rénovation partielle prend quelques jours, la réfection complète s'étale sur 1 à 3 semaines selon la surface.",
+    "Une intervention ponctuelle se règle en 1 ou 2 jours. Une rénovation totale de toit compte plutôt en semaines, en fonction de la météo.",
+    "Selon l'ampleur : 1 à 2 jours pour un entretien, 1 à 2 semaines pour une rénovation classique, davantage pour un chantier complexe."
+  ],
+  "faq_a3_2": [
+    "La durée exacte vous est toujours indiquée sur le devis, avant le début des travaux.",
+    "Nous annonçons toujours la durée précise au moment du devis et nous nous engageons à la respecter.",
+    "Le planning est validé avec vous avant le démarrage — pas de surprise ni de dépassement injustifié.",
+    "Vous connaissez le planning avant le début du chantier, et nous vous prévenons de toute contrainte météo éventuelle.",
+    "Chaque devis mentionne une durée précise, que nous respectons sauf imprévu majeur (météo notamment)."
+  ],
+  "faq_q4": [
+    "Comment savoir si ma toiture doit être rénovée ?",
+    "À quel moment faut-il envisager une rénovation ?",
+    "Quels sont les signes d'une toiture à refaire ?",
+    "Comment reconnaître une toiture en fin de vie ?",
+    "Quand est-il urgent de rénover son toit ?"
+  ],
+  "faq_a4_1": [
+    "Plusieurs signes doivent alerter : tuiles ou ardoises cassées ou déplacées, présence de mousse importante, traces d'humidité ou infiltrations dans les combles, gouttières qui débordent.",
+    "Fuites, traces d'humidité, tuiles déplacées, présence massive de mousse, gouttières bouchées : autant de signaux qui justifient un diagnostic.",
+    "Une toiture qui laisse passer l'eau, qui présente des tuiles cassées ou une mousse envahissante nécessite une expertise professionnelle.",
+    "Traces au plafond, ardoises glissées, mousses omniprésentes, isolant qui s'humidifie : ces signes appellent une vérification rapide.",
+    "L'âge de la toiture (30+ ans sans entretien), les infiltrations et la dégradation visible des matériaux sont les principaux signaux."
+  ],
+  "faq_a4_2": [
+    "Au moindre doute, nous réalisons un diagnostic honnête de votre toiture et vous conseillons uniquement ce qui est réellement nécessaire.",
+    "Nous privilégions le diagnostic honnête : on répare quand ça suffit, on rénove quand c'est vraiment nécessaire.",
+    "Un diagnostic gratuit sur place permet de savoir précisément ce qui doit être fait — et surtout ce qui peut attendre.",
+    "Notre approche : évaluer clairement l'état, chiffrer précisément et proposer uniquement les travaux justifiés.",
+    "Nous ne vendons jamais plus que ce qui est nécessaire — un diagnostic honnête vaut mieux qu'une rénovation prématurée."
+  ],
+  "faq_q5": [
+    "Vos travaux sont-ils garantis et assurés ?",
+    "Bénéficie-t-on d'une garantie sur vos interventions ?",
+    "Êtes-vous assurés et qualifiés ?",
+    "Quelles garanties couvrent vos travaux ?",
+    "Y a-t-il une garantie décennale sur vos chantiers ?"
+  ],
+  "faq_a5_1": [
+    "Oui. L'ensemble de nos travaux de couverture est couvert par la garantie décennale, et nous disposons d'une assurance responsabilité civile professionnelle.",
+    "Bien sûr : garantie décennale sur tous nos travaux et assurance responsabilité civile professionnelle en cours de validité.",
+    "Tous nos chantiers sont couverts par la décennale et notre RC pro — nous vous fournissons les attestations à la demande.",
+    "Oui : garantie décennale obligatoire, assurance RC professionnelle et garanties fabricants sur les matériaux posés.",
+    "Toutes les garanties légales et professionnelles sont en place — vous êtes protégé pendant 10 ans après réception."
+  ],
+  "faq_a5_2": [
+    "Vous bénéficiez d'une protection complète pendant 10 ans, avec un artisan certifié et déclaré.",
+    "Vous êtes tranquille pendant une décennie complète, avec un interlocuteur unique et joignable en cas de besoin.",
+    "10 ans de couverture après réception, sur un chantier réalisé par un artisan RGE, déclaré et fiscalement en règle.",
+    "Vous êtes protégé à tous les niveaux — juridique, technique et financier — pendant toute la durée de la décennale.",
+    "10 années de garantie, un artisan joignable et une entreprise pérenne : la sérénité complète sur la durée."
+  ],
+  "devis_intro": [
+    "Décrivez-nous votre projet, nous vous recontactons rapidement. Sans engagement.",
+    "Un formulaire simple, une réponse rapide et un devis clair sous 24 h. Sans engagement.",
+    "Parlez-nous de votre projet en quelques lignes, nous revenons vers vous sous 24 à 48 h.",
+    "Décrivez brièvement votre besoin, nous vous rappelons pour affiner le devis. Aucun engagement.",
+    "Un rapide descriptif suffit pour lancer le processus — devis gratuit et rapide, sans engagement."
+  ],
+  "footer_p_1": [
+    "Artisan couvreur {NOM_A}, au service {DEP_NOM_DE} depuis plus de 15 ans.",
+    "Entreprise artisanale de couverture, basée {NOM_A}, intervenant partout {DEP_NOM_A}.",
+    "Couvreurs zingueurs {NOM_A}, actifs {DEP_NOM_A} depuis plus d'une décennie.",
+    "Artisans locaux {NOM_A}, spécialistes de la couverture {DEP_NOM_A} depuis 15+ ans.",
+    "Notre équipe artisanale exerce {NOM_A} et sur tout le territoire {DEP_NOM_DE} depuis plus de 15 ans."
+  ],
+  "footer_p_2": [
+    "Un travail soigné, garanti et durable.",
+    "Rigueur, transparence et savoir-faire artisanal à chaque intervention.",
+    "Devis clairs, chantiers propres et matériaux durables — voilà notre engagement.",
+    "Une relation directe, un travail soigné et des garanties solides.",
+    "Un service de proximité, une expertise reconnue et une exigence à chaque chantier."
+  ],
+  "_avis_prenoms_h": [
+    "Marc",
+    "Julien",
+    "Thomas",
+    "Nicolas",
+    "Pierre",
+    "David",
+    "Antoine",
+    "Laurent"
+  ],
+  "_avis_prenoms_f": [
+    "Marie",
+    "Sophie",
+    "Nathalie",
+    "Isabelle",
+    "Julie",
+    "Céline",
+    "Anne",
+    "Émilie"
+  ],
+  "_avis_noms": [
+    "L.",
+    "D.",
+    "B.",
+    "M.",
+    "R.",
+    "P.",
+    "S.",
+    "C."
+  ]
+}

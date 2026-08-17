@@ -1,0 +1,802 @@
+[
+  {
+    "nom_standard": "Paris 1er",
+    "nom_sans_pronom": "Paris 1er",
+    "nom_a": "dans le 1er arrondissement de Paris",
+    "nom_de": "du 1er arrondissement de Paris",
+    "nom_sans_accent": "paris-1er",
+    "nom_standard_majuscule": "PARIS 1ER",
+    "reg_code": "11",
+    "reg_nom": "Île-de-France",
+    "dep_code": "75",
+    "dep_nom": "Paris",
+    "canton_nom": "Paris",
+    "code_postal": "75001",
+    "codes_postaux": "",
+    "population": "",
+    "superficie_km2": "",
+    "densite": "",
+    "gentile": "",
+    "nom_variantes": [
+      "Paris 1er",
+      "1er arrondissement de Paris",
+      "Paris premier arrondissement"
+    ],
+    "nom_a_variantes": [
+      "dans le 1er arrondissement de Paris",
+      "à Paris 1er",
+      "dans le premier arrondissement de Paris",
+      "à Paris, 1er arrondissement",
+      "au 1er arrondissement de Paris"
+    ],
+    "nom_de_variantes": [
+      "du 1er arrondissement de Paris",
+      "de Paris 1er",
+      "du premier arrondissement de Paris",
+      "du 1er arrondissement parisien",
+      "de Paris, 1er arrondissement"
+    ],
+    "lat": 48.8589,
+    "lon": 2.347
+  },
+  {
+    "nom_standard": "Paris 2eme",
+    "nom_sans_pronom": "Paris 2eme",
+    "nom_a": "dans le 2e arrondissement de Paris",
+    "nom_de": "du 2e arrondissement de Paris",
+    "nom_sans_accent": "paris-2eme",
+    "nom_standard_majuscule": "PARIS 2EME",
+    "reg_code": "11",
+    "reg_nom": "Île-de-France",
+    "dep_code": "75",
+    "dep_nom": "Paris",
+    "canton_nom": "Paris",
+    "code_postal": "75002",
+    "codes_postaux": "",
+    "population": "",
+    "superficie_km2": "",
+    "densite": "",
+    "gentile": "",
+    "nom_variantes": [
+      "Paris 2eme",
+      "2eme arrondissement de Paris",
+      "Paris deuxième arrondissement"
+    ],
+    "nom_a_variantes": [
+      "dans le 2e arrondissement de Paris",
+      "à Paris 2e",
+      "dans le deuxième arrondissement de Paris",
+      "à Paris, 2e arrondissement",
+      "au 2e arrondissement de Paris"
+    ],
+    "nom_de_variantes": [
+      "du 2e arrondissement de Paris",
+      "de Paris 2e",
+      "du deuxième arrondissement de Paris",
+      "du 2e arrondissement parisien",
+      "de Paris, 2e arrondissement"
+    ],
+    "lat": 48.8589,
+    "lon": 2.347
+  },
+  {
+    "nom_standard": "Paris 3eme",
+    "nom_sans_pronom": "Paris 3eme",
+    "nom_a": "dans le 3e arrondissement de Paris",
+    "nom_de": "du 3e arrondissement de Paris",
+    "nom_sans_accent": "paris-3eme",
+    "nom_standard_majuscule": "PARIS 3EME",
+    "reg_code": "11",
+    "reg_nom": "Île-de-France",
+    "dep_code": "75",
+    "dep_nom": "Paris",
+    "canton_nom": "Paris",
+    "code_postal": "75003",
+    "codes_postaux": "",
+    "population": "",
+    "superficie_km2": "",
+    "densite": "",
+    "gentile": "",
+    "nom_variantes": [
+      "Paris 3eme",
+      "3eme arrondissement de Paris",
+      "Paris troisième arrondissement"
+    ],
+    "nom_a_variantes": [
+      "dans le 3e arrondissement de Paris",
+      "à Paris 3e",
+      "dans le troisième arrondissement de Paris",
+      "à Paris, 3e arrondissement",
+      "au 3e arrondissement de Paris"
+    ],
+    "nom_de_variantes": [
+      "du 3e arrondissement de Paris",
+      "de Paris 3e",
+      "du troisième arrondissement de Paris",
+      "du 3e arrondissement parisien",
+      "de Paris, 3e arrondissement"
+    ],
+    "lat": 48.8589,
+    "lon": 2.347
+  },
+  {
+    "nom_standard": "Paris 4eme",
+    "nom_sans_pronom": "Paris 4eme",
+    "nom_a": "dans le 4e arrondissement de Paris",
+    "nom_de": "du 4e arrondissement de Paris",
+    "nom_sans_accent": "paris-4eme",
+    "nom_standard_majuscule": "PARIS 4EME",
+    "reg_code": "11",
+    "reg_nom": "Île-de-France",
+    "dep_code": "75",
+    "dep_nom": "Paris",
+    "canton_nom": "Paris",
+    "code_postal": "75004",
+    "codes_postaux": "",
+    "population": "",
+    "superficie_km2": "",
+    "densite": "",
+    "gentile": "",
+    "nom_variantes": [
+      "Paris 4eme",
+      "4eme arrondissement de Paris",
+      "Paris quatrième arrondissement"
+    ],
+    "nom_a_variantes": [
+      "dans le 4e arrondissement de Paris",
+      "à Paris 4e",
+      "dans le quatrième arrondissement de Paris",
+      "à Paris, 4e arrondissement",
+      "au 4e arrondissement de Paris"
+    ],
+    "nom_de_variantes": [
+      "du 4e arrondissement de Paris",
+      "de Paris 4e",
+      "du quatrième arrondissement de Paris",
+      "du 4e arrondissement parisien",
+      "de Paris, 4e arrondissement"
+    ],
+    "lat": 48.8589,
+    "lon": 2.347
+  },
+  {
+    "nom_standard": "Paris 5eme",
+    "nom_sans_pronom": "Paris 5eme",
+    "nom_a": "dans le 5e arrondissement de Paris",
+    "nom_de": "du 5e arrondissement de Paris",
+    "nom_sans_accent": "paris-5eme",
+    "nom_standard_majuscule": "PARIS 5EME",
+    "reg_code": "11",
+    "reg_nom": "Île-de-France",
+    "dep_code": "75",
+    "dep_nom": "Paris",
+    "canton_nom": "Paris",
+    "code_postal": "75005",
+    "codes_postaux": "",
+    "population": "",
+    "superficie_km2": "",
+    "densite": "",
+    "gentile": "",
+    "nom_variantes": [
+      "Paris 5eme",
+      "5eme arrondissement de Paris",
+      "Paris cinquième arrondissement"
+    ],
+    "nom_a_variantes": [
+      "dans le 5e arrondissement de Paris",
+      "à Paris 5e",
+      "dans le cinquième arrondissement de Paris",
+      "à Paris, 5e arrondissement",
+      "au 5e arrondissement de Paris"
+    ],
+    "nom_de_variantes": [
+      "du 5e arrondissement de Paris",
+      "de Paris 5e",
+      "du cinquième arrondissement de Paris",
+      "du 5e arrondissement parisien",
+      "de Paris, 5e arrondissement"
+    ],
+    "lat": 48.8589,
+    "lon": 2.347
+  },
+  {
+    "nom_standard": "Paris 6eme",
+    "nom_sans_pronom": "Paris 6eme",
+    "nom_a": "dans le 6e arrondissement de Paris",
+    "nom_de": "du 6e arrondissement de Paris",
+    "nom_sans_accent": "paris-6eme",
+    "nom_standard_majuscule": "PARIS 6EME",
+    "reg_code": "11",
+    "reg_nom": "Île-de-France",
+    "dep_code": "75",
+    "dep_nom": "Paris",
+    "canton_nom": "Paris",
+    "code_postal": "75006",
+    "codes_postaux": "",
+    "population": "",
+    "superficie_km2": "",
+    "densite": "",
+    "gentile": "",
+    "nom_variantes": [
+      "Paris 6eme",
+      "6eme arrondissement de Paris",
+      "Paris sixième arrondissement"
+    ],
+    "nom_a_variantes": [
+      "dans le 6e arrondissement de Paris",
+      "à Paris 6e",
+      "dans le sixième arrondissement de Paris",
+      "à Paris, 6e arrondissement",
+      "au 6e arrondissement de Paris"
+    ],
+    "nom_de_variantes": [
+      "du 6e arrondissement de Paris",
+      "de Paris 6e",
+      "du sixième arrondissement de Paris",
+      "du 6e arrondissement parisien",
+      "de Paris, 6e arrondissement"
+    ],
+    "lat": 48.8589,
+    "lon": 2.347
+  },
+  {
+    "nom_standard": "Paris 7eme",
+    "nom_sans_pronom": "Paris 7eme",
+    "nom_a": "dans le 7e arrondissement de Paris",
+    "nom_de": "du 7e arrondissement de Paris",
+    "nom_sans_accent": "paris-7eme",
+    "nom_standard_majuscule": "PARIS 7EME",
+    "reg_code": "11",
+    "reg_nom": "Île-de-France",
+    "dep_code": "75",
+    "dep_nom": "Paris",
+    "canton_nom": "Paris",
+    "code_postal": "75007",
+    "codes_postaux": "",
+    "population": "",
+    "superficie_km2": "",
+    "densite": "",
+    "gentile": "",
+    "nom_variantes": [
+      "Paris 7eme",
+      "7eme arrondissement de Paris",
+      "Paris septième arrondissement"
+    ],
+    "nom_a_variantes": [
+      "dans le 7e arrondissement de Paris",
+      "à Paris 7e",
+      "dans le septième arrondissement de Paris",
+      "à Paris, 7e arrondissement",
+      "au 7e arrondissement de Paris"
+    ],
+    "nom_de_variantes": [
+      "du 7e arrondissement de Paris",
+      "de Paris 7e",
+      "du septième arrondissement de Paris",
+      "du 7e arrondissement parisien",
+      "de Paris, 7e arrondissement"
+    ],
+    "lat": 48.8589,
+    "lon": 2.347
+  },
+  {
+    "nom_standard": "Paris 8eme",
+    "nom_sans_pronom": "Paris 8eme",
+    "nom_a": "dans le 8e arrondissement de Paris",
+    "nom_de": "du 8e arrondissement de Paris",
+    "nom_sans_accent": "paris-8eme",
+    "nom_standard_majuscule": "PARIS 8EME",
+    "reg_code": "11",
+    "reg_nom": "Île-de-France",
+    "dep_code": "75",
+    "dep_nom": "Paris",
+    "canton_nom": "Paris",
+    "code_postal": "75008",
+    "codes_postaux": "",
+    "population": "",
+    "superficie_km2": "",
+    "densite": "",
+    "gentile": "",
+    "nom_variantes": [
+      "Paris 8eme",
+      "8eme arrondissement de Paris",
+      "Paris huitième arrondissement"
+    ],
+    "nom_a_variantes": [
+      "dans le 8e arrondissement de Paris",
+      "à Paris 8e",
+      "dans le huitième arrondissement de Paris",
+      "à Paris, 8e arrondissement",
+      "au 8e arrondissement de Paris"
+    ],
+    "nom_de_variantes": [
+      "du 8e arrondissement de Paris",
+      "de Paris 8e",
+      "du huitième arrondissement de Paris",
+      "du 8e arrondissement parisien",
+      "de Paris, 8e arrondissement"
+    ],
+    "lat": 48.8589,
+    "lon": 2.347
+  },
+  {
+    "nom_standard": "Paris 9eme",
+    "nom_sans_pronom": "Paris 9eme",
+    "nom_a": "dans le 9e arrondissement de Paris",
+    "nom_de": "du 9e arrondissement de Paris",
+    "nom_sans_accent": "paris-9eme",
+    "nom_standard_majuscule": "PARIS 9EME",
+    "reg_code": "11",
+    "reg_nom": "Île-de-France",
+    "dep_code": "75",
+    "dep_nom": "Paris",
+    "canton_nom": "Paris",
+    "code_postal": "75009",
+    "codes_postaux": "",
+    "population": "",
+    "superficie_km2": "",
+    "densite": "",
+    "gentile": "",
+    "nom_variantes": [
+      "Paris 9eme",
+      "9eme arrondissement de Paris",
+      "Paris neuvième arrondissement"
+    ],
+    "nom_a_variantes": [
+      "dans le 9e arrondissement de Paris",
+      "à Paris 9e",
+      "dans le neuvième arrondissement de Paris",
+      "à Paris, 9e arrondissement",
+      "au 9e arrondissement de Paris"
+    ],
+    "nom_de_variantes": [
+      "du 9e arrondissement de Paris",
+      "de Paris 9e",
+      "du neuvième arrondissement de Paris",
+      "du 9e arrondissement parisien",
+      "de Paris, 9e arrondissement"
+    ],
+    "lat": 48.8589,
+    "lon": 2.347
+  },
+  {
+    "nom_standard": "Paris 10eme",
+    "nom_sans_pronom": "Paris 10eme",
+    "nom_a": "dans le 10e arrondissement de Paris",
+    "nom_de": "du 10e arrondissement de Paris",
+    "nom_sans_accent": "paris-10eme",
+    "nom_standard_majuscule": "PARIS 10EME",
+    "reg_code": "11",
+    "reg_nom": "Île-de-France",
+    "dep_code": "75",
+    "dep_nom": "Paris",
+    "canton_nom": "Paris",
+    "code_postal": "75010",
+    "codes_postaux": "",
+    "population": "",
+    "superficie_km2": "",
+    "densite": "",
+    "gentile": "",
+    "nom_variantes": [
+      "Paris 10eme",
+      "10eme arrondissement de Paris",
+      "Paris dixième arrondissement"
+    ],
+    "nom_a_variantes": [
+      "dans le 10e arrondissement de Paris",
+      "à Paris 10e",
+      "dans le dixième arrondissement de Paris",
+      "à Paris, 10e arrondissement",
+      "au 10e arrondissement de Paris"
+    ],
+    "nom_de_variantes": [
+      "du 10e arrondissement de Paris",
+      "de Paris 10e",
+      "du dixième arrondissement de Paris",
+      "du 10e arrondissement parisien",
+      "de Paris, 10e arrondissement"
+    ],
+    "lat": 48.8589,
+    "lon": 2.347
+  },
+  {
+    "nom_standard": "Paris 11eme",
+    "nom_sans_pronom": "Paris 11eme",
+    "nom_a": "dans le 11e arrondissement de Paris",
+    "nom_de": "du 11e arrondissement de Paris",
+    "nom_sans_accent": "paris-11eme",
+    "nom_standard_majuscule": "PARIS 11EME",
+    "reg_code": "11",
+    "reg_nom": "Île-de-France",
+    "dep_code": "75",
+    "dep_nom": "Paris",
+    "canton_nom": "Paris",
+    "code_postal": "75011",
+    "codes_postaux": "",
+    "population": "",
+    "superficie_km2": "",
+    "densite": "",
+    "gentile": "",
+    "nom_variantes": [
+      "Paris 11eme",
+      "11eme arrondissement de Paris",
+      "Paris onzième arrondissement"
+    ],
+    "nom_a_variantes": [
+      "dans le 11e arrondissement de Paris",
+      "à Paris 11e",
+      "dans le onzième arrondissement de Paris",
+      "à Paris, 11e arrondissement",
+      "au 11e arrondissement de Paris"
+    ],
+    "nom_de_variantes": [
+      "du 11e arrondissement de Paris",
+      "de Paris 11e",
+      "du onzième arrondissement de Paris",
+      "du 11e arrondissement parisien",
+      "de Paris, 11e arrondissement"
+    ],
+    "lat": 48.8589,
+    "lon": 2.347
+  },
+  {
+    "nom_standard": "Paris 12eme",
+    "nom_sans_pronom": "Paris 12eme",
+    "nom_a": "dans le 12e arrondissement de Paris",
+    "nom_de": "du 12e arrondissement de Paris",
+    "nom_sans_accent": "paris-12eme",
+    "nom_standard_majuscule": "PARIS 12EME",
+    "reg_code": "11",
+    "reg_nom": "Île-de-France",
+    "dep_code": "75",
+    "dep_nom": "Paris",
+    "canton_nom": "Paris",
+    "code_postal": "75012",
+    "codes_postaux": "",
+    "population": "",
+    "superficie_km2": "",
+    "densite": "",
+    "gentile": "",
+    "nom_variantes": [
+      "Paris 12eme",
+      "12eme arrondissement de Paris",
+      "Paris douzième arrondissement"
+    ],
+    "nom_a_variantes": [
+      "dans le 12e arrondissement de Paris",
+      "à Paris 12e",
+      "dans le douzième arrondissement de Paris",
+      "à Paris, 12e arrondissement",
+      "au 12e arrondissement de Paris"
+    ],
+    "nom_de_variantes": [
+      "du 12e arrondissement de Paris",
+      "de Paris 12e",
+      "du douzième arrondissement de Paris",
+      "du 12e arrondissement parisien",
+      "de Paris, 12e arrondissement"
+    ],
+    "lat": 48.8589,
+    "lon": 2.347
+  },
+  {
+    "nom_standard": "Paris 13eme",
+    "nom_sans_pronom": "Paris 13eme",
+    "nom_a": "dans le 13e arrondissement de Paris",
+    "nom_de": "du 13e arrondissement de Paris",
+    "nom_sans_accent": "paris-13eme",
+    "nom_standard_majuscule": "PARIS 13EME",
+    "reg_code": "11",
+    "reg_nom": "Île-de-France",
+    "dep_code": "75",
+    "dep_nom": "Paris",
+    "canton_nom": "Paris",
+    "code_postal": "75013",
+    "codes_postaux": "",
+    "population": "",
+    "superficie_km2": "",
+    "densite": "",
+    "gentile": "",
+    "nom_variantes": [
+      "Paris 13eme",
+      "13eme arrondissement de Paris",
+      "Paris treizième arrondissement"
+    ],
+    "nom_a_variantes": [
+      "dans le 13e arrondissement de Paris",
+      "à Paris 13e",
+      "dans le treizième arrondissement de Paris",
+      "à Paris, 13e arrondissement",
+      "au 13e arrondissement de Paris"
+    ],
+    "nom_de_variantes": [
+      "du 13e arrondissement de Paris",
+      "de Paris 13e",
+      "du treizième arrondissement de Paris",
+      "du 13e arrondissement parisien",
+      "de Paris, 13e arrondissement"
+    ],
+    "lat": 48.8589,
+    "lon": 2.347
+  },
+  {
+    "nom_standard": "Paris 14eme",
+    "nom_sans_pronom": "Paris 14eme",
+    "nom_a": "dans le 14e arrondissement de Paris",
+    "nom_de": "du 14e arrondissement de Paris",
+    "nom_sans_accent": "paris-14eme",
+    "nom_standard_majuscule": "PARIS 14EME",
+    "reg_code": "11",
+    "reg_nom": "Île-de-France",
+    "dep_code": "75",
+    "dep_nom": "Paris",
+    "canton_nom": "Paris",
+    "code_postal": "75014",
+    "codes_postaux": "",
+    "population": "",
+    "superficie_km2": "",
+    "densite": "",
+    "gentile": "",
+    "nom_variantes": [
+      "Paris 14eme",
+      "14eme arrondissement de Paris",
+      "Paris quatorzième arrondissement"
+    ],
+    "nom_a_variantes": [
+      "dans le 14e arrondissement de Paris",
+      "à Paris 14e",
+      "dans le quatorzième arrondissement de Paris",
+      "à Paris, 14e arrondissement",
+      "au 14e arrondissement de Paris"
+    ],
+    "nom_de_variantes": [
+      "du 14e arrondissement de Paris",
+      "de Paris 14e",
+      "du quatorzième arrondissement de Paris",
+      "du 14e arrondissement parisien",
+      "de Paris, 14e arrondissement"
+    ],
+    "lat": 48.8589,
+    "lon": 2.347
+  },
+  {
+    "nom_standard": "Paris 15eme",
+    "nom_sans_pronom": "Paris 15eme",
+    "nom_a": "dans le 15e arrondissement de Paris",
+    "nom_de": "du 15e arrondissement de Paris",
+    "nom_sans_accent": "paris-15eme",
+    "nom_standard_majuscule": "PARIS 15EME",
+    "reg_code": "11",
+    "reg_nom": "Île-de-France",
+    "dep_code": "75",
+    "dep_nom": "Paris",
+    "canton_nom": "Paris",
+    "code_postal": "75015",
+    "codes_postaux": "",
+    "population": "",
+    "superficie_km2": "",
+    "densite": "",
+    "gentile": "",
+    "nom_variantes": [
+      "Paris 15eme",
+      "15eme arrondissement de Paris",
+      "Paris quinzième arrondissement"
+    ],
+    "nom_a_variantes": [
+      "dans le 15e arrondissement de Paris",
+      "à Paris 15e",
+      "dans le quinzième arrondissement de Paris",
+      "à Paris, 15e arrondissement",
+      "au 15e arrondissement de Paris"
+    ],
+    "nom_de_variantes": [
+      "du 15e arrondissement de Paris",
+      "de Paris 15e",
+      "du quinzième arrondissement de Paris",
+      "du 15e arrondissement parisien",
+      "de Paris, 15e arrondissement"
+    ],
+    "lat": 48.8589,
+    "lon": 2.347
+  },
+  {
+    "nom_standard": "Paris 16eme",
+    "nom_sans_pronom": "Paris 16eme",
+    "nom_a": "dans le 16e arrondissement de Paris",
+    "nom_de": "du 16e arrondissement de Paris",
+    "nom_sans_accent": "paris-16eme",
+    "nom_standard_majuscule": "PARIS 16EME",
+    "reg_code": "11",
+    "reg_nom": "Île-de-France",
+    "dep_code": "75",
+    "dep_nom": "Paris",
+    "canton_nom": "Paris",
+    "code_postal": "75016",
+    "codes_postaux": "",
+    "population": "",
+    "superficie_km2": "",
+    "densite": "",
+    "gentile": "",
+    "nom_variantes": [
+      "Paris 16eme",
+      "16eme arrondissement de Paris",
+      "Paris seizième arrondissement"
+    ],
+    "nom_a_variantes": [
+      "dans le 16e arrondissement de Paris",
+      "à Paris 16e",
+      "dans le seizième arrondissement de Paris",
+      "à Paris, 16e arrondissement",
+      "au 16e arrondissement de Paris"
+    ],
+    "nom_de_variantes": [
+      "du 16e arrondissement de Paris",
+      "de Paris 16e",
+      "du seizième arrondissement de Paris",
+      "du 16e arrondissement parisien",
+      "de Paris, 16e arrondissement"
+    ],
+    "lat": 48.8589,
+    "lon": 2.347
+  },
+  {
+    "nom_standard": "Paris 17eme",
+    "nom_sans_pronom": "Paris 17eme",
+    "nom_a": "dans le 17e arrondissement de Paris",
+    "nom_de": "du 17e arrondissement de Paris",
+    "nom_sans_accent": "paris-17eme",
+    "nom_standard_majuscule": "PARIS 17EME",
+    "reg_code": "11",
+    "reg_nom": "Île-de-France",
+    "dep_code": "75",
+    "dep_nom": "Paris",
+    "canton_nom": "Paris",
+    "code_postal": "75017",
+    "codes_postaux": "",
+    "population": "",
+    "superficie_km2": "",
+    "densite": "",
+    "gentile": "",
+    "nom_variantes": [
+      "Paris 17eme",
+      "17eme arrondissement de Paris",
+      "Paris dix-septième arrondissement"
+    ],
+    "nom_a_variantes": [
+      "dans le 17e arrondissement de Paris",
+      "à Paris 17e",
+      "dans le dix-septième arrondissement de Paris",
+      "à Paris, 17e arrondissement",
+      "au 17e arrondissement de Paris"
+    ],
+    "nom_de_variantes": [
+      "du 17e arrondissement de Paris",
+      "de Paris 17e",
+      "du dix-septième arrondissement de Paris",
+      "du 17e arrondissement parisien",
+      "de Paris, 17e arrondissement"
+    ],
+    "lat": 48.8589,
+    "lon": 2.347
+  },
+  {
+    "nom_standard": "Paris 18eme",
+    "nom_sans_pronom": "Paris 18eme",
+    "nom_a": "dans le 18e arrondissement de Paris",
+    "nom_de": "du 18e arrondissement de Paris",
+    "nom_sans_accent": "paris-18eme",
+    "nom_standard_majuscule": "PARIS 18EME",
+    "reg_code": "11",
+    "reg_nom": "Île-de-France",
+    "dep_code": "75",
+    "dep_nom": "Paris",
+    "canton_nom": "Paris",
+    "code_postal": "75018",
+    "codes_postaux": "",
+    "population": "",
+    "superficie_km2": "",
+    "densite": "",
+    "gentile": "",
+    "nom_variantes": [
+      "Paris 18eme",
+      "18eme arrondissement de Paris",
+      "Paris dix-huitième arrondissement"
+    ],
+    "nom_a_variantes": [
+      "dans le 18e arrondissement de Paris",
+      "à Paris 18e",
+      "dans le dix-huitième arrondissement de Paris",
+      "à Paris, 18e arrondissement",
+      "au 18e arrondissement de Paris"
+    ],
+    "nom_de_variantes": [
+      "du 18e arrondissement de Paris",
+      "de Paris 18e",
+      "du dix-huitième arrondissement de Paris",
+      "du 18e arrondissement parisien",
+      "de Paris, 18e arrondissement"
+    ],
+    "lat": 48.8589,
+    "lon": 2.347
+  },
+  {
+    "nom_standard": "Paris 19eme",
+    "nom_sans_pronom": "Paris 19eme",
+    "nom_a": "dans le 19e arrondissement de Paris",
+    "nom_de": "du 19e arrondissement de Paris",
+    "nom_sans_accent": "paris-19eme",
+    "nom_standard_majuscule": "PARIS 19EME",
+    "reg_code": "11",
+    "reg_nom": "Île-de-France",
+    "dep_code": "75",
+    "dep_nom": "Paris",
+    "canton_nom": "Paris",
+    "code_postal": "75019",
+    "codes_postaux": "",
+    "population": "",
+    "superficie_km2": "",
+    "densite": "",
+    "gentile": "",
+    "nom_variantes": [
+      "Paris 19eme",
+      "19eme arrondissement de Paris",
+      "Paris dix-neuvième arrondissement"
+    ],
+    "nom_a_variantes": [
+      "dans le 19e arrondissement de Paris",
+      "à Paris 19e",
+      "dans le dix-neuvième arrondissement de Paris",
+      "à Paris, 19e arrondissement",
+      "au 19e arrondissement de Paris"
+    ],
+    "nom_de_variantes": [
+      "du 19e arrondissement de Paris",
+      "de Paris 19e",
+      "du dix-neuvième arrondissement de Paris",
+      "du 19e arrondissement parisien",
+      "de Paris, 19e arrondissement"
+    ],
+    "lat": 48.8589,
+    "lon": 2.347
+  },
+  {
+    "nom_standard": "Paris 20eme",
+    "nom_sans_pronom": "Paris 20eme",
+    "nom_a": "dans le 20e arrondissement de Paris",
+    "nom_de": "du 20e arrondissement de Paris",
+    "nom_sans_accent": "paris-20eme",
+    "nom_standard_majuscule": "PARIS 20EME",
+    "reg_code": "11",
+    "reg_nom": "Île-de-France",
+    "dep_code": "75",
+    "dep_nom": "Paris",
+    "canton_nom": "Paris",
+    "code_postal": "75020",
+    "codes_postaux": "",
+    "population": "",
+    "superficie_km2": "",
+    "densite": "",
+    "gentile": "",
+    "nom_variantes": [
+      "Paris 20eme",
+      "20eme arrondissement de Paris",
+      "Paris vingtième arrondissement"
+    ],
+    "nom_a_variantes": [
+      "dans le 20e arrondissement de Paris",
+      "à Paris 20e",
+      "dans le vingtième arrondissement de Paris",
+      "à Paris, 20e arrondissement",
+      "au 20e arrondissement de Paris"
+    ],
+    "nom_de_variantes": [
+      "du 20e arrondissement de Paris",
+      "de Paris 20e",
+      "du vingtième arrondissement de Paris",
+      "du 20e arrondissement parisien",
+      "de Paris, 20e arrondissement"
+    ],
+    "lat": 48.8589,
+    "lon": 2.347
+  }
+]

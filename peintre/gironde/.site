@@ -1,0 +1,10 @@
+DOMAIN="artisan-peintre-pro-33.fr"
+DEP="33"
+DEP_NOM="Gironde"
+
+# Ce métier vit sur une autre Lune que le couvreur.
+SSH_ALIAS="o2-peintre"
+CPANEL_USER="movi4314"
+
+# Redirection HTTP -> HTTPS de l'apex, une fois son certificat en place.
+HTTPS_REDIRECT_ROOT="1"
